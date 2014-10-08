@@ -1,9 +1,6 @@
-#include <iostream>
-
-using namespace std;
+#include "Grid.h"
 
 int main() {
-	cout << " __ " << endl;
-	cout << "/  \\" << endl;
-	cout << "\\__/" << endl;
+	Grid g;
+	g.draw();
 }
