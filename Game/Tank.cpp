@@ -45,11 +45,11 @@ void Tank::goForward() {
 			break;
 
 		case TANK_DIRECTION_RIGHT_DOWN:
-			y++;
 			x++;
 			break;
 
 		case TANK_DIRECTION_RIGHT_UP:
+			y--;
 			x++;
 			break;
 
@@ -75,4 +75,14 @@ int Tank::getDirection() {
 
 bool Tank::isAlive() {
 	return alive;
+}
+
+
+void Tank::setPosition(int x, int y) {
+	this->x = x;
+	this->y = y;
+}
+
+void Tank::setGrid(Grid* g) {
+	grid = g;
 }

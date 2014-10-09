@@ -50,7 +50,7 @@ void Program::load(std::string filename) {
 }
 
 void Program::execute() {
-	if (!tank.isAlive())
+	if (!tank->isAlive())
 	{
 		finish = true;
 		return;
@@ -67,6 +67,10 @@ void Program::execute() {
 	else
 	{
 		doTask(searching[ipSearch]);
+		ipSearch++;
+
+		if (ipSearch >= searching.size())
+			ipSearch = 0;
 	}
 }
 
@@ -94,19 +98,19 @@ void Program::doTask(Statement stat) {
 	switch(stat.getOpCode())
 	{
 		case OPCODE_TURN_LEFT:
-			tank.turnLeft();
+			tank->turnLeft();
 			break;
 
 		case OPCODE_TURN_RIGHT:
-			tank.turnRight();
+			tank->turnRight();
 			break;
 
 		case OPCODE_TURN_GO_FORWARD:
-			tank.goForward();
+			tank->goForward();
 			break;
 
 		case OPCODE_TURN_SHOOT:
-			tank.shoot();
+			tank->shoot();
 			break;
 
 		case OPCODE_UKNOWN:
@@ -127,4 +131,8 @@ bool Program::onVisionRange() {
 bool Program::onShootingRange() {
 	//STUB
 	return false;
+}
+
+void Program::setTank(Tank* t) {
+	tank = t;
 }

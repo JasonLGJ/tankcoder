@@ -21,8 +21,10 @@ class Program {
 		//
 		bool onVisionRange();
 		bool onShootingRange();
+		//
+		void setTank(Tank* t);
 	private:
-		Tank tank;
+		Tank* tank;
 		bool finish;
 		std::vector<Statement> searching;
 		std::vector<Statement> vision;

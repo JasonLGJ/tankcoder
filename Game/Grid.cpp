@@ -1,50 +1,23 @@
 #include "Grid.h"
 
 Grid::Grid() {
-	width = height = 5;
+	width = height = 0;
 }
 
 void Grid::loadMap(std::string name) {
-
+	//STUB
+	width = height = 5;
 }
 
 void Grid::draw() {
-	std::cout << " ";
-
-	for (int i = 0; i < width - 1; i++)
-	{
-		std::cout << "__    ";
-	}
-
-	std::cout << std::endl;
+	//STUB
+}
 
 
-	for (int j = 0; j < height; j++)
-	{
-		for (int i = 0; i < width - 1; i++)
-		{
-			if (i == width - 2)
-				std::cout << "/  \\";
-			else
-				std::cout << "/  \\__";
-		}
+int Grid::getWidth() {
+	return width;
+}
 
-		std::cout << std::endl;
-
-		for (int i = 0; i < width - 1; i++)
-		{
-			std::cout << "\\__/  ";
-		}
-
-		std::cout << std::endl;
-	}
-
-	std::cout << " ";
-
-	for (int i = 0; i < width - 2; i++)
-	{
-		std::cout << "  \\__/";
-	}
-
-	std::cout << std::endl << std::endl;
+int Grid::getHeight() {
+	return height;
 }

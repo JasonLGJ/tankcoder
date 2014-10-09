@@ -1,8 +1,10 @@
-#include "Game/Program.h"
+#include "Game/WorldManager.h"
 
 int main() {
-	Program p;
+	WorldManager world;
 
-	p.load("test.tc");
-	p.print();
+	world.initGrid("test");
+	world.initProgs("test.tc", "test.tc");
+
+	world.draw();
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "Grid.h"
 enum TankDirection {
 	TANK_DIRECTION_UP,
 	TANK_DIRECTION_LEFT_UP,
@@ -18,11 +19,15 @@ class Tank {
 		void goForward();
 		void shoot();
 		//
+		void setPosition(int x, int y);
+		void setGrid(Grid* g);
+		//
 		int getX();
 		int getY();
 		int getDirection();
 		bool isAlive();
 	private:
+		Grid* grid;
 		int direction;
 		int x;
 		int y;

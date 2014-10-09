@@ -1,5 +1,5 @@
 #Source files
-OBJS = $(wildcard *.cpp)
+OBJS = $(wildcard *.cpp) $(wildcard Game/*.cpp)
 
 #Compiler
 CC = g++

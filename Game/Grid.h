@@ -9,6 +9,9 @@ class Grid {
 		Grid();
 		void loadMap(std::string name);
 		void draw();
+		//
+		int getWidth();
+		int getHeight();
 	private:
 		std::vector<Tile> tiles;
 		int width;
