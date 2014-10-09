@@ -2,11 +2,51 @@
 
 Program::Program() {
 	finish = false;
-	ipSearch = 0;
+	ipSearch = ipVision = ipShooting = 0;
 }
 
 void Program::load(std::string filename) {
+	std::ifstream file(filename.c_str(), std::ios::in);
+	std::string line;
 
+	int selection = 0;
+
+	if (file.is_open())
+	{
+		while (getline(file, line))
+		{
+			std::istringstream sline(line);
+			int num;
+			while (sline >> num)
+			{
+				Statement s;
+				s.setOpCode(num);
+				switch (selection)
+				{
+					case 0:
+						searching.push_back(s);
+						break;
+
+					case 1:
+						vision.push_back(s);
+						break;
+
+					case 2:
+						shooting.push_back(s);
+						break;
+
+					default:
+						break;
+				}
+			}
+
+			selection++;
+		}
+	}
+	else
+	{
+		std::cout << "File not found" << std::endl;
+	}
 }
 
 void Program::execute() {
@@ -30,7 +70,27 @@ void Program::execute() {
 	}
 }
 
-void doTask(Statement stat) {
+void Program::print() {
+	std::cout << "[Searching]" << std::endl;
+	for (int i = 0; i < searching.size(); i++)
+	{
+		std::cout << searching[i].getOpName() << std::endl;
+	}
+
+	std::cout << "[Vision]" << std::endl;
+	for (int i = 0; i < vision.size(); i++)
+	{
+		std::cout << vision[i].getOpName() << std::endl;
+	}
+
+	std::cout << "[Shooting]" << std::endl;
+	for (int i = 0; i < shooting.size(); i++)
+	{
+		std::cout << shooting[i].getOpName() << std::endl;
+	}
+}
+
+void Program::doTask(Statement stat) {
 	switch(stat.getOpCode())
 	{
 		case OPCODE_TURN_LEFT:

@@ -1,3 +1,4 @@
+#pragma once
 enum TankDirection {
 	TANK_DIRECTION_UP,
 	TANK_DIRECTION_LEFT_UP,
@@ -9,6 +10,7 @@ enum TankDirection {
 
 class Tank {
 	public:
+		Tank();
 		Tank(int dir, int x, int y);
 		//
 		void turnLeft();
@@ -20,11 +22,9 @@ class Tank {
 		int getY();
 		int getDirection();
 		bool isAlive();
-		bool isShooting();
 	private:
 		int direction;
 		int x;
 		int y;
 		bool alive;
-		bool shooting;
 };

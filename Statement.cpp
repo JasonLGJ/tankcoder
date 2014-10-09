@@ -11,3 +11,7 @@ void Statement::setOpCode(int code) {
 int Statement::getOpCode() {
 	return opcode;
 }
+
+std::string Statement::getOpName() {
+	return opNames[opcode];
+}

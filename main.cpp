@@ -1,6 +1,8 @@
-#include "Grid.h"
+#include "Program.h"
 
 int main() {
-	Grid g;
-	g.draw();
+	Program p;
+
+	p.load("test.tc");
+	p.print();
 }

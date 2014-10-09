@@ -1,5 +1,11 @@
 #include "Tank.h"
 
+Tank::Tank() {
+	direction = TANK_DIRECTION_UP;
+	x = y = 0;
+}
+
+
 Tank::Tank(int dir, int x, int y) {
 	direction = dir;
 }
@@ -53,5 +59,20 @@ void Tank::goForward() {
 }
 
 void Tank::shoot() {
-	shooting = true;
+}
+
+int Tank::getX() {
+	return x;
+}
+
+int Tank::getY() {
+	return y;
+}
+
+int Tank::getDirection() {
+	return direction;
+}
+
+bool Tank::isAlive() {
+	return alive;
 }
