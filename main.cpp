@@ -7,4 +7,8 @@ int main() {
 	world.initProgs("test.tc", "test.tc");
 
 	world.draw();
+
+	int x;
+
+	std::cin >> x;
 }
