@@ -9,8 +9,8 @@ class WorldManager {
 	public:
 		WorldManager();
 		//
-		void initProgs(std::string playerfile, std::string enemyfile);
-		void initGrid(std::string gridpath);
+		bool initProgs(std::string playerfile, std::string enemyfile);
+		bool initGrid(std::string gridpath);
 		void draw();
 		bool run();
 		void update();

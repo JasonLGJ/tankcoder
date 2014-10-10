@@ -11,7 +11,7 @@ void WorldManager::update() {
 	eprog.execute();
 }
 
-void WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
+bool WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
 	pprog.load(playerfile);
 	eprog.load(enemyfile);
 
@@ -25,7 +25,7 @@ void WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
 	eprog.print();
 }
 
-void WorldManager::initGrid(std::string gridpath) {
+bool WorldManager::initGrid(std::string gridpath) {
 	grid.loadMap(gridpath);
 
 	int w = grid.getWidth();
