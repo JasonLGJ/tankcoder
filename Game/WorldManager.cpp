@@ -12,8 +12,11 @@ void WorldManager::update() {
 }
 
 bool WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
-	pprog.load(playerfile);
-	eprog.load(enemyfile);
+	if (!pprog.load(playerfile))
+		return false;
+
+	if (!eprog.load(enemyfile))
+		return false;
 
 	pprog.setTank(&ptank);
 	eprog.setTank(&etank);
@@ -23,10 +26,13 @@ bool WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
 
 	std::cout << ">>> Enemy <<<" << std::endl;
 	eprog.print();
+
+	return true;
 }
 
 bool WorldManager::initGrid(std::string gridpath) {
-	grid.loadMap(gridpath);
+	if (!grid.loadMap(gridpath))
+		return false;
 
 	int w = grid.getWidth();
 	int h = grid.getHeight();
@@ -36,6 +42,8 @@ bool WorldManager::initGrid(std::string gridpath) {
 
 	ptank.setGrid(&grid);
 	etank.setGrid(&grid);
+
+	return true;
 }
 
 bool WorldManager::tankIn(char tid, int x, int y) {

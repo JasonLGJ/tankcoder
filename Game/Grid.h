@@ -7,7 +7,7 @@
 class Grid {
 	public:
 		Grid();
-		void loadMap(std::string name);
+		bool loadMap(std::string name);
 		void draw();
 		//
 		int getWidth();
