@@ -2,7 +2,7 @@
 #include <string>
 
 enum opCodes {
-	OPCODE_UKNOWN,
+	OPCODE_WAIT,
 	OPCODE_TURN_LEFT,
 	OPCODE_TURN_RIGHT,
 	OPCODE_TURN_GO_FORWARD,
@@ -10,7 +10,7 @@ enum opCodes {
 };
 
 const std::string opNames[5] = {
-	"Uknown",
+	"Wait",
 	"Left",
 	"Right",
 	"Go",

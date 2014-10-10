@@ -1,7 +1,7 @@
 #include "Statement.h"
 
 Statement::Statement() {
-	opcode = OPCODE_UKNOWN;
+	opcode = -1;
 }
 
 void Statement::setOpCode(int code) {

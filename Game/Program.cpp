@@ -113,7 +113,9 @@ void Program::doTask(Statement stat) {
 			tank->shoot();
 			break;
 
-		case OPCODE_UKNOWN:
+		case OPCODE_WAIT:
+			break;
+
 		default:
 			break;
 	}

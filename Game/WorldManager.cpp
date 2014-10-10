@@ -2,6 +2,14 @@
 
 WorldManager::WorldManager() {}
 
+bool WorldManager::run() {
+	return !pprog.isFinished() && !eprog.isFinished();
+}
+
+void WorldManager::update() {
+	pprog.execute();
+	eprog.execute();
+}
 
 void WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
 	pprog.load(playerfile);
@@ -9,6 +17,12 @@ void WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
 
 	pprog.setTank(&ptank);
 	eprog.setTank(&etank);
+
+	std::cout << ">>> Player <<<" << std::endl;
+	pprog.print();
+
+	std::cout << ">>> Enemy <<<" << std::endl;
+	eprog.print();
 }
 
 void WorldManager::initGrid(std::string gridpath) {
@@ -24,36 +38,38 @@ void WorldManager::initGrid(std::string gridpath) {
 	etank.setGrid(&grid);
 }
 
+bool WorldManager::tankIn(char tid, int x, int y) {
+	if (tid == 'P')
+	{
+		return x == ptank.getX() && y == ptank.getY();
+	}
+	else
+	{
+		return x == etank.getX() && y == etank.getY();
+	}
+}
+
 void WorldManager::draw() {
 	int w = grid.getWidth();
 	int h = grid.getHeight();
-	int offset = 0;
 
-
-	for (int j = 0; j < h + 2; j++)
+	for (int j = 0; j < h; j++)
 	{
-		offset = (j % 2 == 0) ? 1 : 0;
-		for (int i = 0; i < w - 1 - offset; i++)
+		for (int i = 0; i < w; i++)
 		{
-			if (j % 2 == 0)
-			{
-				std::cout << "   <" << i << j << ">";
-			}
+			std::cout << "[";
+
+			if (tankIn('P', i, j))
+				std::cout << "P" << ptank.getDirection();
+			else if (tankIn('E', i, j))
+				std::cout << "E" << etank.getDirection();
 			else
-			{
-				std::cout << "<" << i << j << ">   ";
-			}
+				std::cout << "  ";
+
+			std::cout << "]";
 		}
 
 		std::cout << std::endl;
 	}
-}
 
-/*
-//3x3
-		<00>
-	<01>    <10>
-{02}    <11>    {20}
-	<12>    <21>
-		<22>
-*/
+}

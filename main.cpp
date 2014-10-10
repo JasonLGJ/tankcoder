@@ -6,9 +6,13 @@ int main() {
 	world.initGrid("test");
 	world.initProgs("test.tc", "test.tc");
 
-	world.draw();
-
 	int x;
 
-	std::cin >> x;
+	while (world.run())
+	{
+		world.update();
+		world.draw();
+
+		std::cin >> x;
+	}
 }

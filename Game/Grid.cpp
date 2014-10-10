@@ -6,7 +6,7 @@ Grid::Grid() {
 
 void Grid::loadMap(std::string name) {
 	//STUB
-	width = height = 3;
+	width = height = 5;
 }
 
 void Grid::draw() {
