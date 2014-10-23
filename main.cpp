@@ -1,7 +1,7 @@
-#include "Game/WorldManager.h"
+#include "game/World.h"
 
 int main() {
-	WorldManager world;
+	World world;
 
 	world.initGrid("test");
 	world.initProgs("test.tc", "test.tc");

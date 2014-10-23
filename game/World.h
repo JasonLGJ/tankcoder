@@ -5,9 +5,9 @@
 #include "Tank.h"
 #include "Grid.h"
 
-class WorldManager {
+class World {
 	public:
-		WorldManager();
+		World();
 		//
 		void initProgs(std::string playerfile, std::string enemyfile);
 		void initGrid(std::string gridpath);

@@ -1,9 +1,9 @@
-#include "WorldManager.h"
+#include "World.h"
 
-WorldManager::WorldManager() {}
+World::World() {}
 
 
-void WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
+void World::initProgs(std::string playerfile, std::string enemyfile) {
 	pprog.load(playerfile);
 	eprog.load(enemyfile);
 
@@ -11,7 +11,7 @@ void WorldManager::initProgs(std::string playerfile, std::string enemyfile) {
 	eprog.setTank(&etank);
 }
 
-void WorldManager::initGrid(std::string gridpath) {
+void World::initGrid(std::string gridpath) {
 	grid.loadMap(gridpath);
 
 	int w = grid.getWidth();
@@ -24,7 +24,7 @@ void WorldManager::initGrid(std::string gridpath) {
 	etank.setGrid(&grid);
 }
 
-void WorldManager::draw() {
+void World::draw() {
 	pprog.print();
 	eprog.print();
 }

@@ -1,7 +1,7 @@
 #include "Statement.h"
 
 Statement::Statement() {
-	opcode = OPCODE_UKNOWN;
+	opcode = OPCODE_UNUSED;
 }
 
 void Statement::setOpCode(int code) {
@@ -10,6 +10,14 @@ void Statement::setOpCode(int code) {
 
 int Statement::getOpCode() {
 	return opcode;
+}
+
+void Statement::setAddress(int addr) {
+	address = addr;
+}
+
+int Statement::getAddress() {
+	return address;
 }
 
 std::string Statement::getOpName() {

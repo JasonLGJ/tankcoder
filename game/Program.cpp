@@ -13,34 +13,43 @@ void Program::load(std::string filename) {
 
 	if (file.is_open())
 	{
-		while (getline(file, line))
+		while (!file.eof())
 		{
-			std::istringstream sline(line);
-			int num;
-			while (sline >> num)
+			int opc, adr;
+
+			file >> opc;
+			file >> adr;
+
+			if (opc == OPCODE_BEGIN)
+				continue;
+
+			if (opc == OPCODE_END)
 			{
-				Statement s;
-				s.setOpCode(num);
-				switch (selection)
-				{
-					case 0:
-						searching.push_back(s);
-						break;
-
-					case 1:
-						vision.push_back(s);
-						break;
-
-					case 2:
-						shooting.push_back(s);
-						break;
-
-					default:
-						break;
-				}
+				selection++;
+				continue;
 			}
 
-			selection++;
+			Statement stat;
+			stat.setOpCode(opc);
+			stat.setAddress(adr);
+
+			switch (selection)
+			{
+				case 0:
+					searching.push_back(stat);
+					break;
+
+				case 1:
+					vision.push_back(stat);
+					break;
+
+				case 2:
+					shooting.push_back(stat);
+					break;
+
+				default:
+					break;
+			}
 		}
 	}
 	else
@@ -113,7 +122,8 @@ void Program::doTask(Statement stat) {
 			tank->shoot();
 			break;
 
-		case OPCODE_UKNOWN:
+		case OPCODE_WAIT:
+		case OPCODE_UNUSED:
 		default:
 			break;
 	}
