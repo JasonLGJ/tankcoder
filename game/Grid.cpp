@@ -4,9 +4,11 @@ Grid::Grid() {
 	width = height = 0;
 }
 
-void Grid::loadMap(std::string name) {
+bool Grid::loadMap(std::string name) {
 	//STUB
 	width = height = 5;
+
+	return true;
 }
 
 void Grid::draw() {

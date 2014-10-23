@@ -3,8 +3,19 @@
 int main() {
 	World world;
 
-	world.initGrid("test");
-	world.initProgs("test.tc", "test.tc");
+	if (!world.initGrid("test"))
+		return -1;
+		
+	if (!world.initProgs("test.tc", "test.tc"))
+		return -1;
 
-	world.draw();
+	int x;
+
+	while (world.run())
+	{
+		world.update();
+		world.draw();
+
+		std::cin >> x;
+	}
 }

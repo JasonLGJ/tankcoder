@@ -9,10 +9,13 @@ class World {
 	public:
 		World();
 		//
-		void initProgs(std::string playerfile, std::string enemyfile);
-		void initGrid(std::string gridpath);
+		bool initProgs(std::string playerfile, std::string enemyfile);
+		bool initGrid(std::string gridpath);
 		void draw();
+		bool run();
+		void update();
 	private:
+		bool tankIn(char tid, int x, int y);
 		Grid grid;
 		Program pprog;
 		Program eprog;

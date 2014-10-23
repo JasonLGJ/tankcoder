@@ -15,7 +15,7 @@ class Program {
 		//
 		void execute();
 		bool isFinished();
-		void load(std::string filename);
+		bool load(std::string filename);
 		void doTask(Statement stat);
 		void print();
 		//
@@ -33,4 +33,3 @@ class Program {
 		int ipVision;
 		int ipShooting;
 };
-

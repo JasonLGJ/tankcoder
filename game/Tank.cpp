@@ -3,6 +3,7 @@
 Tank::Tank() {
 	direction = TANK_DIRECTION_UP;
 	x = y = 0;
+	alive = true;
 }
 
 
@@ -56,9 +57,19 @@ void Tank::goForward() {
 		default:
 			break;
 	}
+
+	if (x >= grid->getWidth())
+		x = grid->getWidth() -1;
+	else if (x < 0)
+		x = 0;
+		
+	if (y >= grid->getHeight())
+		y = grid->getHeight() -1;
+	else if (y < 0)
+		y = 0;
 }
 
-void Tank::shoot() {
+void  Tank::shoot() {
 }
 
 int Tank::getX() {

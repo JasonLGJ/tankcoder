@@ -5,7 +5,7 @@ Program::Program() {
 	ipSearch = ipVision = ipShooting = 0;
 }
 
-void Program::load(std::string filename) {
+bool Program::load(std::string filename) {
 	std::ifstream file(filename.c_str(), std::ios::in);
 	std::string line;
 
@@ -51,10 +51,13 @@ void Program::load(std::string filename) {
 					break;
 			}
 		}
+
+		return true;
 	}
 	else
 	{
 		std::cout << "File not found" << std::endl;
+		return false;
 	}
 }
 

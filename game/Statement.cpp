@@ -1,7 +1,11 @@
 #include "Statement.h"
 
 Statement::Statement() {
+<<<<<<< HEAD:game/Statement.cpp
 	opcode = OPCODE_UNUSED;
+=======
+	opcode = -1;
+>>>>>>> 20a751524fced1cd1d1ffea2fd479c02c640e36e:Game/Statement.cpp
 }
 
 void Statement::setOpCode(int code) {
