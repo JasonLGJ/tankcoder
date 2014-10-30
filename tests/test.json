@@ -1,0 +1,25 @@
+{
+	"mainmenu": {
+		"playbtn": {
+			"x": -1.0,
+			"y": 0.0,
+			"w": 2.0,
+			"h": 0.5,
+			"text": "Play"
+		},
+		"playbtn": {
+			"x": -1.0,
+			"y": 1.0,
+			"w": 2.0,
+			"h": 0.5,
+			"text": "Tutorial"
+		},
+		"playbtn": {
+			"x": -1.0,
+			"y": 2.0,
+			"w": 2.0,
+			"h": 0.5,
+			"text": "Configuration"
+		}
+	}
+}
