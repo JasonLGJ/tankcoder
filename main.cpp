@@ -1,21 +1,6 @@
-#include "game/World.h"
+#include "Game.h"
 
 int main() {
-	World world;
-
-	if (!world.initGrid("test"))
-		return -1;
-		
-	if (!world.initProgs("test.tc", "test.tc"))
-		return -1;
-
-	int x;
-
-	while (world.run())
-	{
-		world.update();
-		world.draw();
-
-		std::cin >> x;
-	}
+	Game g;
+	return g.execute();
 }

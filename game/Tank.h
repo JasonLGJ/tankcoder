@@ -18,6 +18,8 @@ class Tank {
 		void turnRight();
 		void goForward();
 		void shoot();
+		bool onShootingRange();
+		bool onVisionRange();
 		//
 		void setPosition(int x, int y);
 		void setGrid(Grid* g);
@@ -26,6 +28,7 @@ class Tank {
 		int getY();
 		int getDirection();
 		bool isAlive();
+
 	private:
 		Grid* grid;
 		int direction;

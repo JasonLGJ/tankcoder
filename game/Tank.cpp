@@ -62,7 +62,7 @@ void Tank::goForward() {
 		x = grid->getWidth() -1;
 	else if (x < 0)
 		x = 0;
-		
+
 	if (y >= grid->getHeight())
 		y = grid->getHeight() -1;
 	else if (y < 0)
@@ -96,4 +96,180 @@ void Tank::setPosition(int x, int y) {
 
 void Tank::setGrid(Grid* g) {
 	grid = g;
+}
+
+bool Tank::onVisionRange() {
+	return false;
+}
+
+bool Tank::onShootingRange() {
+	int xs[3];
+	int ys[3];
+
+	/*
+	int Ry1,Ry2,Ry3;
+	int Rx1,Rx2,Rx3;
+
+	int x=Tank.getX();
+	int y=Tank.getY();
+	switch(Tank.getDirection())
+	{
+	case TANK_DIRECTION_UP:
+		//vision cerca
+
+		Rx1=x;
+		Ry1=y-1;
+
+		//vision media
+
+		Rx2=x;
+		Ry2=y-2;
+
+		//vision larga
+
+		Rx3=x;
+		Ry3=y-3;
+		if(x==Rx1&&y==Ry1||x==Rx2&&y==Ry2||x==Rx3&&y==Ry3)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		break;
+
+	case TANK_DIRECTION_LEFT_UP:
+		//vision cerca
+
+		Rx1=x-1;
+		Ry1=y-1;
+
+		//vision media
+
+		Rx2=x-2;
+		Ry2=y-2;
+
+		//vision lejos
+
+		Rx3=x-3;
+		Ry3=y-3;
+		if(x==Rx1&&y==Ry1||x==Rx2&&y==Ry2||x==Rx3&&y==Ry3)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+		break;
+
+	case TANK_DIRECTION_LEFT_DOWN:
+		//vision cerca
+
+		Rx1=x-1;
+		Ry1=y+1;
+
+		//vision media
+
+		Rx2=x-2;
+		Ry2=y+2;
+
+		//vision lejos
+
+		Rx3=x-3;
+		Ry3=y+3;
+		if(x==Rx1&&y==Ry1||x==Rx2&&y==Ry2||x==Rx3&&y==Ry3)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+		break;
+
+	case TANK_DIRECTION_DOWN:
+		//vision cerca
+
+		Rx1=x;
+		Ry1=y+1;
+
+		//vision lejos
+
+		Rx2=x;
+		Ry2=y+2;
+
+		//vision lejos
+
+		Rx3=x;
+		Ry3=y+3;
+		if(x==Rx1&&y==Ry1||x==Rx2&&y==Ry2||x==Rx3&&y==Ry3)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+		break;
+
+	case TANK_DIRECTION_RIGHT_DOWN:
+		//vision cerca
+
+		Rx1=x+1;
+		Ry1=y+1;
+
+		//vision media
+
+		Rx2=x+2;
+		Ry2=y+2;
+
+		//vision lejos
+
+		Rx3=x+3;
+		Ry3=y+3;
+		if(x==Rx1&&y==Ry1||x==Rx2&&y==Ry2||x==Rx3&&y==Ry3)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+		break;
+	case TANK_DIRECTION_RIGHT_UP:
+		//vision cerca
+
+		Rx1=x+1;
+		Ry1=y-1;
+
+		//vision media
+
+		Rx2=x+2;
+		Ry2=y-2;
+
+		//vision lejos
+
+		Rx3=x+3;
+		Ry3=y-3;
+		if(x==Rx1&&y==Ry1||x==Rx2&&y==Ry2||x==Rx3&&y==Ry3)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+		break;
+
+	default:
+		break;
+	}
+	*/
 }
