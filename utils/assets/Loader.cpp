@@ -46,6 +46,28 @@ Texture Loader::getTexture(std::string filename) {
 	}
 }
 
+Resource Loader::getResource(std::string filename) {
+	for (int i = 0; i < res_list.size(); i++)
+	{
+		if (res_list[i].getName().compare(filename) == 0)
+		{
+			return res_list[i];
+		}
+	}
+
+	Resource new_res;
+
+	if (loadResource(new_res, filename))
+	{
+		res_list.push_back(new_res);
+		return new_res;
+	}
+	else //panic!
+	{
+		return new_res;
+	}
+}
+
 bool Loader::loadMesh(Mesh& mesh, std::string filename) {
 	int i;
 
@@ -197,4 +219,82 @@ bool Loader::loadTexture(Texture& text, std::string filename) {
 	text.setName(filename);
 
 	return true;
+}
+
+bool Loader::loadResource(Resource& res, std::string filename) {
+	FILE* file = fopen(filename.c_str(), "r");
+
+	if (file == NULL)
+	{
+		printf("failed to open file\n");
+		return false;
+	}
+
+	// Determine file size
+	fseek(file, 0, SEEK_END);
+	size_t size = ftell(file);
+
+	char* data = new char[size];
+
+	rewind(file);
+	fread(data, sizeof(char), size, file);
+	fclose(file);
+
+	bool parsed = parse_json(res, data);
+
+	delete[] data;
+
+	res.setName(filename);
+
+	return parsed;
+}
+
+bool Loader::parse_json(Resource& res, char* data) {
+	char* source = data;
+	char *endptr;
+	JsonValue value;
+	JsonAllocator allocator;
+	int status = jsonParse(source, &endptr, &value, allocator);
+
+	if (status != JSON_OK)
+		return false;
+
+	create_resource(res, value);
+
+	return true;
+}
+
+void Loader::create_resource(Resource& res, JsonValue obj) {
+	switch (obj.getTag())
+	{
+		case JSON_NUMBER:
+			printf("%g\n", obj.toNumber());
+			break;
+
+		case JSON_BOOL:
+			printf("%s\n", obj.toBool() ? "true" : "false");
+			break;
+
+			printf("\"%s\"\n", obj.toString());
+			break;
+
+		case JSON_ARRAY:
+			for (auto i : obj)
+			{
+				create_resource(res, i->value);
+			}
+			break;
+
+		case JSON_OBJECT:
+			for (auto i : obj)
+			{
+				printf("%s = ", i->key);
+				create_resource(res, i->value);
+			}
+			break;
+
+		case JSON_NULL:
+			printf("null\n");
+			break;
+	}
 }

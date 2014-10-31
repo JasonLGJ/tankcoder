@@ -1,23 +1,22 @@
+#ifdef _WIN32
+#include <SDL.h>
+#else
+#include <SDL2/SDL.h>
+#endif
+
 #include "Game.h"
+#include "libs/json/gason.h"
 
 #include <iostream>
-#include "libs/json/json.h"
+using namespace std;
 
-int main() {
-	Json::Value root;
-	Json::Reader reader;
+int main(int argc, char* argv[]) {
+	Loader lod;
 
-	if (!reader.parse("test.json", root ))
-	{
-		// report to the user the failure and their locations in the document.
-		std::cout  << "Failed to parse configuration\n" << reader.getFormattedErrorMessages();
-		return -1;
-	}
+	lod.getResource("test.json");
 
-	std::cout << root << std::endl;
+	int x;
+	cin >> x;
 
-	/*
-	Game g;
-	return g.execute();
-	*/
+	return x;
 }

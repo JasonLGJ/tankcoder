@@ -23,3 +23,5 @@ const float GL_SCALE = 100.0f;
 const float GL_HALF_SCALE = 2 * GL_SCALE;
 
 const float DEFAULT_Z = 3.5;
+
+const int GABEN = 3;

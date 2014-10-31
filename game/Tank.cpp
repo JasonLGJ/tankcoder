@@ -106,6 +106,8 @@ bool Tank::onShootingRange() {
 	int xs[3];
 	int ys[3];
 
+	return false;
+
 	/*
 	int Ry1,Ry2,Ry3;
 	int Rx1,Rx2,Rx3;

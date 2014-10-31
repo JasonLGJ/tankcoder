@@ -6,8 +6,11 @@
 #include <string>
 #include <vector>
 
+#include "../../libs/json/gason.h"
+
 #include "Mesh.h"
 #include "Texture.h"
+#include "Resource.h"
 
 //const int max_vertices = 8000;
 //const int max_polygons = 8000;
@@ -26,11 +29,16 @@ enum Model3DSChunks {
 class Loader {
 	public:
 		Loader();
-		Mesh getMesh(std::string filename);\
+		Mesh getMesh(std::string filename);
 		Texture getTexture(std::string filename);
+		Resource getResource(std::string filename);
 	private:
 		bool loadMesh(Mesh& mesh, std::string filename);
 		bool loadTexture(Texture& text, std::string filename);
+		bool loadResource(Resource& res, std::string filename);
+		bool parse_json(Resource& res, char* data);
+		void create_resource(Resource& res, JsonValue obj);
 		std::vector<Mesh> mesh_list;
 		std::vector<Texture> text_list;
+		std::vector<Resource> res_list;
 };
