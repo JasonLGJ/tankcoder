@@ -1,5 +1,12 @@
 {
+	"menudesc": {
+		"menuqty": 1,
+		"menu1": "mainmenu"
+	},
 	"mainmenu": {
+		"desc": {
+			"buttons": 3
+		},
 		"button1": {
 			"x": -1.0,
 			"y": 0.0,

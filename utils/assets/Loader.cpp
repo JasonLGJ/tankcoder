@@ -46,16 +46,16 @@ Texture Loader::getTexture(std::string filename) {
 	}
 }
 
-Resource Loader::getResource(std::string filename) {
+std::shared_ptr<Resource> Loader::getResource(std::string filename) {
 	for (int i = 0; i < res_list.size(); i++)
 	{
-		if (res_list[i].getName().compare(filename) == 0)
+		if (res_list[i]->getName().compare(filename) == 0)
 		{
 			return res_list[i];
 		}
 	}
 
-	Resource new_res;
+	std::shared_ptr<Resource> new_res = std::make_shared<Resource>();
 
 	if (loadResource(new_res, filename))
 	{
@@ -64,7 +64,7 @@ Resource Loader::getResource(std::string filename) {
 	}
 	else //panic!
 	{
-		return new_res;
+		return nullptr;
 	}
 }
 
@@ -221,7 +221,7 @@ bool Loader::loadTexture(Texture& text, std::string filename) {
 	return true;
 }
 
-bool Loader::loadResource(Resource& res, std::string filename) {
+bool Loader::loadResource(std::shared_ptr<Resource> res, std::string filename) {
 	FILE* file = fopen(filename.c_str(), "r");
 
 	if (file == NULL)
@@ -244,12 +244,12 @@ bool Loader::loadResource(Resource& res, std::string filename) {
 
 	delete[] data;
 
-	res.setName(filename);
+	res->setName(filename);
 
 	return parsed;
 }
 
-bool Loader::parse_json(Resource& res, char* data) {
+bool Loader::parse_json(std::shared_ptr<Resource> res, char* data) {
 	char* source = data;
 	char *endptr;
 	JsonValue value;
@@ -259,42 +259,44 @@ bool Loader::parse_json(Resource& res, char* data) {
 	if (status != JSON_OK)
 		return false;
 
-	create_resource(res, value);
-
-	return true;
+	return construct_resource(res, value);
 }
 
-void Loader::create_resource(Resource& res, JsonValue obj) {
-	switch (obj.getTag())
+bool Loader::construct_resource(std::shared_ptr<Resource> res, JsonValue obj)  {
+	if (obj.getTag() == JSON_OBJECT)
 	{
-		case JSON_NUMBER:
-			printf("%g\n", obj.toNumber());
-			break;
+		for (auto o : obj)
+		{
+			std::string key = o->key;
+			JsonValue value = o->value;
+			int tag = value.getTag();
 
-		case JSON_BOOL:
-			printf("%s\n", obj.toBool() ? "true" : "false");
-			break;
-
-			printf("\"%s\"\n", obj.toString());
-			break;
-
-		case JSON_ARRAY:
-			for (auto i : obj)
+			switch (tag)
 			{
-				create_resource(res, i->value);
-			}
-			break;
+				case JSON_OBJECT:
+					{
+						std::shared_ptr<Resource> new_res = std::make_shared<Resource>();
+						new_res->setName(key);
+						res->addResource(new_res);
+						construct_resource(new_res, value);
+					}
+					break;
 
-		case JSON_OBJECT:
-			for (auto i : obj)
-			{
-				printf("%s = ", i->key);
-				create_resource(res, i->value);
-			}
-			break;
+				case JSON_BOOL:
+					res->addBool(key, value.toBool());
+					break;
 
-		case JSON_NULL:
-			printf("null\n");
-			break;
+				case JSON_NUMBER:
+					res->addNumber(key, value.toNumber());
+					break;
+
+				case JSON_STRING:
+					res->addString(key, std::string(value.toString()));
+					break;
+			}
+
+		}
 	}
+	
+	return true;
 }

@@ -6,8 +6,6 @@
 #include <string>
 #include <vector>
 
-#include "../../libs/json/gason.h"
-
 #include "Mesh.h"
 #include "Texture.h"
 #include "Resource.h"
@@ -31,14 +29,14 @@ class Loader {
 		Loader();
 		Mesh getMesh(std::string filename);
 		Texture getTexture(std::string filename);
-		Resource getResource(std::string filename);
+		std::shared_ptr<Resource> getResource(std::string filename);
 	private:
 		bool loadMesh(Mesh& mesh, std::string filename);
 		bool loadTexture(Texture& text, std::string filename);
-		bool loadResource(Resource& res, std::string filename);
-		bool parse_json(Resource& res, char* data);
-		void create_resource(Resource& res, JsonValue obj);
+		bool loadResource(std::shared_ptr<Resource> res, std::string filename);
+		bool parse_json(std::shared_ptr<Resource> res, char* data);
+		bool construct_resource(std::shared_ptr<Resource> res, JsonValue obj);
 		std::vector<Mesh> mesh_list;
 		std::vector<Texture> text_list;
-		std::vector<Resource> res_list;
+		std::vector<std::shared_ptr<Resource>> res_list;
 };
