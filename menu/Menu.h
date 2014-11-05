@@ -4,6 +4,8 @@
 #include <stack>
 #include <memory>
 #include <vector>
+
+#include "../utils/assets/Loader.h"
 #include "MenuButton.h"
 
 class Menu {
