@@ -103,7 +103,7 @@ bool Game::initTest() {
 	//std::shared_ptr<SceneNode> node = scene.createStaticNode("tank2", 0, 0, 0);
 	//std::shared_ptr<SceneNode> node2 = scene.createStaticNode("hextile", 2, 0, 0);
 
-	//std::shared_ptr<SceneNode> node = scene.createFlatNode("title", 0, 0, 12.8, 7.2);
+	std::shared_ptr<SceneNode> node = scene.createFlatNode("title", 0, 0, 12.8, 7.2);
 
 	return true;
 }

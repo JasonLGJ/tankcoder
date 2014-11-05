@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include "MenuEvents.h"
 #include "../utils/scene/FlatNode.h"
 
 class MenuItem {
