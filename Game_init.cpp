@@ -1,7 +1,7 @@
 #include "Game.h"
 
 bool Game::init() {
-	return initSDL() && initGL() && initTest();
+	return initSDL() && initGL() && initTest() && initManagers();
 }
 
 bool Game::initSDL() {
@@ -100,10 +100,23 @@ bool Game::initGL() {
 bool Game::initTest() {
 	rotation = 0.0f;
 
-	std::shared_ptr<SceneNode> node = scene.createStaticNode("tank2", 0, 0, 0);
-	std::shared_ptr<SceneNode> node2 = scene.createStaticNode("hextile", 2, 0, 0);
+	std::shared_ptr<SceneNode> node = scene->createStaticNode("tank2", 0, 0, 0);
+	std::shared_ptr<SceneNode> node2 = scene->createStaticNode("hextile", 2, 0, 0);
 
-	//std::shared_ptr<SceneNode> node = scene.createFlatNode("title", 0, 0, 12.8, 7.2);
+	//std::shared_ptr<SceneNode> node = scene->createFlatNode("title", 0, 0, 12.8, 7.2);
+
+	return true;
+}
+
+bool Game::initManagers() {
+	loader = std::make_shared<Loader>();
+	scene = std::make_shared<SceneManager>();
+	menu = std::make_shared<Menu>();
+	world = std::make_shared<World>();
+
+	scene->init(loader);
+	world->init(loader, scene);
+	menu->init(loader, scene);
 
 	return true;
 }

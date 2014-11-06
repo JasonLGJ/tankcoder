@@ -6,5 +6,5 @@ void Game::update() {
 	if (rotation > 180.0f)
 		rotation = -180.0f;
 
-	scene.setRotation(rotation);
+	scene->setRotation(rotation);
 }

@@ -10,8 +10,13 @@ void SceneManager::setRotation(float r) {
 	rotation = r;
 }
 
+void SceneManager::init(std::shared_ptr<Loader> l) {
+	loader = l;
+}
+
+
 std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename, float x, float y, float z) {
-	std::shared_ptr<Mesh> m = loader.getMesh(filename + ".3ds");
+	std::shared_ptr<Mesh> m = loader->getMesh(filename + ".3ds");
 
 	if (m == nullptr)
 	{
@@ -19,7 +24,7 @@ std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename,
 		return nullptr;
 	}
 
-	std::shared_ptr<Texture> t = loader.getTexture(filename + ".png");
+	std::shared_ptr<Texture> t = loader->getTexture(filename + ".png");
 
 	if (t == nullptr)
 	{
@@ -41,7 +46,7 @@ std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename,
 std::shared_ptr<FlatNode> SceneManager::createFlatNode(std::string filename, float x, float y, float w, float h) {
 	std::shared_ptr<FlatNode> n = std::make_shared<FlatNode>();
 
-	std::shared_ptr<Texture> t = loader.getTexture(filename + ".png");
+	std::shared_ptr<Texture> t = loader->getTexture(filename + ".png");
 
 	if (t == nullptr)
 	{

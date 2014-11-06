@@ -2,6 +2,11 @@
 
 World::World() {}
 
+void World::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
+	loader = l;
+	scene = s;
+}
+
 bool World::run() {
 	return !pprog.isFinished() && !eprog.isFinished();
 }

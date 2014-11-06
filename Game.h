@@ -11,6 +11,8 @@
 #include <GL/glu.h>
 #include <string>
 #include "utils/scene/SceneManager.h"
+#include "menu/Menu.h"
+#include "game/World.h"
 #include "Constants.h"
 
 class Game {
@@ -24,6 +26,7 @@ class Game {
 		bool initSDL();
 		bool initGL();
 		bool initTest();
+		bool initManagers();
 		//
 		void event(SDL_Event* e);
 		void update();
@@ -33,10 +36,11 @@ class Game {
 		SDL_Window* window;
 		SDL_Event ev;
 		SDL_GLContext context;
-		SceneManager scene;
 		//
-		Loader loader;
-		Mesh mesh;
+		std::shared_ptr<SceneManager> scene;
+		std::shared_ptr<Loader> loader;
+		std::shared_ptr<Menu> menu;
+		std::shared_ptr<World> world;
 		//
 		bool running;
 		float rotation;
