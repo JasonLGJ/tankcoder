@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "../common/Operations.h"
+#include "Operations.h"
 
 class Statement {
 	public:

@@ -1,12 +1,12 @@
 #pragma once
 
-enum menu_event {
+enum event_type {
 	MENU_EVENT_ITEM_HOVER,
 	MENU_EVENT_ITEM_PRESSED,
 	MENU_EVENT_ITEM_RELEASED
 };
 
 struct MenuEvent {
-	menu_event event;
+	event_type event;
 	int id;
 };

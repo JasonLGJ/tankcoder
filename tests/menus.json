@@ -1,32 +1,33 @@
 {
-	"menudesc": {
-		"menuqty": 1,
-		"menu1": "mainmenu"
-	},
-	"mainmenu": {
-		"desc": {
-			"buttons": 3
-		},
-		"button1": {
+	"start_menu": "main_menu",
+	"main_menu": {
+		"itemqty": 3,
+		"item0": {
+			"type": 0,
 			"x": -1.0,
 			"y": 0.0,
 			"w": 2.0,
 			"h": 0.5,
-			"text": "Play"
+			"text": "Play",
+			"textname": "meep"
 		},
-		"button2": {
+		"item1": {
+			"type": 0,
 			"x": -1.0,
 			"y": 1.0,
 			"w": 2.0,
 			"h": 0.5,
-			"text": "Tutorial"
+			"text": "Tutorial",
+			"textname": "meep"
 		},
-		"button3": {
+		"item2": {
+			"type": 0,
 			"x": -1.0,
 			"y": 2.0,
 			"w": 2.0,
 			"h": 0.5,
-			"text": "Configuration"
+			"text": "Configuration",
+			"textname": "meep"
 		}
 	}
 }

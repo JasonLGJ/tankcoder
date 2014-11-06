@@ -10,18 +10,18 @@ void SceneManager::setRotation(float r) {
 	rotation = r;
 }
 
-std::shared_ptr<SceneNode> SceneManager::createStaticNode(std::string filename, float x, float y, float z) {
-	Mesh m = loader.getMesh(filename + ".3ds");
+std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename, float x, float y, float z) {
+	std::shared_ptr<Mesh> m = loader.getMesh(filename + ".3ds");
 
-	if (m.empty())
+	if (m == nullptr)
 	{
 		printf("file not found\n");
 		return nullptr;
 	}
 
-	Texture t = loader.getTexture(filename + ".png");
+	std::shared_ptr<Texture> t = loader.getTexture(filename + ".png");
 
-	if (t.empty())
+	if (t == nullptr)
 	{
 		printf("model has no texture");
 		return nullptr;
@@ -38,7 +38,7 @@ std::shared_ptr<SceneNode> SceneManager::createStaticNode(std::string filename, 
 	return n;
 }
 
-std::shared_ptr<SceneNode> SceneManager::createFlatNode(std::string filename, float x, float y, float w, float h) {
+std::shared_ptr<FlatNode> SceneManager::createFlatNode(std::string filename, float x, float y, float w, float h) {
 	std::shared_ptr<FlatNode> n = std::make_shared<FlatNode>();
 
 	Texture t = loader.getTexture(filename + ".png");
