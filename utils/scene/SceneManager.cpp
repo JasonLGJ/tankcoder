@@ -27,7 +27,7 @@ std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename,
 		return nullptr;
 	}
 
-	m.setTexture(t);
+	m->setTexture(t);
 
 	std::shared_ptr<StaticNode> n = std::make_shared<StaticNode>();
 
@@ -41,9 +41,9 @@ std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename,
 std::shared_ptr<FlatNode> SceneManager::createFlatNode(std::string filename, float x, float y, float w, float h) {
 	std::shared_ptr<FlatNode> n = std::make_shared<FlatNode>();
 
-	Texture t = loader.getTexture(filename + ".png");
+	std::shared_ptr<Texture> t = loader.getTexture(filename + ".png");
 
-	if (t.empty())
+	if (t == nullptr)
 	{
 		printf("No texture found");
 		return nullptr;
@@ -100,8 +100,8 @@ void SceneManager::draw() {
 }
 
 void SceneManager::drawStaticNode(std::shared_ptr<StaticNode> n) {
-	Mesh mesh = n->getMesh();
-	Texture t = mesh.getTexture();
+	std::shared_ptr<Mesh> mesh = n->getMesh();
+	std::shared_ptr<Texture> t = mesh->getTexture();
 
 	glPushMatrix();
 	glTranslatef(n->getX(), n->getY(), n->getZ());
@@ -110,17 +110,17 @@ void SceneManager::drawStaticNode(std::shared_ptr<StaticNode> n) {
 	glScalef(0.5, 0.5, 0.5);
 	//glColor3f(0.0, 0.0, 1.0);
 
-	t.bind();
+	t->bind();
 	glBegin(GL_TRIANGLES);
-	for (int i = 0; i < mesh.getPolygonsQty(); i++)
+	for (int i = 0; i < mesh->getPolygonsQty(); i++)
 	{
-		polygon p = mesh.getPolygon(i);
-		vertex a = mesh.getVertex(p.a);
-		vertex b = mesh.getVertex(p.b);
-		vertex c = mesh.getVertex(p.c);
-		coord aa = mesh.getCoord(p.a);
-		coord bb = mesh.getCoord(p.b);
-		coord cc = mesh.getCoord(p.c);
+		polygon p = mesh->getPolygon(i);
+		vertex a = mesh->getVertex(p.a);
+		vertex b = mesh->getVertex(p.b);
+		vertex c = mesh->getVertex(p.c);
+		coord aa = mesh->getCoord(p.a);
+		coord bb = mesh->getCoord(p.b);
+		coord cc = mesh->getCoord(p.c);
 
 		glTexCoord2f(aa.u, 1.0-aa.v);
 		glVertex3f(a.x, a.y, a.z);
@@ -130,13 +130,13 @@ void SceneManager::drawStaticNode(std::shared_ptr<StaticNode> n) {
 		glVertex3f(c.x, c.y, c.z);
 	}
 	glEnd();
-	t.unbind();
+	t->unbind();
 
 	glPopMatrix();
 }
 
 void SceneManager::drawFlatNode(std::shared_ptr<FlatNode> n) {
-	Texture t = n->getTexture();
+	std::shared_ptr<Texture> t = n->getTexture();
 
 	glPushMatrix();
 	//unrotate
@@ -145,7 +145,7 @@ void SceneManager::drawFlatNode(std::shared_ptr<FlatNode> n) {
 
 	glTranslatef(n->getX() - DEFAULT_WIDTH / GL_HALF_SCALE, n->getY() - DEFAULT_HEIGHT / GL_HALF_SCALE, n->getZ());
 
-	t.bind();
+	t->bind();
 	glBegin(GL_TRIANGLES);
 		glTexCoord2f(0,1);
 		glVertex3f(0, 0, 0);
@@ -161,7 +161,7 @@ void SceneManager::drawFlatNode(std::shared_ptr<FlatNode> n) {
 		glTexCoord2f(1,0);
 		glVertex3f(n->getWidth(), n->getHeight(), 0);
 	glEnd();
-	t.unbind();
+	t->unbind();
 
 	glPopMatrix();
 }

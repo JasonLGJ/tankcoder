@@ -5,7 +5,7 @@ Loader::Loader() {}
 std::shared_ptr<Mesh> Loader::getMesh(std::string filename) {
 	for (int i = 0; i < mesh_list.size(); i++)
 	{
-		if (mesh_list[i].getFileName().compare(filename) == 0)
+		if (mesh_list[i]->getFileName().compare(filename) == 0)
 		{
 			return mesh_list[i];
 		}
@@ -24,16 +24,16 @@ std::shared_ptr<Mesh> Loader::getMesh(std::string filename) {
 	}
 }
 
-Texture Loader::getTexture(std::string filename) {
+std::shared_ptr<Texture> Loader::getTexture(std::string filename) {
 	for (int i = 0; i < text_list.size(); i++)
 	{
-		if (text_list[i].getName().compare(filename) == 0)
+		if (text_list[i]->getName().compare(filename) == 0)
 		{
 			return text_list[i];
 		}
 	}
 
-	Texture new_text;
+	std::shared_ptr<Texture> new_text;
 
 	if (loadTexture(new_text, filename))
 	{
@@ -42,7 +42,7 @@ Texture Loader::getTexture(std::string filename) {
 	}
 	else //panic!
 	{
-		return new_text;
+		return nullptr;
 	}
 }
 
@@ -192,7 +192,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 }
 
 
-bool Loader::loadTexture(Texture& text, std::string filename) {
+bool Loader::loadTexture(std::shared_ptr<Texture> text, std::string filename) {
 	GLuint TextureID = 0;
 
 	SDL_Surface* surface = IMG_Load(filename.c_str());
@@ -215,8 +215,8 @@ bool Loader::loadTexture(Texture& text, std::string filename) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	text.setTextureId(TextureID);
-	text.setName(filename);
+	text->setTextureId(TextureID);
+	text->setName(filename);
 
 	return true;
 }

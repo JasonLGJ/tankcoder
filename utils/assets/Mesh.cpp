@@ -75,10 +75,10 @@ bool Mesh::empty() {
 	return polygons == 0 && vertices == 0 && coords == 0;
 }
 
-void Mesh::setTexture(Texture t) {
+void Mesh::setTexture(std::shared_ptr<Texture> t) {
 	texture = t;
 }
 
-Texture Mesh::getTexture() {
+std::shared_ptr<Texture> Mesh::getTexture() {
 	return texture;
 }

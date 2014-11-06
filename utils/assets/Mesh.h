@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include <string>
 #include <vector>
 #include "Texture.h"
@@ -30,7 +31,7 @@ class Mesh {
 		int getCoordsQty();
 		//
 		void setFileName(std::string fn);
-		void setTexture(Texture t);
+		void setTexture(std::shared_ptr<Texture> t);
 		void setName(std::string n);
 		void setPolygonsQty(int qty);
 		void setVerticesQty(int qty);
@@ -43,11 +44,11 @@ class Mesh {
 		polygon getPolygon(int index);
 		vertex getVertex(int index);
 		coord getCoord(int index);
-		Texture getTexture();
+		std::shared_ptr<Texture> getTexture();
 		//
 		bool empty();
 	private:
-		Texture texture;
+		std::shared_ptr<Texture> texture;
 		std::string name;
 		std::string fileName;
 		int polygons;

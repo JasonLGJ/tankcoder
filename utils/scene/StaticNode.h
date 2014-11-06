@@ -6,8 +6,8 @@ class StaticNode : public SceneNode {
 	public:
 		StaticNode();
 		~StaticNode();
-		void addMesh(Mesh m);
-		Mesh getMesh();
+		void addMesh(std::shared_ptr<Mesh> m);
+		std::shared_ptr<Mesh> getMesh();
 	private:
-		Mesh mesh;
+		std::shared_ptr<Mesh> mesh;
 };

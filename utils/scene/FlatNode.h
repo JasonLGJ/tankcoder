@@ -6,13 +6,13 @@ class FlatNode : public SceneNode {
 	public:
 		FlatNode();
 		~FlatNode();
-		void setTexture(Texture t);
-		Texture getTexture();
+		void setTexture(std::shared_ptr<Texture> t);
+		std::shared_ptr<Texture> getTexture();
 		void setSize(float w, float h);
 		float getWidth();
 		float getHeight();
 	private:
-		Texture texture;
+		std::shared_ptr<Texture> texture;
 		float width;
 		float height;
 };

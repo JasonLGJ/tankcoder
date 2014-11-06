@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 enum sceneNodeType {
 	SCENE_NODE,
 	SCENE_NODE_FLAT,
