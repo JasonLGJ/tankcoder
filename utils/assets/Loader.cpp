@@ -11,7 +11,7 @@ std::shared_ptr<Mesh> Loader::getMesh(std::string filename) {
 		}
 	}
 
-	std::shared_ptr<Mesh> new_mesh;
+	std::shared_ptr<Mesh> new_mesh = std::make_shared<Mesh>();
 	
 	if (loadMesh(new_mesh, filename))
 	{
@@ -33,7 +33,7 @@ std::shared_ptr<Texture> Loader::getTexture(std::string filename) {
 		}
 	}
 
-	std::shared_ptr<Texture> new_text;
+	std::shared_ptr<Texture> new_text = std::make_shared<Texture>();
 
 	if (loadTexture(new_text, filename))
 	{

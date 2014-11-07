@@ -27,6 +27,7 @@ void Menu::load(std::string filename, std::string menuname) {
 		std::string startname = res->getString("start_menu");
 		create_menu(res->get(startname));
 	}
+
 }
 
 void Menu::create_menu(std::shared_ptr<Resource> menu) {
@@ -46,7 +47,7 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 	{
 		case MENU_TYPE_BUTTON:
 			{
-				std::shared_ptr<MenuButton> button;
+				std::shared_ptr<MenuButton> button = std::make_shared<MenuButton>();
 
 				float x = item->getNumber("x");
 				float y = item->getNumber("y");
@@ -54,7 +55,7 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 				float h = item->getNumber("h");
 				std::string name = item->getString("textname");
 
-				//button->node = scene->createFlatNode(name, x, y, w, h);
+				button->node = scene->createFlatNode(name, x, y, w, h);
 				button->text = item->getString("text");
 
 				items.push_back(button);

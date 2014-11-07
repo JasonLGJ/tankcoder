@@ -13,7 +13,7 @@ class SceneNode {
 	public:
 		SceneNode();
 		virtual ~SceneNode();
-		void setPosition(int x, int y, int z);
+		void setPosition(float x, float y, float z);
 		void setX(float x);
 		void setY(float y);
 		void setZ(float z);
@@ -29,7 +29,7 @@ class SceneNode {
 		sceneNodeType type;
 		bool visible;
 		bool collidable;
-		int x;
-		int y;
-		int z;
+		float x;
+		float y;
+		float z;
 };

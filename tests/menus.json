@@ -3,27 +3,27 @@
 	"main_menu": {
 		"itemqty": 3,
 		"item0": {
-			"type": 0,
-			"x": -1.0,
-			"y": 0.0,
+			"type": 1,
+			"x": 2.2,
+			"y": 2.0,
 			"w": 2.0,
 			"h": 0.5,
 			"text": "Play",
 			"textname": "meep"
 		},
 		"item1": {
-			"type": 0,
-			"x": -1.0,
-			"y": 1.0,
-			"w": 2.0,
+			"type": 1,
+			"x": 2.2,
+			"y": 1.4,
+			"w": 4.0,
 			"h": 0.5,
 			"text": "Tutorial",
 			"textname": "meep"
 		},
 		"item2": {
-			"type": 0,
-			"x": -1.0,
-			"y": 2.0,
+			"type": 1,
+			"x": 2.2,
+			"y": 0.8,
 			"w": 2.0,
 			"h": 0.5,
 			"text": "Configuration",

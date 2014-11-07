@@ -8,7 +8,7 @@ SceneNode::SceneNode() {
 
 SceneNode::~SceneNode() {}
 
-void SceneNode::setPosition(int x, int y, int z) {
+void SceneNode::setPosition(float x, float y, float z) {
 	this->x = x;
 	this->y = y;
 	this->z = z;
