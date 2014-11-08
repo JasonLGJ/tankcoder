@@ -56,7 +56,8 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 				std::string name = item->getString("textname");
 
 				button->node = scene->createFlatNode(name, x, y, w, h);
-				button->text = item->getString("text");
+				button->event = create_event(item->getString("action"));
+				button->addStack(&events);
 
 				items.push_back(button);
 			}
@@ -71,6 +72,7 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 void Menu::mouse_moved(float x, float y) {
 	for (int i = 0; i < items.size(); i++)
 	{
+		//printf("%f:%f, %s\n", x, y, pressed?"t":"f");
 		items[i]->mouse_moved(x,y,pressed);
 	}
 }
@@ -86,7 +88,26 @@ void Menu::mouse_released() {
 void Menu::update() {
 	if (!events.empty())
 	{
-		//proccess event
+		process_event(events.top());
 		events.pop();
+	}
+}
+
+void Menu::process_event(MenuEvent event) {
+	switch (event.action)
+	{
+		case MENU_EVENT_SWAP_MENU:
+			printf("Swaping menu...\n");
+			load("menus.json", event.param);
+			break;
+
+		case MENU_EVENT_START_GAME:
+			printf("Starting game...\n");
+			break;
+
+		case MENU_EVENT_DO_NOTHING:
+		default:	
+			printf("?\n");
+			break;
 	}
 }

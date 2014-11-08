@@ -8,8 +8,8 @@
 			"y": 2.0,
 			"w": 4.0,
 			"h": 0.5,
-			"text": "Play",
-			"textname": "meep"
+			"textname": "meep",
+			"action": "start_game freeplay"
 		},
 		"item1": {
 			"type": 1,
@@ -17,8 +17,8 @@
 			"y": 1.4,
 			"w": 4.0,
 			"h": 0.5,
-			"text": "Tutorial",
-			"textname": "meep"
+			"textname": "meep",
+			"action": "swap_menu tutorial"
 		},
 		"item2": {
 			"type": 1,
@@ -26,8 +26,14 @@
 			"y": 0.8,
 			"w": 4.0,
 			"h": 0.5,
-			"text": "Configuration",
-			"textname": "meep"
+			"textname": "meep",
+			"action": "swap_menu config"
 		}
+	},
+	"tutorial": {
+		"itemqty": 0
+	},
+	"config": {
+		"itemqty": 0
 	}
 }

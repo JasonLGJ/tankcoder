@@ -19,6 +19,7 @@ class Menu {
 		void mouse_released();
 		void create_menu(std::shared_ptr<Resource> menu);
 		void create_item(std::shared_ptr<Resource> item);
+		void process_event(MenuEvent event);
 		void update();
 	private:
 		bool pressed;

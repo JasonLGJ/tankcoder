@@ -45,6 +45,11 @@ std::string Resource::getString(std::string name, std::string def) {
 		return def;
 }
 
+void Resource::getArray(std::string name, std::vector<double>& vec) {
+	if (str_list.count(name))
+		vec = array_list[name];
+}
+
 void Resource::addResource(std::shared_ptr<Resource> res) {
 	res_list.push_back(res);
 }
@@ -59,4 +64,8 @@ void Resource::addNumber(std::string name, double number) {
 
 void Resource::addString(std::string name, std::string str) {
 	str_list[name] = str;
+}
+
+void Resource::addArrayNum(std::string name, double num) {
+	array_list[name].push_back(num);
 }

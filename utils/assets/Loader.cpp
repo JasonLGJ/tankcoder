@@ -282,6 +282,13 @@ bool Loader::construct_resource(std::shared_ptr<Resource> res, JsonValue obj)  {
 					}
 					break;
 
+				case JSON_ARRAY:
+					for (auto i : value)
+					{
+						res->addArrayNum(key, i->value.toNumber());
+					}
+					break;
+
 				case JSON_BOOL:
 					res->addBool(key, value.toBool());
 					break;

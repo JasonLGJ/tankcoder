@@ -7,4 +7,6 @@ void Game::update() {
 		rotation = -180.0f;
 
 	scene->setRotation(rotation);
+
+	menu->update();
 }
