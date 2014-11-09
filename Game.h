@@ -15,6 +15,12 @@
 #include "game/World.h"
 #include "Constants.h"
 
+enum game_state {
+	GAME_STATE_INTRO,
+	GAME_STATE_MENU,
+	GAME_STATE_PLAY
+};
+
 class Game {
 	public:
 		Game();
@@ -43,5 +49,5 @@ class Game {
 		std::shared_ptr<World> world;
 		//
 		bool running;
-		float rotation;
+		game_state state;
 };

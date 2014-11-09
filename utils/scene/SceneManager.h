@@ -26,12 +26,10 @@ class SceneManager {
 		void dropScene();
 		void drawAll();
 		void draw();
-		void setRotation(float r);
 	private:
 		OctTree tree;
 		std::shared_ptr<Loader> loader;
 		//
 		void drawStaticNode(std::shared_ptr<StaticNode> n);
 		void drawFlatNode(std::shared_ptr<FlatNode> n);
-		float rotation;
 };

@@ -52,6 +52,27 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 
 	switch(type)
 	{
+
+		case MENU_TYPE_ITEM:
+			{
+				std::shared_ptr<MenuItem> image = std::make_shared<MenuItem>();
+
+				float x = item->getNumber("x");
+				float y = item->getNumber("y");
+				float w = item->getNumber("w");
+				float h = item->getNumber("h");
+				std::string name = item->getString("textname");
+				int tn = item->getNumber("textnum");
+
+				image->node = scene->createFlatNode(name, x, y, w, h);
+
+				if (tn > 1)
+					image->node->getTexture()->setMultiTexture(tn);
+
+				items.push_back(image);
+			}
+			break;
+
 		case MENU_TYPE_BUTTON:
 			{
 				std::shared_ptr<MenuButton> button = std::make_shared<MenuButton>();
@@ -98,7 +119,6 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 			}
 			break;
 
-		case MENU_TYPE_ITEM:
 		default:
 			break;
 	}

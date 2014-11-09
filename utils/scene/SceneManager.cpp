@@ -1,14 +1,6 @@
 #include "SceneManager.h"
 
-SceneManager::SceneManager() {
-	//DELETE THIS AFTER
-	rotation = 0.0f;
-}
-
-//DELETE THIS AFTER
-void SceneManager::setRotation(float r) {
-	rotation = r;
-}
+SceneManager::SceneManager() {}
 
 void SceneManager::init(std::shared_ptr<Loader> l) {
 	loader = l;
@@ -118,9 +110,7 @@ void SceneManager::drawStaticNode(std::shared_ptr<StaticNode> n) {
 	glPushMatrix();
 	glTranslatef(n->getX(), n->getY(), n->getZ());
 	glRotatef(-90.0f, 1.0, 0.0, 0.0);
-	glRotatef(rotation, 0.0, 0.0, 1.0);
 	glScalef(0.5, 0.5, 0.5);
-	//glColor3f(0.0, 0.0, 1.0);
 
 	t->bind();
 	glBegin(GL_TRIANGLES);
