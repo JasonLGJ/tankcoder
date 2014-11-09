@@ -8,6 +8,7 @@
 #include "../utils/assets/Loader.h"
 #include "../utils/scene/SceneManager.h"
 #include "MenuButton.h"
+#include "MenuDrag.h"
 
 class Menu {
 	public:

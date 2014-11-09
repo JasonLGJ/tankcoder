@@ -75,6 +75,29 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 			}
 			break;
 
+		case MENU_TYPE_DRAG:
+			{
+				std::shared_ptr<MenuDrag> drag = std::make_shared<MenuDrag>();
+
+				float x = item->getNumber("x");
+				float y = item->getNumber("y");
+				float w = item->getNumber("w");
+				float h = item->getNumber("h");
+				std::string name = item->getString("textname");
+				int tn = item->getNumber("textnum");
+
+				drag->node = scene->createFlatNode(name, x, y, w, h);
+
+				if (tn > 1)
+					drag->node->getTexture()->setMultiTexture(tn);
+
+				drag->event = create_event(item->getString("action"));
+				drag->addStack(&events);
+
+				items.push_back(drag);
+			}
+			break;
+
 		case MENU_TYPE_ITEM:
 		default:
 			break;

@@ -8,7 +8,7 @@
 enum menuItemType {
 	MENU_TYPE_ITEM,
 	MENU_TYPE_BUTTON,
-	MENU_TYPE_IMAGE
+	MENU_TYPE_DRAG
 };
 
 class MenuItem {

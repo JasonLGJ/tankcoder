@@ -1,52 +1,49 @@
 #include "MenuDrag.h"
 
-MenuDrag::MenuDrag() {}
+MenuDrag::MenuDrag() {
+	dragging = false;
+	mouse_x = mouse_y = 0.0f;
+	original_x = original_y = 0.0f;
+}
 
 void MenuDrag::mouse_moved(float px, float py, bool pressed) {
-	float pdx = 0.0;
-	float pdy = 0.0;
-	float newx = 0.0;
-	float newy = 0.0;
-	float x = 0.0;
-	float y = 0.0;
-	bool dragging = false;
-	
-	if (dragging) //dragging
+	if (dragging)
 	{
-		if (pressed) //moviendo
+		if (pressed)
 		{
-			float nx = node->getX() + pdx - px;
-			float ny = node->getY() + pdy - py;
+			float nx = original_x - (mouse_x - px);
+			float ny = original_y - (mouse_y - py);
 
 			node->setX(nx);
 			node->setY(ny);
-			//actualiza posicion
 		}
 		else
 		{
-			dragging = false;//released
-			events->push(event);//genera evento
+			dragging = false;
+			events->push(event);
 			
-			node->setX(x);
-			node->setY(y);
-			//regresa a su posicion original
+			node->setX(original_x);
+			node->setY(original_y);
 		}
+
+		node->getTexture()->changeTexture(2);
 	}
-	else //aun no lo esta drageando
+	else
 	{
-		if (inside(px,py) && pressed) //adentro
+		if (inside(px,py) && pressed)
 		{
-			dragging = true;//comenzar a dragear
-			x = node->getX();
-			y = node->getY();
-			//guardar posicion original
-			pdx = px;
-			pdy = py;
-			//guardar posicion del mouse
+			dragging = true;
+			original_x = node->getX();
+			original_y = node->getY();
+			
+			mouse_x = px;
+			mouse_y = py;
+
+			node->getTexture()->changeTexture(1);
 		}
 		else
 		{
-			//poner terxtura de estado normal
+			node->getTexture()->changeTexture(0);
 		}
 	}
 }

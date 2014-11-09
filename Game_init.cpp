@@ -100,7 +100,8 @@ bool Game::initGL() {
 bool Game::initTest() {
 	rotation = 0.0f;
 
-	menu->load("menus.json");
+	//menu->load("menus.json");
+	menu->load("test.json");
 
 	return true;
 }
