@@ -1,7 +1,7 @@
 {
 	"start_menu": "main_menu",
 	"main_menu": {
-		"itemqty": 4,
+		"itemqty": 5,
 		"item0": {
 			"type": 1,
 			"x": 4.4,
@@ -33,6 +33,16 @@
 			"action": "swap_menu config"
 		},
 		"item3": {
+			"type": 1,
+			"x": 4.4,
+			"y": 0.2,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "exit",
+			"textnum": 3,
+			"action": "swap_menu config"
+		},
+		"item4": {
 			"type": 0,
 			"x": 0,
 			"y": 0,
@@ -43,18 +53,48 @@
 		}
 	},
 	"tutorial": {
-		"itemqty": 2,
+		"itemqty": 5,
 		"item0": {
 			"type": 1,
 			"x": 4.4,
+			"y": 2.0,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "N1",
+			"textnum": 3,
+			"action": "start_game tutorial1"
+		},
+		"item1": {
+			"type": 1,
+			"x": 4.4,
+			"y": 1.4,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "N2",
+			"textnum": 3,
+			"action": "start_game tutorial2"
+		},
+		"item2": {
+			"type": 1,
+			"x": 4.4,
 			"y": 0.8,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "N3",
+			"textnum": 3,
+			"action": "start_game tutorial3"
+		},
+		"item3": {
+			"type": 1,
+			"x": 4.4,
+			"y": 0.2,
 			"w": 4.0,
 			"h": 0.5,
 			"textname": "back",
 			"textnum": 3,
 			"action": "swap_menu main_menu"
 		},
-		"item1": {
+		"item4": {
 			"type": 0,
 			"x": 0,
 			"y": 0,
@@ -65,8 +105,39 @@
 		}
 	},
 	"config": {
-		"itemqty": 2,
+		"itemqty": 5,
 		"item0": {
+			"type": 1,
+			"x": 4.4,
+			"y": 4.4,
+			"w": 4.0,
+			"h": 1.0,
+			"textname": "music",
+			"textnum": 1,
+			"action": "swap_menu main_menu"
+		},
+		"item1": {
+			"type": 1,
+			"x": 4.4,
+			"y": 2.4,
+			"w": 2.0,
+			"h": 0.5,
+			"textname": "on",
+			"textnum": 3,
+			"action": "swap_menu main_menu"
+		},
+		"item2": {
+			"type": 1,
+			"x": 6.4,
+			"y": 2.4,
+			"w": 2.0,
+			"h": 0.5,
+			"textname": "off",
+			"textnum": 3,
+			"action": "swap_menu main_menu"
+		},
+
+		"item3": {
 			"type": 1,
 			"x": 4.4,
 			"y": 0.8,
@@ -76,7 +147,7 @@
 			"textnum": 3,
 			"action": "swap_menu main_menu"
 		},
-		"item1": {
+		"item4": {
 			"type": 0,
 			"x": 0,
 			"y": 0,
