@@ -12,8 +12,10 @@ bool World::run() {
 }
 
 void World::update() {
+	/*
 	pprog.execute();
 	eprog.execute();
+	*/
 }
 
 bool World::initProgs(std::string playerfile, std::string enemyfile) {
@@ -36,14 +38,20 @@ bool World::initProgs(std::string playerfile, std::string enemyfile) {
 }
 
 bool World::initGrid(std::string gridpath) {
-	if (!grid.loadMap(gridpath))
+	std::shared_ptr<Resource> res = loader->getResource(gridpath);
+	
+	if (res == nullptr)
 		return false;
 
-	int w = grid.getWidth();
-	int h = grid.getHeight();
+	grid.loadMap(res, scene);
 
-	ptank.setPosition(0,1);
-	etank.setPosition(w-1, h-2);
+	int ptx = 0, pty = 0, etx = 0, ety = 0;
+
+	grid.findPlayer(ptx, pty);
+	grid.findEnemy(etx, ety);
+
+	ptank.setPosition(ptx, pty);
+	etank.setPosition(etx, ety);
 
 	ptank.setGrid(&grid);
 	etank.setGrid(&grid);
@@ -59,29 +67,5 @@ bool World::tankIn(char tid, int x, int y) {
 	else
 	{
 		return x == etank.getX() && y == etank.getY();
-	}
-}
-
-void World::draw() {
-	int w = grid.getWidth();
-	int h = grid.getHeight();
-
-	for (int j = 0; j < h; j++)
-	{
-		for (int i = 0; i < w; i++)
-		{
-			std::cout << "[";
-
-			if (tankIn('P', i, j))
-				std::cout << "P" << ptank.getDirection();
-			else if (tankIn('E', i, j))
-				std::cout << "E" << etank.getDirection();
-			else
-				std::cout << "  ";
-
-			std::cout << "]";
-		}
-
-		std::cout << std::endl;
 	}
 }

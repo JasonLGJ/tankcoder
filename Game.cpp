@@ -2,7 +2,9 @@
 
 #include <iostream>
 
-Game::Game() {}
+Game::Game() {
+	state = GAME_STATE_MENU;
+}
 
 int Game::execute() {
 	if (!init())
@@ -12,14 +14,13 @@ int Game::execute() {
 		return -1;
 	}
 
-	//TODO
 	running = true;
 
 	int ticks = SDL_GetTicks();
 	int loops;
 	int fps = 0;
 
-	std::string title = "Windjammers";
+	std::string title = "Tank Coder";
 
 	while(running)
 	{

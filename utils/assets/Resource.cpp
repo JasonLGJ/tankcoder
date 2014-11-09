@@ -46,7 +46,7 @@ std::string Resource::getString(std::string name, std::string def) {
 }
 
 void Resource::getArray(std::string name, std::vector<double>& vec) {
-	if (str_list.count(name))
+	if (array_list.count(name))
 		vec = array_list[name];
 }
 

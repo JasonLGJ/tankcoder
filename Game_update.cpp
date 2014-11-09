@@ -1,5 +1,23 @@
 #include "Game.h"
 
 void Game::update() {
-	menu->update();
+
+	if (state == GAME_STATE_MENU)
+	{
+		menu->update();
+
+		if (menu->shouldPlay())
+		{
+			state = GAME_STATE_PLAY;
+			world->initGrid("leveltest.json");
+		}
+	}
+	else if (state == GAME_STATE_PLAY)
+	{
+		world->update();
+		menu->update();
+
+		if (!menu->shouldPlay())
+			state = GAME_STATE_MENU;
+	}
 }

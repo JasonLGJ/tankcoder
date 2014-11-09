@@ -14,7 +14,6 @@ class World {
 		void init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s);
 		bool initProgs(std::string playerfile, std::string enemyfile);
 		bool initGrid(std::string gridpath);
-		void draw();
 		bool run();
 		void update();
 	private:

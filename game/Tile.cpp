@@ -1,14 +1,13 @@
 #include "Tile.h"
 
-Tile::Tile(bool p, bool v) {
-	passable = p;
-	visible = v;
+Tile::Tile(int i) {
+	id = i;
 }
 
 bool Tile::isPassable() {
-	return passable;
+	return id == 0;
 }
 
-bool Tile::isVisible() {
-	return visible;
+void Tile::setNode(std::shared_ptr<StaticNode> n) {
+	node = n;
 }

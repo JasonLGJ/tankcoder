@@ -23,7 +23,9 @@ class Menu {
 		void process_event(MenuEvent event);
 		void update();
 		void clean();
+		bool shouldPlay();
 	private:
+		bool start_playing;
 		bool pressed;
 		std::stack<MenuEvent> events;
 		std::shared_ptr<Loader> loader;

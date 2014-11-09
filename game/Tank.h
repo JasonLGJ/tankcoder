@@ -1,5 +1,7 @@
 #pragma once
 #include "Grid.h"
+#include "../utils/scene/StaticNode.h"
+
 enum TankDirection {
 	TANK_DIRECTION_UP,
 	TANK_DIRECTION_LEFT_UP,
@@ -28,11 +30,13 @@ class Tank {
 		int getY();
 		int getDirection();
 		bool isAlive();
-
+		//
+		void setNode(std::shared_ptr<StaticNode> n);
 	private:
 		Grid* grid;
 		int direction;
 		int x;
 		int y;
 		bool alive;
+		std::shared_ptr<StaticNode> node;
 };

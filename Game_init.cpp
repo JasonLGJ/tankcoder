@@ -14,7 +14,7 @@ bool Game::initSDL() {
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
 
 	window = SDL_CreateWindow(
-		"Windjammers",
+		"Tank Coder",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		DEFAULT_WIDTH,
