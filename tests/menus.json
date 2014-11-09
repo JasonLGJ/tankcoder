@@ -8,7 +8,8 @@
 			"y": 2.0,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "meep",
+			"textname": "play",
+			"textnum": 4,
 			"action": "start_game freeplay"
 		},
 		"item1": {
@@ -17,7 +18,8 @@
 			"y": 1.4,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "meep",
+			"textname": "tutorial",
+			"textnum": 4,
 			"action": "swap_menu tutorial"
 		},
 		"item2": {
@@ -26,14 +28,35 @@
 			"y": 0.8,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "meep",
+			"textname": "config",
+			"textnum": 4,
 			"action": "swap_menu config"
 		}
 	},
 	"tutorial": {
-		"itemqty": 0
+		"itemqty": 1,
+		"item0": {
+			"type": 1,
+			"x": 4.4,
+			"y": 0.8,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "back",
+			"textnum": 4,
+			"action": "swap_menu main_menu"
+		}
 	},
 	"config": {
-		"itemqty": 0
+		"itemqty": 1,
+		"item0": {
+			"type": 1,
+			"x": 4.4,
+			"y": 0.8,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "back",
+			"textnum": 4,
+			"action": "swap_menu main_menu"
+		}
 	}
 }

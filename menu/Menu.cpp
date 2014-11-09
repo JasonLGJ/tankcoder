@@ -11,7 +11,14 @@ void Menu::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
 	scene = s;
 }
 
+void Menu::clean() {
+	scene->dropScene();
+	items.clear();
+}
+
 void Menu::load(std::string filename, std::string menuname) {
+	clean();
+	
 	std::shared_ptr<Resource> res = loader->getResource(filename);
 
 	if (res == nullptr)
@@ -54,8 +61,13 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 				float w = item->getNumber("w");
 				float h = item->getNumber("h");
 				std::string name = item->getString("textname");
+				int tn = item->getNumber("textnum");
 
 				button->node = scene->createFlatNode(name, x, y, w, h);
+				
+				if (tn > 1)
+					button->node->getTexture()->setMultiTexture(tn);
+				
 				button->event = create_event(item->getString("action"));
 				button->addStack(&events);
 

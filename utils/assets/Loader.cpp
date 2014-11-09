@@ -215,6 +215,8 @@ bool Loader::loadTexture(std::shared_ptr<Texture> text, std::string filename) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+	SDL_FreeSurface(surface);
+
 	text->setTextureId(TextureID);
 	text->setName(filename);
 

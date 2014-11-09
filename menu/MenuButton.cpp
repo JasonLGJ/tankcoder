@@ -8,15 +8,16 @@ void MenuButton::mouse_moved(float px, float py, bool pressed) {
 		if (pressed)
 		{
 			events->push(event);
+			node->getTexture()->changeTexture(2);
 		}
 		else //hover
 		{
-
+			node->getTexture()->changeTexture(1);
 		}
 	}
 	else //nothing
 	{
-
+		node->getTexture()->changeTexture(0);
 	}
 }
 

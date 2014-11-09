@@ -21,6 +21,7 @@ class Menu {
 		void create_item(std::shared_ptr<Resource> item);
 		void process_event(MenuEvent event);
 		void update();
+		void clean();
 	private:
 		bool pressed;
 		std::stack<MenuEvent> events;

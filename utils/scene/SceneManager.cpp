@@ -14,7 +14,6 @@ void SceneManager::init(std::shared_ptr<Loader> l) {
 	loader = l;
 }
 
-
 std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename, float x, float y, float z) {
 	std::shared_ptr<Mesh> m = loader->getMesh(filename + ".3ds");
 
@@ -60,6 +59,14 @@ std::shared_ptr<FlatNode> SceneManager::createFlatNode(std::string filename, flo
 
 	tree.insert(n);
 	return n;
+}
+
+void SceneManager::deleteNode(std::shared_ptr<SceneNode> node) {
+	tree.remove(node);
+}
+
+void SceneManager::dropScene() {
+	tree.prune();
 }
 
 void SceneManager::drawAll() {
@@ -150,20 +157,24 @@ void SceneManager::drawFlatNode(std::shared_ptr<FlatNode> n) {
 
 	glTranslatef(n->getX() - DEFAULT_WIDTH / GL_HALF_SCALE, n->getY() - DEFAULT_HEIGHT / GL_HALF_SCALE, n->getZ());
 
+	float xst, xed, yst, yed;
+
+	t->getPositions(xst, yst, xed, yed);
+
 	t->bind();
 	glBegin(GL_TRIANGLES);
-		glTexCoord2f(0,1);
+		glTexCoord2f(xst, yed);
 		glVertex3f(0, 0, 0);
-		glTexCoord2f(0,0);
+		glTexCoord2f(xst, yst);
 		glVertex3f(0, n->getHeight(), 0);
-		glTexCoord2f(1,0);
+		glTexCoord2f(xed, yst);
 		glVertex3f(n->getWidth(), n->getHeight(), 0);
 
-		glTexCoord2f(0,1);
+		glTexCoord2f(xst, yed);
 		glVertex3f(0, 0, 0);
-		glTexCoord2f(1,1);
+		glTexCoord2f(xed, yed);
 		glVertex3f(n->getWidth(), 0, 0);
-		glTexCoord2f(1,0);
+		glTexCoord2f(xed, yst);
 		glVertex3f(n->getWidth(), n->getHeight(), 0);
 	glEnd();
 	t->unbind();

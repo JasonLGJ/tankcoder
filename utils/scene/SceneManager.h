@@ -22,6 +22,8 @@ class SceneManager {
 		void init(std::shared_ptr<Loader> l);
 		std::shared_ptr<StaticNode> createStaticNode(std::string filename, float x, float y, float z);
 		std::shared_ptr<FlatNode> createFlatNode(std::string filename, float x, float y, float w, float h);
+		void deleteNode(std::shared_ptr<SceneNode> node);
+		void dropScene();
 		void drawAll();
 		void draw();
 		void setRotation(float r);
