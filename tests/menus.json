@@ -1,7 +1,7 @@
 {
 	"start_menu": "main_menu",
 	"main_menu": {
-		"itemqty": 3,
+		"itemqty": 4,
 		"item0": {
 			"type": 1,
 			"x": 4.4,
@@ -9,7 +9,7 @@
 			"w": 4.0,
 			"h": 0.5,
 			"textname": "play",
-			"textnum": 4,
+			"textnum": 3,
 			"action": "start_game freeplay"
 		},
 		"item1": {
@@ -19,7 +19,7 @@
 			"w": 4.0,
 			"h": 0.5,
 			"textname": "tutorial",
-			"textnum": 4,
+			"textnum": 3,
 			"action": "swap_menu tutorial"
 		},
 		"item2": {
@@ -29,12 +29,21 @@
 			"w": 4.0,
 			"h": 0.5,
 			"textname": "config",
-			"textnum": 4,
+			"textnum": 3,
 			"action": "swap_menu config"
+		},
+		"item3": {
+			"type": 0,
+			"x": 0,
+			"y": 0,
+			"w": 12.8,
+			"h": 7.2,
+			"textname": "main",
+			"textnum": 1,
 		}
 	},
 	"tutorial": {
-		"itemqty": 1,
+		"itemqty": 2,
 		"item0": {
 			"type": 1,
 			"x": 4.4,
@@ -42,12 +51,21 @@
 			"w": 4.0,
 			"h": 0.5,
 			"textname": "back",
-			"textnum": 4,
+			"textnum": 3,
 			"action": "swap_menu main_menu"
+		},
+		"item1": {
+			"type": 0,
+			"x": 0,
+			"y": 0,
+			"w": 12.8,
+			"h": 7.2,
+			"textname": "tryhard",
+			"textnum": 1,
 		}
 	},
 	"config": {
-		"itemqty": 1,
+		"itemqty": 2,
 		"item0": {
 			"type": 1,
 			"x": 4.4,
@@ -55,8 +73,17 @@
 			"w": 4.0,
 			"h": 0.5,
 			"textname": "back",
-			"textnum": 4,
+			"textnum": 3,
 			"action": "swap_menu main_menu"
+		},
+		"item1": {
+			"type": 0,
+			"x": 0,
+			"y": 0,
+			"w": 12.8,
+			"h": 7.2,
+			"textname": "tryhard",
+			"textnum": 1,
 		}
 	}
 }
