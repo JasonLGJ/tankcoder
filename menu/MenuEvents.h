@@ -4,7 +4,8 @@
 enum event_type {
 	MENU_EVENT_DO_NOTHING,
 	MENU_EVENT_SWAP_MENU,
-	MENU_EVENT_START_GAME
+	MENU_EVENT_START_GAME,
+	MENU_EVENT_QUIT_GAME
 };
 
 struct MenuEvent {
@@ -43,6 +44,10 @@ static MenuEvent create_event(std::string text) {
 	else if (act.compare("swap_menu") == 0) 
 	{
 		eve.action = MENU_EVENT_SWAP_MENU;
+	}
+	else if (act.compare("quit") == 0)
+	{
+		eve.action = MENU_EVENT_QUIT_GAME;
 	}
 	else
 	{

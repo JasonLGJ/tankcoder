@@ -6,6 +6,8 @@ Menu::Menu() {
 	loader = nullptr;
 
 	start_playing = false;
+	quit_requested = false;
+
 }
 
 void Menu::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
@@ -163,6 +165,12 @@ void Menu::process_event(MenuEvent event) {
 			start_playing = true;
 			load("editor.json");
 			break;
+		case MENU_EVENT_QUIT_GAME:
+			printf("Starting game...\n");
+			quit_requested = true;
+			load("editor.json");
+			break;
+
 
 		case MENU_EVENT_DO_NOTHING:
 		default:	
@@ -173,4 +181,9 @@ void Menu::process_event(MenuEvent event) {
 
 bool Menu::shouldPlay() {
 	return start_playing;
+}
+
+bool Menu::shouldQuit() {
+	return quit_requested;
+
 }

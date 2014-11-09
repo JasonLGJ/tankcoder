@@ -11,6 +11,11 @@ void Game::update() {
 			state = GAME_STATE_PLAY;
 			world->initGrid("leveltest.json");
 		}
+		if (menu->shouldQuit())
+		{
+			running = false;
+		}
+
 	}
 	else if (state == GAME_STATE_PLAY)
 	{

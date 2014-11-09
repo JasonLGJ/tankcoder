@@ -40,7 +40,7 @@
 			"h": 0.5,
 			"textname": "exit",
 			"textnum": 3,
-			"action": "swap_menu config"
+			"action": "quit game"
 		},
 		"item4": {
 			"type": 0,
