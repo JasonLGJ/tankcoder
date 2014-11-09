@@ -61,7 +61,7 @@ void OctNode::setRegion(Region r) {
 	region = r;
 }
 
-bool OctNode::inside(int x, int y, int z) {
+bool OctNode::inside(float x, float y, float z) {
 	return region.inside(x,y,z);
 }
 

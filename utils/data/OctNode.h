@@ -4,7 +4,7 @@
 #include <memory>
 
 const int MAX_CHILDREN = 8;
-const int MAX_DATA = 8;
+const int MAX_DATA = 200;
 
 class OctNode {
 	public:
@@ -12,7 +12,7 @@ class OctNode {
 		OctNode(Region r);
 		void insert(std::shared_ptr<SceneNode> n);
 		void setRegion(Region r);
-		bool inside(int x, int y, int z);
+		bool inside(float x, float y, float z);
 		void getNodes(std::vector<std::shared_ptr<SceneNode>>& storage);
 	private:
 		void add(std::shared_ptr<SceneNode> n);

@@ -7,6 +7,7 @@ OctTree::OctTree() {
 
 void OctTree::insert(std::shared_ptr<SceneNode> n) {
 	root->insert(n);
+	size++;
 }
 
 int OctTree::getSize() {

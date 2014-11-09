@@ -25,8 +25,8 @@ bool Grid::loadMap(std::shared_ptr<Resource> data, std::shared_ptr<SceneManager>
 }
 
 void Grid::create_tile(int type, int x, int y, std::shared_ptr<SceneManager> scene) {
-	float nx = (y % 2 == 0) ? x + 0.4 : x;
-	float ny = y * 0.85;
+	float nx = ((y % 2 == 0) ? 0.4 : 0) + ((y / 2) * 0.15) + x - 5;
+	float ny = y * 0.85 - 3;
 	
 	switch (type)
 	{
