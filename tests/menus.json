@@ -8,7 +8,7 @@
 			"y": 2.0,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "play",
+			"textname": "assets/menus/play",
 			"textnum": 3,
 			"action": "start_game freeplay"
 		},
@@ -18,7 +18,7 @@
 			"y": 1.4,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "tutorial",
+			"textname": "assets/menus/tutorial",
 			"textnum": 3,
 			"action": "swap_menu tutorial"
 		},
@@ -28,7 +28,7 @@
 			"y": 0.8,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "config",
+			"textname": "assets/menus/config",
 			"textnum": 3,
 			"action": "swap_menu config"
 		},
@@ -38,7 +38,7 @@
 			"y": 0.2,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "exit",
+			"textname": "assets/menus/exit",
 			"textnum": 3,
 			"action": "quit game"
 		},
@@ -48,8 +48,8 @@
 			"y": 0,
 			"w": 12.8,
 			"h": 7.2,
-			"textname": "main",
-			"textnum": 1,
+			"textname": "assets/menus/main",
+			"textnum": 1
 		}
 	},
 	"tutorial": {
@@ -60,7 +60,7 @@
 			"y": 2.0,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "N1",
+			"textname": "assets/menus/N1",
 			"textnum": 3,
 			"action": "start_game tutorial1"
 		},
@@ -70,7 +70,7 @@
 			"y": 1.4,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "N2",
+			"textname": "assets/menus/N2",
 			"textnum": 3,
 			"action": "start_game tutorial2"
 		},
@@ -80,7 +80,7 @@
 			"y": 0.8,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "N3",
+			"textname": "assets/menus/N3",
 			"textnum": 3,
 			"action": "start_game tutorial3"
 		},
@@ -90,7 +90,7 @@
 			"y": 0.2,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "back",
+			"textname": "assets/menus/back",
 			"textnum": 3,
 			"action": "swap_menu main_menu"
 		},
@@ -100,8 +100,8 @@
 			"y": 0,
 			"w": 12.8,
 			"h": 7.2,
-			"textname": "tryhard",
-			"textnum": 1,
+			"textname": "assets/menus/tryhard",
+			"textnum": 1
 		}
 	},
 	"config": {
@@ -112,7 +112,7 @@
 			"y": 4.4,
 			"w": 4.0,
 			"h": 1.0,
-			"textname": "music",
+			"textname": "assets/menus/music",
 			"textnum": 1,
 			"action": "swap_menu main_menu"
 		},
@@ -122,7 +122,7 @@
 			"y": 2.4,
 			"w": 2.0,
 			"h": 0.5,
-			"textname": "on",
+			"textname": "assets/menus/on",
 			"textnum": 3,
 			"action": "swap_menu main_menu"
 		},
@@ -132,7 +132,7 @@
 			"y": 2.4,
 			"w": 2.0,
 			"h": 0.5,
-			"textname": "off",
+			"textname": "assets/menus/off",
 			"textnum": 3,
 			"action": "swap_menu main_menu"
 		},
@@ -143,7 +143,7 @@
 			"y": 0.8,
 			"w": 4.0,
 			"h": 0.5,
-			"textname": "back",
+			"textname": "assets/menus/back",
 			"textnum": 3,
 			"action": "swap_menu main_menu"
 		},
@@ -153,8 +153,8 @@
 			"y": 0,
 			"w": 12.8,
 			"h": 7.2,
-			"textname": "tryhard",
-			"textnum": 1,
+			"textname": "assets/menus/tryhard",
+			"textnum": 1
 		}
 	}
 }

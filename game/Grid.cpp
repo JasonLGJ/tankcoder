@@ -33,7 +33,7 @@ void Grid::create_tile(int type, int x, int y, std::shared_ptr<SceneManager> sce
 		case TILE_TYPE_PLAIN:
 			{
 				Tile t(type);
-				t.setNode(scene->createStaticNode("plain", nx, 0, ny));
+				t.setNode(scene->createStaticNode("assets/game/plain", nx, 0, ny));
 				tiles.push_back(t);
 			}
 			break;
@@ -41,7 +41,7 @@ void Grid::create_tile(int type, int x, int y, std::shared_ptr<SceneManager> sce
 		case TILE_TYPE_OBSTACLE:
 			{
 				Tile t(type);
-				t.setNode(scene->createStaticNode("obstacle", nx, 0, ny));
+				t.setNode(scene->createStaticNode("assets/game/obstacle", nx, 0, ny));
 				tiles.push_back(t);
 			}
 			break;
@@ -52,7 +52,7 @@ void Grid::create_tile(int type, int x, int y, std::shared_ptr<SceneManager> sce
 				player_y = y;
 
 				Tile t(TILE_TYPE_PLAIN);
-				t.setNode(scene->createStaticNode("plain", nx, 0, ny));
+				t.setNode(scene->createStaticNode("assets/game/plain", nx, 0, ny));
 				tiles.push_back(t);
 			}
 			break;
@@ -63,7 +63,7 @@ void Grid::create_tile(int type, int x, int y, std::shared_ptr<SceneManager> sce
 				enemy_y = y;
 
 				Tile t(TILE_TYPE_PLAIN);
-				t.setNode(scene->createStaticNode("plain", nx, 0, ny));
+				t.setNode(scene->createStaticNode("assets/game/plain", nx, 0, ny));
 				tiles.push_back(t);
 			}
 			break;

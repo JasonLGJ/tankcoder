@@ -98,7 +98,7 @@ bool Game::initGL() {
 }
 
 bool Game::initTest() {
-	menu->load("menus.json");
+	menu->load("assets/menus/menus.json");
 	//menu->load("test.json");
 
 	return true;

@@ -9,8 +9,7 @@ void Game::update() {
 		if (menu->shouldPlay())
 		{
 			state = GAME_STATE_PLAY;
-			world->initGrid("leveltest.json");
-			menu->load("editor.json");
+			world->initGrid("assets/game/leveltest.json");
 		}
 		else if (menu->shouldQuit())
 		{

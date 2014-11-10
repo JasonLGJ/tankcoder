@@ -83,7 +83,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 
 	if (file == NULL)
 	{
-		printf("failed to open file\n");
+		printf("failed to open model: %s\n", filename.c_str());
 		return false;
 	}
 
@@ -198,7 +198,10 @@ bool Loader::loadTexture(std::shared_ptr<Texture> text, std::string filename) {
 	SDL_Surface* surface = IMG_Load(filename.c_str());
 
 	if (surface == NULL)
+	{
+		printf("failed to open texture: %s\n", filename.c_str());
 		return false;
+	}
 
 	glGenTextures(1, &TextureID);
 	glBindTexture(GL_TEXTURE_2D, TextureID);
@@ -228,7 +231,7 @@ bool Loader::loadResource(std::shared_ptr<Resource> res, std::string filename) {
 
 	if (file == NULL)
 	{
-		printf("failed to open file\n");
+		printf("failed to open resource: %s\n", filename.c_str());
 		return false;
 	}
 
