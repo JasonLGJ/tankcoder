@@ -14,6 +14,40 @@ struct MenuEvent {
 	std::string param;
 };
 
+static void split_drop(std::string& text, std::string& action, float& x, float& y) {
+	int pos1 = -1, pos2 = -1;
+
+	for (int i = 0; i < text.size(); i++)
+	{
+		if (text[i] == ',')
+		{
+			if (pos1 == -1)
+				pos1 = i+1;
+			else
+			{
+				pos2 = i+1;
+				break;
+			}
+		}
+	}
+
+	if (pos1 == -1 || pos2 == -1)
+	{
+		action = "";
+		x = y = 0.0f;
+	}
+	else
+	{
+		action = text.substr(0,pos1);
+		
+		std::string strx = text.substr(pos1, pos2 - pos1 - 1);
+		std::string stry = text.substr(pos2);
+
+		x = std::atof(strx.c_str());
+		y = std::atof(stry.c_str());
+	}
+}
+
 static void split_text(std::string& text, std::string& action, std::string& param) {
 	int pos = 0;
 

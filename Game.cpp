@@ -9,8 +9,6 @@ Game::Game() {
 int Game::execute() {
 	if (!init())
 	{
-		int x;
-		std::cin >> x;
 		return -1;
 	}
 

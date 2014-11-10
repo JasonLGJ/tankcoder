@@ -9,6 +9,7 @@
 #include "../utils/scene/SceneManager.h"
 #include "MenuButton.h"
 #include "MenuDrag.h"
+#include "MenuList.h"
 
 class Menu {
 	public:
@@ -33,4 +34,5 @@ class Menu {
 		std::shared_ptr<Loader> loader;
 		std::shared_ptr<SceneManager> scene;
 		std::vector<std::shared_ptr<MenuItem>> items;
+		std::shared_ptr<MenuList> editor;
 };

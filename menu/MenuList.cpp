@@ -2,6 +2,10 @@
 
 MenuList::MenuList() {}
 
+void MenuList::init(std::shared_ptr<SceneManager> s) {
+	scene = s;
+}
+
 void MenuList::checkInput(std::string operation, float x, float y) {
 	if (inside(x, y))
 	{

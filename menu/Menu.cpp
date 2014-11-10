@@ -4,6 +4,7 @@ Menu::Menu() {
 	pressed = false;
 	scene = nullptr;
 	loader = nullptr;
+	editor = nullptr;
 
 	start_playing = false;
 	quit_requested = false;
@@ -121,6 +122,29 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 			}
 			break;
 
+		case MENU_TYPE_LIST:
+			{
+				std::shared_ptr<MenuList> list = std::make_shared<MenuList>();
+
+				float x = item->getNumber("x");
+				float y = item->getNumber("y");
+				float w = item->getNumber("w");
+				float h = item->getNumber("h");
+				std::string name = item->getString("textname");
+				int tn = item->getNumber("textnum");
+
+				list->node = scene->createFlatNode(name, x, y, w, h);
+
+				if (tn > 1)
+					list->node->getTexture()->setMultiTexture(tn);
+
+				editor = list;
+				editor->init(scene);
+
+				items.push_back(list);
+			}
+			break;
+
 		default:
 			break;
 	}
@@ -129,7 +153,6 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 void Menu::mouse_moved(float x, float y) {
 	for (int i = 0; i < items.size(); i++)
 	{
-		//printf("%f:%f, %s\n", x, y, pressed?"t":"f");
 		items[i]->mouse_moved(x,y,pressed);
 	}
 }
@@ -174,6 +197,15 @@ void Menu::process_event(MenuEvent event) {
 
 		case MENU_EVENT_DROP:
 			printf("dropped: %s\n", event.param.c_str());
+			if (editor != nullptr)
+			{
+				std::string action;
+				float x, y;
+
+				split_drop(event.param, action, x, y);
+
+				editor.checkInput(action, x, y);
+			}
 			break;
 
 		case MENU_EVENT_DO_NOTHING:
