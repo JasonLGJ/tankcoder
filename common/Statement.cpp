@@ -23,3 +23,7 @@ int Statement::getAddress() {
 std::string Statement::getOpName() {
 	return opNames[opcode];
 }
+
+std::string Statement::toObj() {
+	return std::to_string(opcode) + " " + std::to_string(address);
+}
