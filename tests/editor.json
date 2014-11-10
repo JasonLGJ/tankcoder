@@ -1,0 +1,45 @@
+{
+	"start_menu": "editor",
+	"editor": {
+		"itemqty": 4,
+		"item0": {
+			"type": 2,
+			"x": 10.1,
+			"y": 5.5,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "test",
+			"textnum": 4,
+			"action": "do_nothing meep"
+		},
+		"item1": {
+			"type": 2,
+			"x": 9.3,
+			"y": 5.5,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "test",
+			"textnum": 4,
+			"action": "do_nothing meep"
+		},
+		"item2": {
+			"type": 2,
+			"x": 8.5,
+			"y": 5.5,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "test",
+			"textnum": 4,
+			"action": "do_nothing meep"
+		},
+		"item3": {
+			"type": 0,
+			"x": 2.0,
+			"y": 1.0,
+			"w": 8.8,
+			"h": 5.2,
+			"textname": "editor",
+			"textnum": 10
+		}
+	}
+}

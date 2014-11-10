@@ -20,8 +20,12 @@ void MenuDrag::mouse_moved(float px, float py, bool pressed) {
 		else
 		{
 			dragging = false;
+
+			std::string or_param = event.param;
+			event.param = or_param + std::to_string(node->getX() + node->getWidth() / 2) + "," + std::to_string(node->getY() + node->getHeight() / 2);
 			events->push(event);
-			
+			event.param = or_param;
+
 			node->setX(original_x);
 			node->setY(original_y);
 		}

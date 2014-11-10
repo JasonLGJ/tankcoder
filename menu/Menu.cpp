@@ -21,8 +21,6 @@ void Menu::clean() {
 }
 
 void Menu::load(std::string filename, std::string menuname) {
-	clean();
-	
 	std::shared_ptr<Resource> res = loader->getResource(filename);
 
 	if (res == nullptr)
@@ -157,24 +155,26 @@ void Menu::process_event(MenuEvent event) {
 	{
 		case MENU_EVENT_SWAP_MENU:
 			printf("Swaping menu...\n");
+			clean();
 			load("menus.json", event.param);
 			break;
 
 		case MENU_EVENT_START_GAME:
 			printf("Starting game...\n");
 			start_playing = true;
-			load("editor.json");
-			break;
-		case MENU_EVENT_QUIT_GAME:
-			printf("Starting game...\n");
-			quit_requested = true;
+			clean();
 			load("editor.json");
 			break;
 
+		case MENU_EVENT_QUIT_GAME:
+			printf("Quitting...\n");
+			quit_requested = true;
+			clean();
+			break;
 
 		case MENU_EVENT_DO_NOTHING:
 		default:	
-			printf("?\n");
+			printf("params: %s\n", event.param.c_str());
 			break;
 	}
 }
