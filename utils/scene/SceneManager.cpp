@@ -7,23 +7,23 @@ void SceneManager::init(std::shared_ptr<Loader> l) {
 }
 
 std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename, float x, float y, float z) {
-	std::shared_ptr<Mesh> m = loader->getMesh(filename + ".3ds");
+	Mesh m = loader->getMesh(filename + ".3ds");
 
-	if (m == nullptr)
+	if (m.empty())
 	{
 		printf("file not found\n");
 		return nullptr;
 	}
 
-	std::shared_ptr<Texture> t = loader->getTexture(filename + ".png");
+	Texture t = loader->getTexture(filename + ".png");
 
-	if (t == nullptr)
+	if (t.empty())
 	{
 		printf("model has no texture");
 		return nullptr;
 	}
 
-	m->setTexture(t);
+	m.setTexture(t);
 
 	std::shared_ptr<StaticNode> n = std::make_shared<StaticNode>();
 
@@ -37,9 +37,9 @@ std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename,
 std::shared_ptr<FlatNode> SceneManager::createFlatNode(std::string filename, float x, float y, float w, float h) {
 	std::shared_ptr<FlatNode> n = std::make_shared<FlatNode>();
 
-	std::shared_ptr<Texture> t = loader->getTexture(filename + ".png");
+	Texture t = loader->getTexture(filename + ".png");
 
-	if (t == nullptr)
+	if (t.empty())
 	{
 		printf("No texture found");
 		return nullptr;
@@ -104,8 +104,8 @@ void SceneManager::draw() {
 }
 
 void SceneManager::drawStaticNode(std::shared_ptr<StaticNode> n) {
-	std::shared_ptr<Mesh> mesh = n->getMesh();
-	std::shared_ptr<Texture> t = mesh->getTexture();
+	Mesh* mesh = n->getMesh();
+	Texture* t = mesh->getTexture();
 
 	glPushMatrix();
 	glTranslatef(n->getX(), n->getY(), n->getZ());
@@ -138,7 +138,7 @@ void SceneManager::drawStaticNode(std::shared_ptr<StaticNode> n) {
 }
 
 void SceneManager::drawFlatNode(std::shared_ptr<FlatNode> n) {
-	std::shared_ptr<Texture> t = n->getTexture();
+	Texture* t = n->getTexture();
 
 	glPushMatrix();
 	//unrotate

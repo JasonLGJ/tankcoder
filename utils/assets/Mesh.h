@@ -31,7 +31,7 @@ class Mesh {
 		int getCoordsQty();
 		//
 		void setFileName(std::string fn);
-		void setTexture(std::shared_ptr<Texture> t);
+		void setTexture(Texture t);
 		void setName(std::string n);
 		void setPolygonsQty(int qty);
 		void setVerticesQty(int qty);
@@ -44,11 +44,11 @@ class Mesh {
 		polygon getPolygon(int index);
 		vertex getVertex(int index);
 		coord getCoord(int index);
-		std::shared_ptr<Texture> getTexture();
+		Texture* getTexture();
 		//
 		bool empty();
 	private:
-		std::shared_ptr<Texture> texture;
+		Texture texture;
 		std::string name;
 		std::string fileName;
 		int polygons;

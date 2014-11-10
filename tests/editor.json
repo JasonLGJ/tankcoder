@@ -10,7 +10,7 @@
 			"h": 0.55,
 			"textname": "assets/editor/test",
 			"textnum": 4,
-			"action": "do_nothing meep"
+			"action": "dropped wait"
 		},
 		"item1": {
 			"type": 2,
@@ -20,7 +20,7 @@
 			"h": 0.55,
 			"textname": "assets/editor/test",
 			"textnum": 4,
-			"action": "do_nothing meep"
+			"action": "dropped wait"
 		},
 		"item2": {
 			"type": 2,
@@ -30,7 +30,7 @@
 			"h": 0.55,
 			"textname": "assets/editor/test",
 			"textnum": 4,
-			"action": "do_nothing meep"
+			"action": "dropped wait"
 		},
 		"item3": {
 			"type": 0,

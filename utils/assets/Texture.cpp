@@ -7,10 +7,9 @@ Texture::Texture() {
 	curtex = 0;
 }
 
-Texture::~Texture() {
+void Texture::deleteTex() {
 	glDeleteTextures(1, &textureId);
 }
-
 
 void Texture::bind() {
 	glBindTexture(GL_TEXTURE_2D, textureId);

@@ -16,7 +16,6 @@
 class Texture {
 	public:
 		Texture();
-		~Texture();
 		//
 		void setTexture(int n);
 		void bind();
@@ -29,6 +28,8 @@ class Texture {
 		void setMultiTexture(int n);
 		void getPositions(float& st_x, float& st_y, float& en_x, float& en_y);
 		void changeTexture(int n);
+		//
+		void deleteTex();
 	private:
 		bool multi;
 		int num;

@@ -7,12 +7,12 @@ FlatNode::FlatNode() {
 
 FlatNode::~FlatNode() {}
 
-void FlatNode::setTexture(std::shared_ptr<Texture> t) {
+void FlatNode::setTexture(Texture t) {
 	texture = t;
 }
 
-std::shared_ptr<Texture> FlatNode::getTexture() {
-	return texture;
+Texture* FlatNode::getTexture() {
+	return &texture;
 }
 
 void FlatNode::setSize(float w, float h) {

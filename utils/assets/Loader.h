@@ -27,16 +27,17 @@ enum Model3DSChunks {
 class Loader {
 	public:
 		Loader();
-		std::shared_ptr<Mesh> getMesh(std::string filename);
-		std::shared_ptr<Texture> getTexture(std::string filename);
+		~Loader();
+		Mesh getMesh(std::string filename);
+		Texture getTexture(std::string filename);
 		std::shared_ptr<Resource> getResource(std::string filename);
 	private:
-		bool loadMesh(std::shared_ptr<Mesh> mesh, std::string filename);
-		bool loadTexture(std::shared_ptr<Texture> text, std::string filename);
+		bool loadMesh(Mesh& mesh, std::string filename);
+		bool loadTexture(Texture& text, std::string filename);
 		bool loadResource(std::shared_ptr<Resource> res, std::string filename);
 		bool parse_json(std::shared_ptr<Resource> res, char* data);
 		bool construct_resource(std::shared_ptr<Resource> res, JsonValue obj);
-		std::vector<std::shared_ptr<Mesh>> mesh_list;
-		std::vector<std::shared_ptr<Texture>> text_list;
+		std::vector<Mesh> mesh_list;
+		std::vector<Texture> text_list;
 		std::vector<std::shared_ptr<Resource>> res_list;
 };

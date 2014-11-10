@@ -6,10 +6,10 @@ StaticNode::StaticNode() {
 
 StaticNode::~StaticNode() {}
 
-void StaticNode::addMesh(std::shared_ptr<Mesh> m) {
+void StaticNode::addMesh(Mesh m) {
 	mesh = m;
 }
 
-std::shared_ptr<Mesh> StaticNode::getMesh() {
-	return mesh;
+Mesh* StaticNode::getMesh() {
+	return &mesh;
 }

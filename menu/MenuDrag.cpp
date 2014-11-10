@@ -22,7 +22,7 @@ void MenuDrag::mouse_moved(float px, float py, bool pressed) {
 			dragging = false;
 
 			std::string or_param = event.param;
-			event.param = or_param + std::to_string(node->getX() + node->getWidth() / 2) + "," + std::to_string(node->getY() + node->getHeight() / 2);
+			event.param = or_param + "," + std::to_string(node->getX() + node->getWidth() / 2) + "," + std::to_string(node->getY() + node->getHeight() / 2);
 			events->push(event);
 			event.param = or_param;
 
@@ -34,6 +34,21 @@ void MenuDrag::mouse_moved(float px, float py, bool pressed) {
 	}
 	else
 	{
+		//es por esto que "no" funciona
+		//porque checa que si esta presionado el mouse y que si esta adentro
+		//lo mas probable es agregar una nueva variable que cheque eso
+
+		//algo como : 
+
+		//if (pressed)
+		//	if (!nueva_var && inside)
+		//		... (lo que ya esta)
+		//	else
+		//		nueva_var = true
+		//else
+		//	nueva_var = false
+		//	... (lo que estaba en el ultimo else)
+
 		if (inside(px,py) && pressed)
 		{
 			dragging = true;

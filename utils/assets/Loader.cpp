@@ -2,16 +2,23 @@
 
 Loader::Loader() {}
 
-std::shared_ptr<Mesh> Loader::getMesh(std::string filename) {
+Loader::~Loader() {
+	for (int i = 0; i < text_list.size(); i++)
+	{
+		text_list[i].deleteTex();
+	}
+}
+
+Mesh Loader::getMesh(std::string filename) {
 	for (int i = 0; i < mesh_list.size(); i++)
 	{
-		if (mesh_list[i]->getFileName().compare(filename) == 0)
+		if (mesh_list[i].getFileName().compare(filename) == 0)
 		{
 			return mesh_list[i];
 		}
 	}
 
-	std::shared_ptr<Mesh> new_mesh = std::make_shared<Mesh>();
+	Mesh new_mesh;
 	
 	if (loadMesh(new_mesh, filename))
 	{
@@ -20,20 +27,20 @@ std::shared_ptr<Mesh> Loader::getMesh(std::string filename) {
 	}
 	else //panic!
 	{
-		return nullptr;
+		return new_mesh;
 	}
 }
 
-std::shared_ptr<Texture> Loader::getTexture(std::string filename) {
+Texture Loader::getTexture(std::string filename) {
 	for (int i = 0; i < text_list.size(); i++)
 	{
-		if (text_list[i]->getName().compare(filename) == 0)
+		if (text_list[i].getName().compare(filename) == 0)
 		{
 			return text_list[i];
 		}
 	}
 
-	std::shared_ptr<Texture> new_text = std::make_shared<Texture>();
+	Texture new_text;
 
 	if (loadTexture(new_text, filename))
 	{
@@ -42,7 +49,7 @@ std::shared_ptr<Texture> Loader::getTexture(std::string filename) {
 	}
 	else //panic!
 	{
-		return nullptr;
+		return new_text;
 	}
 }
 
@@ -68,7 +75,7 @@ std::shared_ptr<Resource> Loader::getResource(std::string filename) {
 	}
 }
 
-bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
+bool Loader::loadMesh(Mesh& mesh, std::string filename) {
 	int i;
 
 	FILE* file;
@@ -87,7 +94,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 		return false;
 	}
 
-	mesh->setFileName(filename);
+	mesh.setFileName(filename);
 
 	fseek(file, 0, SEEK_END);
 	int end = ftell(file);
@@ -119,7 +126,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 				}
 				while (chr != '\0' && i < 20);
 
-				mesh->setName(std::string(name));
+				mesh.setName(std::string(name));
 			}
 			break;
 
@@ -129,7 +136,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 			case M3DS_VERTICES_LIST:
 			{
 				fread (&qty, sizeof (unsigned short), 1, file);
-				mesh->setVerticesQty(qty);
+				mesh.setVerticesQty(qty);
 
 				for (i = 0; i < qty; i++)
 				{
@@ -139,7 +146,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 					fread(&v.y, sizeof(float), 1, file);
 					fread(&v.z, sizeof(float), 1, file);
 
-					mesh->addVertex(v);
+					mesh.addVertex(v);
 				}
 
 			}
@@ -148,7 +155,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 			case M3DS_FACES_DESCRIPTION:
 			{
 				fread(&qty, sizeof (unsigned short), 1, file);
-				mesh->setPolygonsQty(qty);
+				mesh.setPolygonsQty(qty);
 				
 				for (i = 0; i < qty; i++)
 				{
@@ -159,7 +166,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 					fread(&p.c, sizeof (unsigned short), 1, file);
 					fread(&faceFlags, sizeof (unsigned short), 1, file);
 
-					mesh->addPolygon(p);
+					mesh.addPolygon(p);
 				}
 
 			}
@@ -168,7 +175,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 			case M3DS_MAPPING_COORDINATES_LIST:
 			{
 				fread(&qty, sizeof (unsigned short), 1, file);
-				mesh->setCoordsQty(qty);
+				mesh.setCoordsQty(qty);
 
 				for (i = 0; i < qty; i++)
 				{
@@ -177,13 +184,14 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 					fread(&c.u, sizeof (float), 1, file);
 					fread(&c.v, sizeof (float), 1, file);
 
-					mesh->addCoord(c);
+					mesh.addCoord(c);
 				}
 			}
 			break;
 
 			default:
 				fseek(file, chunkLength - 6, SEEK_CUR);
+				break;
 		}
 	}
 
@@ -192,7 +200,7 @@ bool Loader::loadMesh(std::shared_ptr<Mesh> mesh, std::string filename) {
 }
 
 
-bool Loader::loadTexture(std::shared_ptr<Texture> text, std::string filename) {
+bool Loader::loadTexture(Texture& text, std::string filename) {
 	GLuint TextureID = 0;
 
 	SDL_Surface* surface = IMG_Load(filename.c_str());
@@ -220,8 +228,8 @@ bool Loader::loadTexture(std::shared_ptr<Texture> text, std::string filename) {
 
 	SDL_FreeSurface(surface);
 
-	text->setTextureId(TextureID);
-	text->setName(filename);
+	text.setTextureId(TextureID);
+	text.setName(filename);
 
 	return true;
 }

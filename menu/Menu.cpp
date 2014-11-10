@@ -172,9 +172,13 @@ void Menu::process_event(MenuEvent event) {
 			clean();
 			break;
 
+		case MENU_EVENT_DROP:
+			printf("dropped: %s\n", event.param.c_str());
+			break;
+
 		case MENU_EVENT_DO_NOTHING:
 		default:	
-			printf("params: %s\n", event.param.c_str());
+			//printf("params: %s\n", event.param.c_str());
 			break;
 	}
 }
