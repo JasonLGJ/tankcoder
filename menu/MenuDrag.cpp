@@ -11,14 +11,22 @@ void MenuDrag::mouse_moved(float px, float py, bool pressed) {
 	{
 		if (pressed)
 		{
-			float nx = original_x - (mouse_x - px);
-			float ny = original_y - (mouse_y - py);
+			if (inside(px, py) && !indrag){
+				float nx = original_x - (mouse_x - px);
+				float ny = original_y - (mouse_y - py);
 
-			node->setX(nx);
-			node->setY(ny);
+				node->setX(nx);
+				node->setY(ny);
+			}
+			else{
+			
+				indrag = true;
+
+			}
 		}
 		else
 		{
+			indrag = false;
 			dragging = false;
 
 			std::string or_param = event.param;
