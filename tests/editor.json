@@ -1,7 +1,7 @@
 {
 	"start_menu": "editor",
 	"editor": {
-		"itemqty": 4,
+		"itemqty": 5,
 		"item0": {
 			"type": 2,
 			"x": 10.1,
@@ -30,16 +30,25 @@
 			"h": 0.55,
 			"textname": "assets/editor/test",
 			"textnum": 4,
-			"action": "dropped wait"
+			"action": "dropped random"
 		},
 		"item3": {
+			"type": 3,
+			"x": 2.0,
+			"y": 1.0,
+			"w": 6.35,
+			"h": 5.2,
+			"textname": "assets/editor/bg",
+			"textnum": 1
+		},
+		"item4": {
 			"type": 0,
 			"x": 2.0,
 			"y": 1.0,
 			"w": 8.8,
 			"h": 5.2,
 			"textname": "assets/editor/editor",
-			"textnum": 10
+			"textnum": 1
 		}
 	}
 }

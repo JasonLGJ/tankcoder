@@ -45,7 +45,7 @@ std::shared_ptr<FlatNode> SceneManager::createFlatNode(std::string filename, flo
 		return nullptr;
 	}
 
-	n->setPosition(x, y, 5.0);
+	n->setPosition(x, y, 4.0);
 	n->setSize(w, h);
 	n->setTexture(t);
 

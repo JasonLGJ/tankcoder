@@ -38,7 +38,7 @@ static void split_drop(std::string& text, std::string& action, float& x, float& 
 	}
 	else
 	{
-		action = text.substr(0,pos1);
+		action = text.substr(0,pos1-1);
 		
 		std::string strx = text.substr(pos1, pos2 - pos1 - 1);
 		std::string stry = text.substr(pos2);
