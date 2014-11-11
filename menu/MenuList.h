@@ -14,6 +14,8 @@ class MenuList : public MenuItem {
 		void checkInput(std::string operation, float x, float y);
 		std::vector<MenuRow> getRows();
 	private:
+		int offsetx;
+		bool is_conditional(std::string operation);
 		bool inside(float px, float py);
 		std::vector<MenuRow> rows;
 		std::shared_ptr<SceneManager> scene;

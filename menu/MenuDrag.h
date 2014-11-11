@@ -9,7 +9,7 @@ class MenuDrag : public MenuItem {
 	private:
 		bool inside(float px, float py);
 		bool dragging;
-		bool indrag;
+		bool in_drag;
 		float original_x;
 		float original_y;
 		float mouse_x;

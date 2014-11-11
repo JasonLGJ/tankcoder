@@ -2,6 +2,7 @@
 
 MenuDrag::MenuDrag() {
 	dragging = false;
+	in_drag = false;
 	mouse_x = mouse_y = 0.0f;
 	original_x = original_y = 0.0f;
 }
@@ -11,22 +12,14 @@ void MenuDrag::mouse_moved(float px, float py, bool pressed) {
 	{
 		if (pressed)
 		{
-			if (inside(px, py) && !indrag){
-				float nx = original_x - (mouse_x - px);
-				float ny = original_y - (mouse_y - py);
+			float nx = original_x - (mouse_x - px);
+			float ny = original_y - (mouse_y - py);
 
-				node->setX(nx);
-				node->setY(ny);
-			}
-			else{
-			
-				indrag = true;
-
-			}
+			node->setX(nx);
+			node->setY(ny);
 		}
 		else
 		{
-			indrag = false;
 			dragging = false;
 
 			std::string or_param = event.param;
@@ -42,34 +35,27 @@ void MenuDrag::mouse_moved(float px, float py, bool pressed) {
 	}
 	else
 	{
-		//es por esto que "no" funciona
-		//porque checa que si esta presionado el mouse y que si esta adentro
-		//lo mas probable es agregar una nueva variable que cheque eso
-
-		//algo como : 
-
-		//if (pressed)
-		//	if (!nueva_var && inside)
-		//		... (lo que ya esta)
-		//	else
-		//		nueva_var = true
-		//else
-		//	nueva_var = false
-		//	... (lo que estaba en el ultimo else)
-
-		if (inside(px,py) && pressed)
+		if (pressed)
 		{
-			dragging = true;
-			original_x = node->getX();
-			original_y = node->getY();
-			
-			mouse_x = px;
-			mouse_y = py;
+			if (!in_drag && inside(px, py))
+			{
+				dragging = true;
+				original_x = node->getX();
+				original_y = node->getY();
 
-			node->getTexture()->changeTexture(1);
+				mouse_x = px;
+				mouse_y = py;
+
+				node->getTexture()->changeTexture(1);
+			}
+			else
+			{
+				in_drag = true;
+			}
 		}
 		else
 		{
+			in_drag = false;
 			node->getTexture()->changeTexture(0);
 		}
 	}
@@ -84,3 +70,4 @@ bool MenuDrag::inside(float px, float py) {
 
 	return true;
 }
+
