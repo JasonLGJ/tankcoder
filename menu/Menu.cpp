@@ -204,7 +204,7 @@ void Menu::process_event(MenuEvent event) {
 
 				split_drop(event.param, action, x, y);
 
-				editor.checkInput(action, x, y);
+				editor->checkInput(action, x, y);
 			}
 			break;
 
