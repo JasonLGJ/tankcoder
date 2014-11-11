@@ -5,7 +5,7 @@
 		"item0": {
 			"type": 2,
 			"x": 10.1,
-			"y": 5.5,
+			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
 			"textname": "assets/editor/test",
@@ -15,7 +15,7 @@
 		"item1": {
 			"type": 2,
 			"x": 9.3,
-			"y": 5.5,
+			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
 			"textname": "assets/editor/test",
@@ -25,7 +25,7 @@
 		"item2": {
 			"type": 2,
 			"x": 8.5,
-			"y": 5.5,
+			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
 			"textname": "assets/editor/test",
@@ -36,8 +36,8 @@
 			"type": 3,
 			"x": 2.0,
 			"y": 1.0,
-			"w": 6.35,
-			"h": 5.2,
+			"w": 6.3,
+			"h": 5.0,
 			"textname": "assets/editor/bg",
 			"textnum": 1
 		},

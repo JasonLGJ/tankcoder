@@ -2,6 +2,7 @@
 
 MenuList::MenuList() {
 	offsetx = 0;
+	offsety = 0;
 }
 
 void MenuList::init(std::shared_ptr<SceneManager> s) {
@@ -41,18 +42,39 @@ void MenuList::checkInput(std::string operation, float x, float y) {
 
 			if (pos >= 0)
 			{
-				float swap_x = rows[pos].node->getX();
-				float swap_y = rows[pos].node->getY();
-
-				rows[pos].node->setX(nx);
-				rows[pos].node->setY(ny);
-
-				row.node->setX(swap_x);
-				row.node->setY(swap_y);
-
 				rows.insert(rows.begin()+pos, row);
+				
+				reposition();
 			}
 		}
+
+		checkVisible();
+	}
+}
+
+void MenuList::reposition() {
+	int offx = 0;
+
+	for (int i = 0; i < rows.size(); i++)
+	{
+		float nx = node->getX() + 0.55 * offx + 0.1;
+		float ny = node->getY() + node->getHeight() - (i + 1) * 0.55 - 0.1;
+
+		rows[i].node->setX(nx);
+		rows[i].node->setY(ny);
+
+		if (is_conditional(rows[i].getOperation()))
+			offx++;
+	}
+}
+
+void MenuList::checkVisible() {
+	for (int i = 0; i < rows.size(); i++)
+	{
+		if (i >= offsety && i < offsety + MAX_DISPLAY_ITEMS)
+			rows[i].node->setVisible(true);
+		else
+			rows[i].node->setVisible(false);
 	}
 }
 

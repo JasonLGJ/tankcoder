@@ -3,6 +3,7 @@
 FlatNode::FlatNode() {
 	type = SCENE_NODE_FLAT;
 	width = height = 1;
+	visible = true;
 }
 
 FlatNode::~FlatNode() {}

@@ -8,6 +8,7 @@ class MenuRow : public MenuItem {
 		MenuRow(std::string op);
 		bool inside(float y);
 		float getY();
+		std::string getOperation();
 	private:
 		std::string operation;
 };

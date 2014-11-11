@@ -70,7 +70,7 @@ void OctNode::getNodes(std::vector<std::shared_ptr<SceneNode>>& storage) {
 	{
 		for (int i = 0; i < MAX_DATA; i++)
 		{
-			if (data[i] != nullptr)
+			if (data[i] != nullptr && data[i]->isVisible())
 			{
 				storage.push_back(data[i]);
 			}

@@ -2,6 +2,7 @@
 
 StaticNode::StaticNode() {
 	type = SCENE_NODE_STATIC;
+	visible = true;
 }
 
 StaticNode::~StaticNode() {}

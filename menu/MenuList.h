@@ -5,7 +5,7 @@
 #include "MenuRow.h"
 #include "../utils/scene/SceneManager.h"
 
-const int MAX_DISPLAY_ITEMS = 10;
+const int MAX_DISPLAY_ITEMS = 9;
 
 class MenuList : public MenuItem {
 	public:
@@ -13,8 +13,11 @@ class MenuList : public MenuItem {
 		void init(std::shared_ptr<SceneManager> s);
 		void checkInput(std::string operation, float x, float y);
 		std::vector<MenuRow> getRows();
+		void checkVisible();
+		void reposition();
 	private:
 		int offsetx;
+		int offsety;
 		bool is_conditional(std::string operation);
 		bool inside(float px, float py);
 		std::vector<MenuRow> rows;
