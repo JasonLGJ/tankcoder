@@ -23,6 +23,8 @@ void Game::update() {
 		menu->update();
 
 		if (!menu->shouldPlay())
+		{
 			state = GAME_STATE_MENU;
+		}
 	}
 }

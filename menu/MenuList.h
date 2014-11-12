@@ -20,6 +20,7 @@ class MenuList : public MenuItem {
 		int offsetx;
 		int offsety;
 		bool is_conditional(std::string operation);
+		bool is_end_cond(std::string operation);
 		bool inside(float px, float py);
 		std::vector<MenuRow> rows;
 		std::shared_ptr<SceneManager> scene;

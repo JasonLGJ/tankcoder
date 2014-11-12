@@ -1,15 +1,15 @@
 {
 	"start_menu": "editor",
 	"editor": {
-		"itemqty": 16,
+		"itemqty": 18,
 		"item0": {
 			"type": 2,
 			"x": 10.1,
 			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/test",
-			"textnum": 4,
+			"textname": "assets/editor/test_d",
+			"textnum": 3,
 			"action": "dropped wait"
 		},
 		"item1": {
@@ -18,9 +18,9 @@
 			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/fwd",
+			"textname": "assets/editor/forward_d",
 			"textnum": 3,
-			"action": "dropped fwd2"
+			"action": "dropped forward"
 		},
 		"item2": {
 			"type": 2,
@@ -28,99 +28,99 @@
 			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/test",
-			"textnum": 4,
+			"textname": "assets/editor/test_d",
+			"textnum": 3,
 			"action": "dropped random"
 		},
 		"item3": {
 			"type": 2,
 			"x": 10.1,
-			"y": 4.3,
+			"y": 4.6,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/right",
+			"textname": "assets/editor/right_d",
 			"textnum": 3,
-			"action": "dropped right2"
+			"action": "dropped turn_right"
 		},
 		"item4": {
 			"type": 2,
 			"x": 9.3,
-			"y": 4.3,
+			"y": 4.6,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/wait1",
+			"textname": "assets/editor/wait_d",
 			"textnum": 3,
-			"action": "dropped wait2"
+			"action": "dropped wait"
 		},
 		"item5": {
 			"type": 2,
 			"x": 8.5,
-			"y": 4.3,
+			"y": 4.6,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/left",
+			"textname": "assets/editor/left_d",
 			"textnum": 3,
-			"action": "dropped left2"
+			"action": "dropped turn_left"
 		},
 		"item6": {
 			"type": 2,
 			"x": 10.1,
-			"y": 3.3,
+			"y": 3.9,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/test",
-			"textnum": 4,
+			"textname": "assets/editor/test_d",
+			"textnum": 3,
 			"action": "dropped random"
 		},
 		"item7": {
 			"type": 2,
 			"x": 9.3,
-			"y": 3.3,
+			"y": 3.9,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/bwd",
+			"textname": "assets/editor/backward_d",
 			"textnum": 3,
-			"action": "dropped bwd2"
+			"action": "dropped back"
 		},
 		"item8": {
 			"type": 2,
 			"x": 8.5,
-			"y": 3.3,
+			"y": 3.9,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/test",
-			"textnum": 4,
+			"textname": "assets/editor/test_d",
+			"textnum": 3,
 			"action": "dropped random"
 		},
 		"item9": {
 			"type": 2,
 			"x": 10.1,
-			"y": 2.3,
+			"y": 3.2,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/else",
+			"textname": "assets/editor/else_d",
 			"textnum": 3,
-			"action": "dropped else2"
+			"action": "dropped else"
 		},
 		"item10": {
 			"type": 2,
 			"x": 9.3,
-			"y": 2.3,
+			"y": 3.2,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/endif",
+			"textname": "assets/editor/endif_d",
 			"textnum": 3,
-			"action": "dropped endif2"
+			"action": "dropped endif"
 		},
 		"item11": {
 			"type": 2,
 			"x": 8.5,
-			"y": 2.3,
+			"y": 3.2,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/if",
+			"textname": "assets/editor/if_d",
 			"textnum": 3,
-			"action": "dropped if2"
+			"action": "dropped if"
 		},
 		"item12": {
 			"type": 1,
@@ -143,6 +143,26 @@
 				"action": "scroll down"
 		},
 		"item14": {
+			"type": 1,
+			"x": 8.4,
+			"y": 1.44,
+			"w": 2.355,
+			"h": 0.5,
+			"textname": "assets/editor/play",
+			"textnum": 1,
+			"action": "level begin"
+		},
+		"item15": {
+			"type": 1,
+			"x": 8.4,
+			"y": 0.94,
+			"w": 2.355,
+			"h": 0.5,
+			"textname": "assets/editor/quit",
+			"textnum": 1,
+			"action": "level quit"
+		},
+		"item16": {
 			"type": 3,
 			"x": 2.0,
 			"y": 0.9,
@@ -151,7 +171,7 @@
 			"textname": "assets/editor/bg",
 			"textnum": 1
 		},
-		"item15": {
+		"item17": {
 			"type": 0,
 			"x": 2.0,
 			"y": 0.9,

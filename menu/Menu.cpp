@@ -8,7 +8,6 @@ Menu::Menu() {
 
 	start_playing = false;
 	quit_requested = false;
-
 }
 
 void Menu::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
@@ -214,6 +213,19 @@ void Menu::process_event(MenuEvent event) {
 			{
 				int dir = (event.param.compare("up") == 0) ? -1 : 1;
 				editor->scroll(dir);
+			}
+			break;
+
+		case MENU_EVENT_MODIFY_LEVEL:
+			printf("level %s\n", event.param.c_str());
+			if (editor != nullptr)
+			{
+				if (event.param.compare("quit") == 0)
+				{
+					start_playing = false;
+					clean();
+					load("assets/menus/menus.json");
+				}
 			}
 			break;
 
