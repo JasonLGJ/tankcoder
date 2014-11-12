@@ -1,7 +1,7 @@
 {
 	"start_menu": "editor",
 	"editor": {
-		"itemqty": 7,
+		"itemqty": 16,
 		"item0": {
 			"type": 2,
 			"x": 10.1,
@@ -18,9 +18,9 @@
 			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/test",
-			"textnum": 4,
-			"action": "dropped wait"
+			"textname": "assets/editor/fwd",
+			"textnum": 3,
+			"action": "dropped fwd2"
 		},
 		"item2": {
 			"type": 2,
@@ -33,6 +33,96 @@
 			"action": "dropped random"
 		},
 		"item3": {
+			"type": 2,
+			"x": 10.1,
+			"y": 4.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/right",
+			"textnum": 3,
+			"action": "dropped right2"
+		},
+		"item4": {
+			"type": 2,
+			"x": 9.3,
+			"y": 4.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/wait1",
+			"textnum": 3,
+			"action": "dropped wait2"
+		},
+		"item5": {
+			"type": 2,
+			"x": 8.5,
+			"y": 4.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/left",
+			"textnum": 3,
+			"action": "dropped left2"
+		},
+		"item6": {
+			"type": 2,
+			"x": 10.1,
+			"y": 3.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/test",
+			"textnum": 4,
+			"action": "dropped random"
+		},
+		"item7": {
+			"type": 2,
+			"x": 9.3,
+			"y": 3.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/bwd",
+			"textnum": 3,
+			"action": "dropped bwd2"
+		},
+		"item8": {
+			"type": 2,
+			"x": 8.5,
+			"y": 3.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/test",
+			"textnum": 4,
+			"action": "dropped random"
+		},
+		"item9": {
+			"type": 2,
+			"x": 10.1,
+			"y": 2.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/else",
+			"textnum": 3,
+			"action": "dropped else2"
+		},
+		"item10": {
+			"type": 2,
+			"x": 9.3,
+			"y": 2.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/endif",
+			"textnum": 3,
+			"action": "dropped endif2"
+		},
+		"item11": {
+			"type": 2,
+			"x": 8.5,
+			"y": 2.3,
+			"w": 0.55,
+			"h": 0.55,
+			"textname": "assets/editor/if",
+			"textnum": 3,
+			"action": "dropped if2"
+		},
+		"item12": {
 			"type": 1,
 			"x": 8.08,
 			"y": 5.7,
@@ -42,7 +132,7 @@
 			"textnum": 1,
 			"action": "scroll up"
 		},
-		"item4": {
+		"item13": {
 				"type": 1,
 				"x": 8.08,
 				"y": 0.9,
@@ -52,7 +142,7 @@
 				"textnum": 1,
 				"action": "scroll down"
 		},
-		"item5": {
+		"item14": {
 			"type": 3,
 			"x": 2.0,
 			"y": 0.9,
@@ -61,7 +151,7 @@
 			"textname": "assets/editor/bg",
 			"textnum": 1
 		},
-		"item6": {
+		"item15": {
 			"type": 0,
 			"x": 2.0,
 			"y": 0.9,
