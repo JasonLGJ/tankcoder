@@ -8,9 +8,9 @@
 			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/test_d",
+			"textname": "assets/editor/fire_d",
 			"textnum": 3,
-			"action": "dropped wait"
+			"action": "dropped fire"
 		},
 		"item1": {
 			"type": 2,
@@ -28,9 +28,9 @@
 			"y": 5.3,
 			"w": 0.55,
 			"h": 0.55,
-			"textname": "assets/editor/test_d",
+			"textname": "assets/editor/osight_d",
 			"textnum": 3,
-			"action": "dropped random"
+			"action": "dropped osight"
 		},
 		"item3": {
 			"type": 2,
