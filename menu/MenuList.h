@@ -15,6 +15,7 @@ class MenuList : public MenuItem {
 		std::vector<MenuRow> getRows();
 		void checkVisible();
 		void reposition();
+		void scroll(int direction);
 	private:
 		int offsetx;
 		int offsety;

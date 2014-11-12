@@ -186,7 +186,7 @@ void Menu::process_event(MenuEvent event) {
 			printf("Starting game...\n");
 			start_playing = true;
 			clean();
-			load("assets/editor/editor.json");
+			//load("assets/editor/editor.json");
 			break;
 
 		case MENU_EVENT_QUIT_GAME:
@@ -205,6 +205,15 @@ void Menu::process_event(MenuEvent event) {
 				split_drop(event.param, action, x, y);
 
 				editor->checkInput(action, x, y);
+			}
+			break;
+
+		case MENU_EVENT_SCROLL_EDITOR:
+			printf("scroll %s\n", event.param.c_str());
+			if (editor != nullptr)
+			{
+				int dir = (event.param.compare("up") == 0) ? -1 : 1;
+				editor->scroll(dir);
 			}
 			break;
 

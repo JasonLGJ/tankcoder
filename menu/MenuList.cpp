@@ -72,9 +72,19 @@ void MenuList::checkVisible() {
 	for (int i = 0; i < rows.size(); i++)
 	{
 		if (i >= offsety && i < offsety + MAX_DISPLAY_ITEMS)
+		{
+			float ny = node->getY() + node->getHeight() - (i - offsety + 1) * 0.55 - 0.1;;
+
+			rows[i].node->setY(ny);
 			rows[i].node->setVisible(true);
+		}
 		else
+		{
+			float ny = -5.0f;
+
+			rows[i].node->setY(ny);
 			rows[i].node->setVisible(false);
+		}
 	}
 }
 
@@ -98,4 +108,17 @@ bool MenuList::is_conditional(std::string operation) {
 		return true;
 	
 	return false;
+}
+void MenuList::scroll(int direction) {
+	if (rows.size() == 0)
+		return;
+
+	offsety += direction;
+
+	if (offsety < 0)
+		offsety = 0;
+	else if (offsety >= rows.size())
+		offsety = rows.size() - 1;
+
+	checkVisible();
 }

@@ -1,7 +1,7 @@
 {
 	"start_menu": "editor",
 	"editor": {
-		"itemqty": 5,
+		"itemqty": 7,
 		"item0": {
 			"type": 2,
 			"x": 10.1,
@@ -33,20 +33,40 @@
 			"action": "dropped random"
 		},
 		"item3": {
+			"type": 1,
+			"x": 8.08,
+			"y": 5.7,
+			"w": 0.3,
+			"h": 0.3,
+			"textname": "assets/editor/up",
+			"textnum": 1,
+			"action": "scroll up"
+		},
+		"item4": {
+				"type": 1,
+				"x": 8.08,
+				"y": 0.9,
+				"w": 0.3,
+				"h": 0.3,
+				"textname": "assets/editor/down",
+				"textnum": 1,
+				"action": "scroll down"
+		},
+		"item5": {
 			"type": 3,
 			"x": 2.0,
-			"y": 1.0,
-			"w": 6.3,
-			"h": 5.0,
+			"y": 0.9,
+			"w": 6.35,
+			"h": 5.1,
 			"textname": "assets/editor/bg",
 			"textnum": 1
 		},
-		"item4": {
+		"item6": {
 			"type": 0,
 			"x": 2.0,
-			"y": 1.0,
+			"y": 0.9,
 			"w": 8.8,
-			"h": 5.2,
+			"h": 5.3,
 			"textname": "assets/editor/editor",
 			"textnum": 1
 		}

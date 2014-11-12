@@ -6,7 +6,8 @@ enum event_type {
 	MENU_EVENT_SWAP_MENU,
 	MENU_EVENT_START_GAME,
 	MENU_EVENT_QUIT_GAME,
-	MENU_EVENT_DROP
+	MENU_EVENT_DROP,
+	MENU_EVENT_SCROLL_EDITOR
 };
 
 struct MenuEvent {
@@ -87,6 +88,10 @@ static MenuEvent create_event(std::string text) {
 	else if (act.compare("dropped") == 0)
 	{
 		eve.action = MENU_EVENT_DROP;
+	}
+	else if (act.compare("scroll") == 0)
+	{
+		eve.action = MENU_EVENT_SCROLL_EDITOR;
 	}
 	else
 	{

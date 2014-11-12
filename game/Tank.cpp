@@ -6,6 +6,9 @@ Tank::Tank() {
 	alive = true;
 }
 
+void Tank::setNode(std::shared_ptr<StaticNode> n) {
+	node = n;
+}
 
 Tank::Tank(int dir, int x, int y) {
 	direction = dir;
@@ -92,6 +95,12 @@ bool Tank::isAlive() {
 void Tank::setPosition(int x, int y) {
 	this->x = x;
 	this->y = y;
+
+	float nx = ((y % 2 == 0) ? 0.4 : 0) + ((y / 2) * 0.15) + x - 5;
+	float ny = y * 0.85 - 3;
+
+	node->setX(nx);
+	node->setZ(ny);
 }
 
 void Tank::setGrid(Grid* g) {

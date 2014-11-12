@@ -45,11 +45,22 @@ bool World::initGrid(std::string gridpath) {
 
 	grid.loadMap(res, scene);
 
+	//Mesh
+	std::shared_ptr<StaticNode> pnode = scene->createStaticNode("assets/game/tank", 0.0, 0.1, 0.0);
+	pnode->setScale(0.11);
+
+	std::shared_ptr<StaticNode> enode = scene->createStaticNode("assets/game/tank", 0.0, 0.1, 0.0);
+	enode->setScale(0.11);
+
+	ptank.setNode(pnode);
+	etank.setNode(enode);
+
+	//positions
 	int ptx = 0, pty = 0, etx = 0, ety = 0;
 
 	grid.findPlayer(ptx, pty);
 	grid.findEnemy(etx, ety);
-
+	
 	ptank.setPosition(ptx, pty);
 	etank.setPosition(etx, ety);
 

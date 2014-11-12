@@ -110,7 +110,8 @@ void SceneManager::drawStaticNode(std::shared_ptr<StaticNode> n) {
 	glPushMatrix();
 	glTranslatef(n->getX(), n->getY(), n->getZ());
 	glRotatef(-90.0f, 1.0, 0.0, 0.0);
-	glScalef(0.5, 0.5, 0.5);
+	glRotatef(n->getRotation(), 0.0, 0.0, 1.0);
+	glScalef(n->getScale(), n->getScale(), n->getScale());
 
 	t->bind();
 	glBegin(GL_TRIANGLES);
