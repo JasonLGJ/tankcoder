@@ -6,8 +6,10 @@ Menu::Menu() {
 	loader = nullptr;
 	editor = nullptr;
 
-	start_playing = false;
+	start_game = false;
 	quit_requested = false;
+
+	menu_action = MENU_ACTION_EDITOR;
 
 	event_param = "";
 }
@@ -185,7 +187,7 @@ void Menu::process_event(MenuEvent event) {
 
 		case MENU_EVENT_START_GAME:
 			printf("Starting game...\n");
-			start_playing = true;
+			start_game = true;
 			clean();
 			load("assets/editor/editor.json");
 			event_param = event.param;
@@ -225,10 +227,34 @@ void Menu::process_event(MenuEvent event) {
 			{
 				if (event.param.compare("quit") == 0)
 				{
-					start_playing = false;
+					start_game = false;
 					clean();
 					load("assets/menus/menus.json");
 				}
+				else if (event.param.compare("start") == 0)
+				{
+					menu_action = MENU_ACTION_BEGIN;
+					/*
+					clean();
+					load("assets/editor/editor.json", "game");
+					*/
+				}
+				else if (event.param.compare("pause") == 0)
+				{
+					menu_action = MENU_ACTION_PAUSED;
+				}
+				else if (event.param.compare("resume") == 0)
+				{
+					menu_action = MENU_ACTION_RESUME;
+				}
+				else if (event.param.compare("restart") == 0)
+				{
+					menu_action = MENU_ACTION_RESTART;
+					/*
+					clean();
+					load("assets/editor/editor.json");
+					*/
+				}			
 			}
 			break;
 
@@ -239,12 +265,16 @@ void Menu::process_event(MenuEvent event) {
 	}
 }
 
-bool Menu::shouldPlay() {
-	return start_playing;
+bool Menu::shouldStartGame() {
+	return start_game;
 }
 
 bool Menu::shouldQuit() {
 	return quit_requested;
+}
+
+int Menu::getMenuOption() {
+	return menu_action;
 }
 
 std::string Menu::getParam() {

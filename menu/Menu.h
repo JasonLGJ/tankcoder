@@ -11,6 +11,15 @@
 #include "MenuDrag.h"
 #include "MenuList.h"
 
+enum menu_actions {
+	MENU_ACTION_EDITOR,
+	MENU_ACTION_BEGIN,
+	MENU_ACTION_PLAYING,
+	MENU_ACTION_PAUSED,
+	MENU_ACTION_RESUME,
+	MENU_ACTION_RESTART
+};
+
 class Menu {
 	public:
 		Menu();
@@ -24,13 +33,15 @@ class Menu {
 		void process_event(MenuEvent event);
 		void update();
 		void clean();
-		bool shouldPlay();
+		bool shouldStartGame();
 		bool shouldQuit();
 		std::string getParam();
+		int getMenuOption();
 	private:
-		bool start_playing;
+		bool start_game;
 		bool pressed;
 		bool quit_requested;
+		int menu_action;
 		std::string event_param;
 		std::stack<MenuEvent> events;
 		std::shared_ptr<Loader> loader;

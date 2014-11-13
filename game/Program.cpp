@@ -1,14 +1,12 @@
 #include "Program.h"
 #include "Tank.h"
 
-Program::Program()
-{
-	finish = false;
+Program::Program() {
+	finish = true;
 	ipSearch = ipVision = ipShooting = 0;
 }
 
-bool Program::load(std::string filename)
-{
+bool Program::load(std::string filename) {
 	std::ifstream file(filename.c_str(), std::ios::in);
 	std::string line;
 
@@ -38,23 +36,24 @@ bool Program::load(std::string filename)
 
 			switch (selection)
 			{
-			case 0:
-				searching.push_back(stat);
-				break;
+				case 0:
+					searching.push_back(stat);
+					break;
 
-			case 1:
-				vision.push_back(stat);
-				break;
+				case 1:
+					vision.push_back(stat);
+					break;
 
-			case 2:
-				shooting.push_back(stat);
-				break;
+				case 2:
+					shooting.push_back(stat);
+					break;
 
-			default:
-				break;
+				default:
+					break;
 			}
 		}
 
+		finish = false;
 		return true;
 	}
 	else
@@ -64,8 +63,7 @@ bool Program::load(std::string filename)
 	}
 }
 
-void Program::execute()
-{
+void Program::execute() {
 	if (!tank->isAlive())
 	{
 		finish = true;
@@ -90,8 +88,7 @@ void Program::execute()
 	}
 }
 
-void Program::print()
-{
+void Program::print() {
 	std::cout << "[Searching]" << std::endl;
 	for (int i = 0; i < searching.size(); i++)
 	{
@@ -111,40 +108,38 @@ void Program::print()
 	}
 }
 
-void Program::doTask(Statement stat)
-{
+void Program::doTask(Statement stat) {
 	switch(stat.getOpCode())
 	{
-	case OPCODE_TURN_LEFT:
-		tank->turnLeft();
-		break;
+		case OPCODE_TURN_LEFT:
+			tank->turnLeft();
+			break;
 
-	case OPCODE_TURN_RIGHT:
-		tank->turnRight();
-		break;
+		case OPCODE_TURN_RIGHT:
+			tank->turnRight();
+			break;
 
-	case OPCODE_TURN_GO_FORWARD:
-		tank->goForward();
-		break;
+		case OPCODE_TURN_GO_FORWARD:
+			tank->goForward();
+			break;
 
-	case OPCODE_TURN_SHOOT:
-		tank->shoot();
-		break;
+		case OPCODE_TURN_SHOOT:
+			tank->shoot();
+			break;
 
-	case OPCODE_WAIT:
-	case OPCODE_UNUSED:
-	default:
-		break;
+		case OPCODE_WAIT:
+		case OPCODE_UNUSED:
+		default:
+			break;
 	}
 }
 
-bool Program::isFinished()
-{
+bool Program::isFinished() {
 	return finish;
 }
 
-bool Program::onVisionRange()
-{
+bool Program::onVisionRange() {
+	/*
 	int Ry1,Ry2,Ry3,Ry4,Ry5,Ry6,Ry7,Ry8,Ry9;
 	int Rx1,Rx2,Rx3,Rx4,Rx5,Rx6,Rx7,Rx8,Rx9;
 
@@ -349,16 +344,22 @@ bool Program::onVisionRange()
 	default:
 		break;
 	}
+	*/
 
+	return false;
 
 }
 
-bool Program::onShootingRange()
-{
+bool Program::onShootingRange() {
 	return tank->onShootingRange();
 }
 
-void Program::setTank(Tank* t)
-{
+void Program::setTank(Tank* t) {
 	tank = t;
+}
+
+void Program::clear() {
+	searching.clear();
+	vision.clear();
+	shooting.clear();
 }

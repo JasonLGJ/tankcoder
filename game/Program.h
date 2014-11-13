@@ -23,6 +23,7 @@ class Program {
 		bool onShootingRange();
 		//
 		void setTank(Tank* t);
+		void clear();
 	private:
 		Tank* tank;
 		bool finish;

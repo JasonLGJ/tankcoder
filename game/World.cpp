@@ -1,6 +1,9 @@
 #include "World.h"
 
-World::World() {}
+World::World() {
+	paused = true;
+	st_px = st_py =	st_ex =	st_ey = -10;
+}
 
 void World::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
 	loader = l;
@@ -12,10 +15,21 @@ bool World::run() {
 }
 
 void World::update() {
-	/*
-	pprog.execute();
-	eprog.execute();
-	*/
+	if (run())
+	{
+		if (!paused)
+		{
+			/*
+			pprog.execute();
+			eprog.execute();
+			*/
+		}
+	}
+	else
+	{
+		//meep?
+		//show end game
+	}
 }
 
 bool World::initProgs(std::string playerfile, std::string enemyfile) {
@@ -28,11 +42,16 @@ bool World::initProgs(std::string playerfile, std::string enemyfile) {
 	pprog.setTank(&ptank);
 	eprog.setTank(&etank);
 
+	ptank.setAlive(true);
+	etank.setAlive(true);
+
+	/*
 	std::cout << ">>> Player <<<" << std::endl;
 	pprog.print();
 
 	std::cout << ">>> Enemy <<<" << std::endl;
 	eprog.print();
+	*/
 
 	return true;
 }
@@ -67,6 +86,11 @@ bool World::initGrid(std::string gridpath, std::string lvlname) {
 	ptank.setPosition(ptx, pty);
 	etank.setPosition(etx, ety);
 
+	st_px = ptx;
+	st_py = pty;
+	st_ex = etx;
+	st_ey = ety;
+
 	ptank.setGrid(&grid);
 	etank.setGrid(&grid);
 
@@ -82,4 +106,28 @@ bool World::tankIn(char tid, int x, int y) {
 	{
 		return x == etank.getX() && y == etank.getY();
 	}
+}
+
+void World::set_pause(bool p) {
+	paused = p;
+}
+
+void World::restart() {
+	pprog.clear();
+	eprog.clear();
+
+	ptank.setPosition(st_px, st_py);
+	etank.setPosition(st_ex, st_ey);
+}
+
+void World::reset() {
+	pprog.clear();
+	eprog.clear();
+
+	ptank.setPosition(-10,-10);
+	etank.setPosition(-10,-10);
+
+
+	ptank.setAlive(false);
+	etank.setAlive(false);
 }

@@ -16,8 +16,12 @@ class World {
 		bool initGrid(std::string gridpath, std::string lvlname);
 		bool run();
 		void update();
+		void set_pause(bool p);
+		void restart();
+		void reset();
 	private:
 		bool tankIn(char tid, int x, int y);
+		bool paused;
 		std::shared_ptr<Loader> loader;
 		std::shared_ptr<SceneManager> scene;
 		Grid grid;
@@ -25,4 +29,8 @@ class World {
 		Program eprog;
 		Tank ptank;
 		Tank etank;
+		int st_px;
+		int st_py;
+		int st_ex;
+		int st_ey;
 };

@@ -3,11 +3,15 @@
 Tank::Tank() {
 	direction = TANK_DIRECTION_UP;
 	x = y = 0;
-	alive = true;
+	alive = false;
 }
 
 void Tank::setNode(std::shared_ptr<StaticNode> n) {
 	node = n;
+}
+
+void Tank::setAlive(bool a) {
+	alive = a;
 }
 
 Tank::Tank(int dir, int x, int y) {

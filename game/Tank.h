@@ -30,6 +30,7 @@ class Tank {
 		int getY();
 		int getDirection();
 		bool isAlive();
+		void setAlive(bool a);
 		//
 		void setNode(std::shared_ptr<StaticNode> n);
 	private:
