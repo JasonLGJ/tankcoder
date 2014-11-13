@@ -20,7 +20,7 @@ void Menu::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
 }
 
 void Menu::clean() {
-	scene->dropScene();
+	scene->drop();
 	items.clear();
 }
 

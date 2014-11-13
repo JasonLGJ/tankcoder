@@ -11,7 +11,7 @@ std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename,
 
 	if (m.empty())
 	{
-		printf("file not found\n");
+		printf("model failed\n");
 		return nullptr;
 	}
 
@@ -19,7 +19,7 @@ std::shared_ptr<StaticNode> SceneManager::createStaticNode(std::string filename,
 
 	if (t.empty())
 	{
-		printf("model has no texture");
+		printf("invalid texture for model\n");
 		return nullptr;
 	}
 
@@ -41,7 +41,7 @@ std::shared_ptr<FlatNode> SceneManager::createFlatNode(std::string filename, flo
 
 	if (t.empty())
 	{
-		printf("No texture found");
+		printf("invalid texture\n");
 		return nullptr;
 	}
 
@@ -57,7 +57,7 @@ void SceneManager::deleteNode(std::shared_ptr<SceneNode> node) {
 	tree.remove(node);
 }
 
-void SceneManager::dropScene() {
+void SceneManager::drop() {
 	tree.prune();
 }
 
