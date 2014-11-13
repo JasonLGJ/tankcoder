@@ -26,10 +26,12 @@ class Menu {
 		void clean();
 		bool shouldPlay();
 		bool shouldQuit();
+		std::string getParam();
 	private:
 		bool start_playing;
 		bool pressed;
 		bool quit_requested;
+		std::string event_param;
 		std::stack<MenuEvent> events;
 		std::shared_ptr<Loader> loader;
 		std::shared_ptr<SceneManager> scene;

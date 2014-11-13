@@ -8,6 +8,8 @@ Menu::Menu() {
 
 	start_playing = false;
 	quit_requested = false;
+
+	event_param = "";
 }
 
 void Menu::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
@@ -186,6 +188,7 @@ void Menu::process_event(MenuEvent event) {
 			start_playing = true;
 			clean();
 			load("assets/editor/editor.json");
+			event_param = event.param;
 			break;
 
 		case MENU_EVENT_QUIT_GAME:
@@ -242,5 +245,8 @@ bool Menu::shouldPlay() {
 
 bool Menu::shouldQuit() {
 	return quit_requested;
+}
 
+std::string Menu::getParam() {
+	return event_param;
 }

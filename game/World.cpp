@@ -37,13 +37,16 @@ bool World::initProgs(std::string playerfile, std::string enemyfile) {
 	return true;
 }
 
-bool World::initGrid(std::string gridpath) {
+bool World::initGrid(std::string gridpath, std::string lvlname) {
 	std::shared_ptr<Resource> res = loader->getResource(gridpath);
 	
 	if (res == nullptr)
 		return false;
 
-	grid.loadMap(res, scene);
+	if (lvlname.compare("freeplay") != 0)
+		grid.loadMap(res->get(lvlname), scene);
+	else
+		grid.loadMap(res->get("level_test"), scene);
 
 	//Mesh
 	std::shared_ptr<StaticNode> pnode = scene->createStaticNode("assets/game/tank", 0.0, 0.1, 0.0);
