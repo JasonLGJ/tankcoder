@@ -150,7 +150,7 @@
 			"h": 0.5,
 			"textname": "assets/editor/play",
 			"textnum": 3,
-			"action": "swap_menu ingame"
+			"action": "level begin"
 		},
 		"item15": {
 			"type": 1,
@@ -181,44 +181,44 @@
 			"textnum": 1
 		}
 	},"ingame": {
-		"itemqty": 3,
+		"itemqty": 4,
 		"item0": {
 			"type": 1,
-			"x": 4.4,
-			"y": 2.0,
-			"w": 4.0,
+			"x": 0.5,
+			"y":0.2,
+			"w": 0.5,
 			"h": 0.5,
-			"textname": "assets/menus/abort",
+			"textname": "assets/editor/abort",
 			"textnum": 3,
 			"action": "level quit"
 		},
 		"item1": {
 			"type": 1,
-			"x": 4.4,
-			"y": 1.4,
-			"w": 4.0,
+			"x": 6.0,
+			"y": 0.2,
+			"w": 0.5,
 			"h": 0.5,
-			"textname": "assets/menus/play",
+			"textname": "assets/editor/continuar",
 			"textnum": 3,
 			"action": "level begin"
 		},
 		"item2": {
 			"type": 1,
-			"x": 4.4,
-			"y": 0.8,
-			"w": 4.0,
+			"x": 6.5,
+			"y": 0.2,
+			"w": 0.5,
 			"h": 0.5,
-			"textname": "assets/menus/pausa",
+			"textname": "assets/editor/pausa",
 			"textnum": 3,
 			"action": "swap_menu editor"
 		},
 		"item3": {
 			"type": 1,
-			"x": 4.4,
+			"x": 12.0,
 			"y": 0.2,
-			"w": 4.0,
+			"w": 0.5,
 			"h": 0.5,
-			"textname": "assets/menus/reset",
+			"textname": "assets/editor/reset",
 			"textnum": 3,
 			"action": "swap_menu editor"
 		}
