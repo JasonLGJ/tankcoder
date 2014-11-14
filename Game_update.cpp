@@ -30,8 +30,9 @@ void Game::update() {
 				break;
 
 			case MENU_ACTION_BEGIN:
-				world->initProgs("", menu->getParam());
+				world->initProgs("assets/progs/test.tc");
 				world->set_pause(false);
+				menu->setMenuOption(MENU_ACTION_PLAYING);
 				break;
 
 			case MENU_ACTION_PAUSED:
@@ -50,6 +51,7 @@ void Game::update() {
 		if (!menu->shouldStartGame())
 		{
 			world->reset();
+			menu->setMenuOption(MENU_ACTION_EDITOR);
 			state = GAME_STATE_MENU;
 		}
 	}

@@ -3,6 +3,7 @@
 World::World() {
 	paused = true;
 	st_px = st_py =	st_ex =	st_ey = -10;
+	enemyfile = "assets/progs/test.tc";
 }
 
 void World::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
@@ -32,7 +33,7 @@ void World::update() {
 	}
 }
 
-bool World::initProgs(std::string playerfile, std::string enemyfile) {
+bool World::initProgs(std::string playerfile) {
 	if (!pprog.load(playerfile))
 		return false;
 

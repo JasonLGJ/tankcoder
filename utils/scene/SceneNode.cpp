@@ -4,6 +4,7 @@ SceneNode::SceneNode() {
 	visible = collidable = false;
 	x = y = z = 0.0f;
 	type = SCENE_NODE;
+	id = 0;
 }
 
 SceneNode::~SceneNode() {}
@@ -56,4 +57,12 @@ void SceneNode::setCollidable(bool c) {
 
 sceneNodeType SceneNode::getType() {
 	return type;
+}
+
+unsigned long SceneNode::getId() {
+	return id;
+}
+
+void SceneNode::setId(unsigned long i) {
+	id = i;
 }

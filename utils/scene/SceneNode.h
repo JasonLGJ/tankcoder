@@ -25,6 +25,8 @@ class SceneNode {
 		void setVisible(bool v);
 		void setCollidable(bool c);
 		sceneNodeType getType();
+		unsigned long getId();
+		void setId(unsigned long i);
 	protected:
 		sceneNodeType type;
 		bool visible;
@@ -32,4 +34,5 @@ class SceneNode {
 		float x;
 		float y;
 		float z;
+		unsigned long id;
 };

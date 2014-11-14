@@ -12,5 +12,6 @@ class OctTree {
 		void getNodes(std::vector<std::shared_ptr<SceneNode>>& storage);
 	private:
 		std::shared_ptr<OctNode> root;
-		int size;
+		unsigned long size;
+		unsigned long node_ids;
 };

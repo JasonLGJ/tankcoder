@@ -37,6 +37,7 @@ class Menu {
 		bool shouldQuit();
 		std::string getParam();
 		int getMenuOption();
+		void setMenuOption(int opt);
 	private:
 		bool start_game;
 		bool pressed;

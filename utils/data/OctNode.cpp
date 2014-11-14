@@ -84,3 +84,24 @@ void OctNode::getNodes(std::vector<std::shared_ptr<SceneNode>>& storage) {
 		}
 	}
 }
+
+void OctNode::remove(std::shared_ptr<SceneNode> n) {
+	if (leaf)
+	{
+		for (int i = 0; i < MAX_DATA; i++)
+		{
+			if (data[i] != nullptr && data[i]->getId() == n->getId())
+			{
+				data[i] = nullptr;
+				break;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < MAX_CHILDREN; i++)
+		{
+			children[i]->remove(n);
+		}
+	}
+}

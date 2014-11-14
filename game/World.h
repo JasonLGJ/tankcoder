@@ -12,7 +12,7 @@ class World {
 		World();
 		//
 		void init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s);
-		bool initProgs(std::string playerfile, std::string enemyfile);
+		bool initProgs(std::string playerfile);
 		bool initGrid(std::string gridpath, std::string lvlname);
 		bool run();
 		void update();
@@ -33,4 +33,5 @@ class World {
 		int st_py;
 		int st_ex;
 		int st_ey;
+		std::string enemyfile;
 };

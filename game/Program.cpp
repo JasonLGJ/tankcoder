@@ -58,7 +58,7 @@ bool Program::load(std::string filename) {
 	}
 	else
 	{
-		std::cout << "File not found" << std::endl;
+		std::cout << "[Program] file not found: " << filename << std::endl;
 		return false;
 	}
 }

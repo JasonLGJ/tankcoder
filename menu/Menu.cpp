@@ -20,7 +20,9 @@ void Menu::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
 }
 
 void Menu::clean() {
-	scene->drop();
+	for (int i = 0; i < items.size(); i++)
+		scene->deleteNode(items[i]->node);
+
 	items.clear();
 }
 
@@ -229,15 +231,14 @@ void Menu::process_event(MenuEvent event) {
 				{
 					start_game = false;
 					clean();
+					scene->drop();
 					load("assets/menus/menus.json");
 				}
-				else if (event.param.compare("start") == 0)
+				else if (event.param.compare("begin") == 0)
 				{
 					menu_action = MENU_ACTION_BEGIN;
-					/*
 					clean();
-					load("assets/editor/editor.json", "game");
-					*/
+					load("assets/editor/editor.json", "ingame");
 				}
 				else if (event.param.compare("pause") == 0)
 				{
@@ -279,4 +280,8 @@ int Menu::getMenuOption() {
 
 std::string Menu::getParam() {
 	return event_param;
+}
+
+void Menu::setMenuOption(int opt) {
+	menu_action = opt;
 }

@@ -14,6 +14,7 @@ class OctNode {
 		void setRegion(Region r);
 		bool inside(float x, float y, float z);
 		void getNodes(std::vector<std::shared_ptr<SceneNode>>& storage);
+		void remove(std::shared_ptr<SceneNode> n);
 	private:
 		void add(std::shared_ptr<SceneNode> n);
 		//

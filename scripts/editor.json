@@ -180,7 +180,8 @@
 			"textname": "assets/editor/editor2",
 			"textnum": 1
 		}
-	},"ingame": {
+	},
+	"ingame": {
 		"itemqty": 4,
 		"item0": {
 			"type": 1,
@@ -200,7 +201,7 @@
 			"h": 0.5,
 			"textname": "assets/editor/continuar",
 			"textnum": 3,
-			"action": "level begin"
+			"action": "level resume"
 		},
 		"item2": {
 			"type": 1,
@@ -210,7 +211,7 @@
 			"h": 0.5,
 			"textname": "assets/editor/pausa",
 			"textnum": 3,
-			"action": "swap_menu editor"
+			"action": "level pause"
 		},
 		"item3": {
 			"type": 1,
@@ -220,7 +221,7 @@
 			"h": 0.5,
 			"textname": "assets/editor/reset",
 			"textnum": 3,
-			"action": "swap_menu editor"
+			"action": "level restart"
 		}
 	}
 }
