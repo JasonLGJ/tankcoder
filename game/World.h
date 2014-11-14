@@ -33,5 +33,6 @@ class World {
 		int st_py;
 		int st_ex;
 		int st_ey;
+		int timer;
 		std::string enemyfile;
 };

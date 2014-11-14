@@ -23,6 +23,36 @@ void Tank::turnLeft() {
 
 	if (direction > TANK_DIRECTION_RIGHT_UP)
 		direction = TANK_DIRECTION_UP;
+
+	switch (direction)
+	{
+		case TANK_DIRECTION_UP:
+			node->setRotation(0.0f);
+			break;
+
+		case TANK_DIRECTION_LEFT_UP:
+			node->setRotation(60.0f);
+			break;
+
+		case TANK_DIRECTION_LEFT_DOWN:
+			node->setRotation(120.0f);
+			break;
+
+		case TANK_DIRECTION_DOWN:
+			node->setRotation(180.0f);
+			break;
+
+		case TANK_DIRECTION_RIGHT_DOWN:
+			node->setRotation(-120.0f);
+			break;
+
+		case TANK_DIRECTION_RIGHT_UP:
+			node->setRotation(-60.0f);
+			break;
+
+		default:
+			break;
+	}
 }
 
 void Tank::turnRight() {
@@ -30,35 +60,67 @@ void Tank::turnRight() {
 
 	if (direction < TANK_DIRECTION_UP)
 		direction = TANK_DIRECTION_RIGHT_UP;
+
+	switch (direction)
+	{
+		case TANK_DIRECTION_UP:
+			node->setRotation(0.0f);
+			break;
+
+		case TANK_DIRECTION_LEFT_UP:
+			node->setRotation(60.0f);
+			break;
+
+		case TANK_DIRECTION_LEFT_DOWN:
+			node->setRotation(120.0f);
+			break;
+
+		case TANK_DIRECTION_DOWN:
+			node->setRotation(180.0f);
+			break;
+
+		case TANK_DIRECTION_RIGHT_DOWN:
+			node->setRotation(-120.0f);
+			break;
+
+		case TANK_DIRECTION_RIGHT_UP:
+			node->setRotation(-60.0f);
+			break;
+
+		default:
+			break;
+	}
 }
 
 void Tank::goForward() {
 	switch(direction)
 	{
 		case TANK_DIRECTION_UP:
-			y--;
+			x--;
 			break;
 
 		case TANK_DIRECTION_LEFT_UP:
 			x--;
+			y++;
 			break;
 
 		case TANK_DIRECTION_LEFT_DOWN:
-			x--;
+			x++;
 			y++;
 			break;
 
 		case TANK_DIRECTION_DOWN:
-			y++;
+			x++;
 			break;
 
 		case TANK_DIRECTION_RIGHT_DOWN:
 			x++;
+			y--;
 			break;
 
 		case TANK_DIRECTION_RIGHT_UP:
+			x--;
 			y--;
-			x++;
 			break;
 
 		default:
@@ -74,6 +136,12 @@ void Tank::goForward() {
 		y = grid->getHeight() -1;
 	else if (y < 0)
 		y = 0;
+
+	float nx = ((y % 2 == 0) ? 0.4 : 0) + ((y / 2) * 0.15) + x - 5;
+	float ny = y * 0.85 - 3;
+
+	node->setX(nx);
+	node->setZ(ny);
 }
 
 void  Tank::shoot() {

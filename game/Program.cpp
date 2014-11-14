@@ -359,6 +359,9 @@ void Program::setTank(Tank* t) {
 }
 
 void Program::clear() {
+	finish = true;
+	ipSearch = 0;
+
 	searching.clear();
 	vision.clear();
 	shooting.clear();

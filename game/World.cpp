@@ -4,6 +4,7 @@ World::World() {
 	paused = true;
 	st_px = st_py =	st_ex =	st_ey = -10;
 	enemyfile = "assets/progs/test.tc";
+	timer = 0;
 }
 
 void World::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
@@ -20,10 +21,16 @@ void World::update() {
 	{
 		if (!paused)
 		{
-			/*
-			pprog.execute();
-			eprog.execute();
-			*/
+			if (timer == 60)
+			{
+				pprog.execute();
+				eprog.execute();
+				timer = 0;
+			}
+			else
+			{
+				timer++;
+			}
 		}
 	}
 	else

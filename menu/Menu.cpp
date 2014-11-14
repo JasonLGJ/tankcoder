@@ -93,10 +93,10 @@ void Menu::create_item(std::shared_ptr<Resource> item) {
 				int tn = item->getNumber("textnum");
 
 				button->node = scene->createFlatNode(name, x, y, w, h);
-				
+
 				if (tn > 1)
 					button->node->getTexture()->setMultiTexture(tn);
-				
+
 				button->event = create_event(item->getString("action"));
 				button->addStack(&events);
 
@@ -182,27 +182,28 @@ void Menu::process_event(MenuEvent event) {
 	switch (event.action)
 	{
 		case MENU_EVENT_SWAP_MENU:
-			printf("Swaping menu...\n");
+			//printf("Swaping menu...\n");
 			clean();
 			load("assets/menus/menus.json", event.param);
 			break;
 
 		case MENU_EVENT_START_GAME:
-			printf("Starting game...\n");
+			//printf("Starting game...\n");
 			start_game = true;
 			clean();
+			scene->drop();
 			load("assets/editor/editor.json");
 			event_param = event.param;
 			break;
 
 		case MENU_EVENT_QUIT_GAME:
-			printf("Quitting...\n");
+			//printf("Quitting...\n");
 			quit_requested = true;
 			clean();
 			break;
 
 		case MENU_EVENT_DROP:
-			printf("dropped: %s\n", event.param.c_str());
+			//printf("dropped: %s\n", event.param.c_str());
 			if (editor != nullptr)
 			{
 				std::string action;
@@ -215,7 +216,7 @@ void Menu::process_event(MenuEvent event) {
 			break;
 
 		case MENU_EVENT_SCROLL_EDITOR:
-			printf("scroll %s\n", event.param.c_str());
+			//printf("scroll %s\n", event.param.c_str());
 			if (editor != nullptr)
 			{
 				int dir = (event.param.compare("up") == 0) ? -1 : 1;
@@ -251,16 +252,14 @@ void Menu::process_event(MenuEvent event) {
 				else if (event.param.compare("restart") == 0)
 				{
 					menu_action = MENU_ACTION_RESTART;
-					/*
 					clean();
 					load("assets/editor/editor.json");
-					*/
-				}			
+				}
 			}
 			break;
 
 		case MENU_EVENT_DO_NOTHING:
-		default:	
+		default:
 			//printf("params: %s\n", event.param.c_str());
 			break;
 	}
