@@ -3,12 +3,12 @@
 #include "../utils/scene/StaticNode.h"
 
 enum TankDirection {
-	TANK_DIRECTION_UP,
-	TANK_DIRECTION_LEFT_UP,
+	TANK_DIRECTION_LEFT,
 	TANK_DIRECTION_LEFT_DOWN,
-	TANK_DIRECTION_DOWN,
 	TANK_DIRECTION_RIGHT_DOWN,
-	TANK_DIRECTION_RIGHT_UP
+	TANK_DIRECTION_RIGHT,
+	TANK_DIRECTION_RIGHT_UP,
+	TANK_DIRECTION_LEFT_UP
 };
 
 class Tank {
@@ -33,6 +33,9 @@ class Tank {
 		void setAlive(bool a);
 		//
 		void setNode(std::shared_ptr<StaticNode> n);
+		//
+		void validateRotation();
+		void validatePosition();
 	private:
 		Grid* grid;
 		int direction;
