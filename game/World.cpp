@@ -121,6 +121,9 @@ void World::set_pause(bool p) {
 }
 
 void World::restart() {
+	timer = 0;
+	paused = true;
+
 	pprog.clear();
 	eprog.clear();
 
@@ -129,6 +132,9 @@ void World::restart() {
 }
 
 void World::reset() {
+	timer = 0;
+	paused = true;
+	
 	pprog.clear();
 	eprog.clear();
 

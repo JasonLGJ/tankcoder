@@ -45,6 +45,7 @@ void Game::update() {
 
 			case MENU_ACTION_RESTART:
 				world->restart();
+				menu->setMenuOption(MENU_ACTION_EDITOR);
 				break;
 		}
 

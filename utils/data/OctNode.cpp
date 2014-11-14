@@ -24,8 +24,23 @@ void OctNode::insert(std::shared_ptr<SceneNode> n) {
 	{
 		if (dataNum < MAX_DATA)
 		{
-			data[dataNum] = n;
-			dataNum++;
+			bool hasEmpty = false;
+
+			for (int i = 0; i < dataNum; i++)
+			{
+				if (data[i] == nullptr)
+				{
+					printf("meep %d\n", dataNum);
+					data[i] = n;
+					hasEmpty = true;
+				}
+			}
+
+			if (!hasEmpty)
+			{
+				data[dataNum] = n;
+				dataNum++;
+			}
 		}
 		else
 		{
