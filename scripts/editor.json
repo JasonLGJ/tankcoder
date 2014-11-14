@@ -128,7 +128,7 @@
 			"y": 5.7,
 			"w": 0.3,
 			"h": 0.3,
-			"textname": "assets/editor/up",
+			"textname": "assets/editor/up1",
 			"textnum": 1,
 			"action": "scroll up"
 		},
@@ -138,7 +138,7 @@
 				"y": 0.9,
 				"w": 0.3,
 				"h": 0.3,
-				"textname": "assets/editor/down",
+				"textname": "assets/editor/down1",
 				"textnum": 1,
 				"action": "scroll down"
 		},
@@ -149,8 +149,8 @@
 			"w": 2.355,
 			"h": 0.5,
 			"textname": "assets/editor/play",
-			"textnum": 1,
-			"action": "level begin"
+			"textnum": 3,
+			"action": "swap_menu ingame"
 		},
 		"item15": {
 			"type": 1,
@@ -159,7 +159,7 @@
 			"w": 2.355,
 			"h": 0.5,
 			"textname": "assets/editor/quit",
-			"textnum": 1,
+			"textnum": 3,
 			"action": "level quit"
 		},
 		"item16": {
@@ -177,8 +177,50 @@
 			"y": 0.9,
 			"w": 8.8,
 			"h": 5.3,
-			"textname": "assets/editor/editor",
+			"textname": "assets/editor/editor2",
 			"textnum": 1
+		}
+	},"ingame": {
+		"itemqty": 3,
+		"item0": {
+			"type": 1,
+			"x": 4.4,
+			"y": 2.0,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "assets/menus/abort",
+			"textnum": 3,
+			"action": "level quit"
+		},
+		"item1": {
+			"type": 1,
+			"x": 4.4,
+			"y": 1.4,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "assets/menus/play",
+			"textnum": 3,
+			"action": "level begin"
+		},
+		"item2": {
+			"type": 1,
+			"x": 4.4,
+			"y": 0.8,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "assets/menus/pausa",
+			"textnum": 3,
+			"action": "swap_menu editor"
+		},
+		"item3": {
+			"type": 1,
+			"x": 4.4,
+			"y": 0.2,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "assets/menus/reset",
+			"textnum": 3,
+			"action": "swap_menu editor"
 		}
 	}
 }
