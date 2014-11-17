@@ -4,7 +4,7 @@
 #include <memory>
 
 const int MAX_CHILDREN = 8;
-const int MAX_DATA = 200;
+const int MAX_DATA = 500; //TODO fix bug, remove this hack
 
 class OctNode {
 	public:
