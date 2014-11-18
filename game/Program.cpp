@@ -351,7 +351,10 @@ bool Program::onVisionRange() {
 }
 
 bool Program::onShootingRange() {
-	return tank->onShootingRange();
+	int pospx, pospy, posex, posey;
+	return false;
+	
+	//return tank->onShootingRange(pospx, pospy, posex, posey);
 }
 
 void Program::setTank(Tank* t) {
