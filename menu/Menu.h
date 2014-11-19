@@ -38,6 +38,7 @@ class Menu {
 		std::string getParam();
 		int getMenuOption();
 		void setMenuOption(int opt);
+		void passEditor(Editor* edit);
 	private:
 		bool start_game;
 		bool pressed;

@@ -112,9 +112,12 @@ void Tank::goForward() {
 	validatePosition();
 }
 
-void  Tank::shoot(int px, int py, int ex, int ey, bool live){
-	
-	if (onShootingRange(px, py, ex, ey)&& live){
+void  Tank::shoot() {
+	int ex, ey;
+	grid->findEnemy(ex, ey);
+
+	if (onShootingRange(x, y, ex, ey))
+	{
 		//nawisded
 
 	}
@@ -158,10 +161,7 @@ bool Tank::onVisionRange() {
 	return false;
 }
 
-bool Tank::onShootingRange(int px, int py, int ex, int ey ) {
-	int xs[3];
-	int ys[3];
-
+bool Tank::onShootingRange(int px, int py, int ex, int ey) {
 	int Ry1,Ry2,Ry3;
 	int Rx1,Rx2,Rx3;
 

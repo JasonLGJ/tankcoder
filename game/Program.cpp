@@ -6,6 +6,14 @@ Program::Program() {
 	ipSearch = ipVision = ipShooting = 0;
 }
 
+bool Program::load(std::vector<Statement>& sts) {
+	searching = sts;
+
+	finish = false;
+
+	return true;
+}
+
 bool Program::load(std::string filename) {
 	std::ifstream file(filename.c_str(), std::ios::in);
 	std::string line;
@@ -80,6 +88,9 @@ void Program::execute() {
 	}
 	else
 	{
+		if (searching.size() == 0)
+			return;
+
 		doTask(searching[ipSearch]);
 		ipSearch++;
 
@@ -119,11 +130,11 @@ void Program::doTask(Statement stat) {
 			tank->turnRight();
 			break;
 
-		case OPCODE_TURN_GO_FORWARD:
+		case OPCODE_GO_FORWARD:
 			tank->goForward();
 			break;
 
-		case OPCODE_TURN_SHOOT:
+		case OPCODE_SHOOT:
 			tank->shoot();
 			break;
 

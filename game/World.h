@@ -3,6 +3,7 @@
 
 #include "../utils/scene/SceneManager.h"
 
+#include "../editor/Editor.h"
 #include "Program.h"
 #include "Tank.h"
 #include "Grid.h"
@@ -19,7 +20,9 @@ class World {
 		void set_pause(bool p);
 		void restart();
 		void reset();
+		Editor* getEditor();
 	private:
+		Editor editor;
 		bool tankIn(char tid, int x, int y);
 		bool paused;
 		std::shared_ptr<Loader> loader;

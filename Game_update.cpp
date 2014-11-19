@@ -10,6 +10,7 @@ void Game::update() {
 		{
 			state = GAME_STATE_PLAY;
 			world->initGrid("assets/game/levels.json", menu->getParam());
+			menu->passEditor(world->getEditor());
 		}
 		else if (menu->shouldQuit())
 		{
@@ -45,6 +46,7 @@ void Game::update() {
 
 			case MENU_ACTION_RESTART:
 				world->restart();
+				menu->passEditor(world->getEditor());
 				break;
 		}
 

@@ -237,6 +237,7 @@ void Menu::process_event(MenuEvent event) {
 				}
 				else if (event.param.compare("begin") == 0)
 				{
+					editor->save();
 					menu_action = MENU_ACTION_BEGIN;
 					clean();
 					load("assets/editor/editor.json", "ingame");
@@ -283,4 +284,11 @@ std::string Menu::getParam() {
 
 void Menu::setMenuOption(int opt) {
 	menu_action = opt;
+}
+
+void Menu::passEditor(Editor* edit) {
+	if (editor != nullptr)
+	{
+		editor->setEdit(edit);
+	}
 }

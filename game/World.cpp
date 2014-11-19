@@ -7,6 +7,10 @@ World::World() {
 	timer = 0;
 }
 
+Editor* World::getEditor() {
+	return &editor;
+}
+
 void World::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
 	loader = l;
 	scene = s;
@@ -40,9 +44,11 @@ void World::update() {
 	}
 }
 
-bool World::initProgs(std::string playerfile) {
-	if (!pprog.load(playerfile))
+bool World::initProgs(std::string playerfile) {	
+	if (!pprog.load(editor.get_content()))
 		return false;
+
+	editor.clean();
 
 	if (!eprog.load(enemyfile))
 		return false;
@@ -135,7 +141,8 @@ void World::reset() {
 	ptank.setPosition(-10,-10);
 	etank.setPosition(-10,-10);
 
-
 	ptank.setAlive(false);
 	etank.setAlive(false);
+
+	editor.clean();
 }
