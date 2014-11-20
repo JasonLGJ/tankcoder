@@ -1,4 +1,6 @@
 #include "Menu.h"
+#pragma coment(lib,"winmm.lib")
+
 
 Menu::Menu() {
 	pressed = false;
@@ -17,6 +19,7 @@ Menu::Menu() {
 void Menu::init(std::shared_ptr<Loader> l, std::shared_ptr<SceneManager> s) {
 	loader = l;
 	scene = s;
+	
 }
 
 void Menu::clean() {

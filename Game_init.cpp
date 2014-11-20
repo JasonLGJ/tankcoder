@@ -1,5 +1,6 @@
 #include "Game.h"
 
+
 bool Game::init() {
 	return initSDL() && initGL() && initManagers() && initTest();
 }
@@ -10,7 +11,7 @@ bool Game::initSDL() {
 		return false;
 	}
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2); 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
 
 	window = SDL_CreateWindow(
@@ -50,7 +51,7 @@ bool Game::initGL() {
 
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
-
+	
 	error = glGetError();
 	if( error != GL_NO_ERROR )
 	{
