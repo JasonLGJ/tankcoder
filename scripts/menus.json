@@ -1,8 +1,18 @@
 {
 	"start_menu": "main_menu",
 	"main_menu": {
-		"itemqty": 6,
+		"itemqty": 8,
 		"item0": {
+			"type": 1,
+			"x": 4.4,
+			"y": 3.2,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "assets/menus/instrucciones",
+			"textnum": 3,
+			"action": "swap_menu instru"
+		},
+		"item1": {
 			"type": 1,
 			"x": 4.4,
 			"y": 2.6,
@@ -12,7 +22,7 @@
 			"textnum": 3,
 			"action": "start_game freeplay"
 		},
-		"item1": {
+		"item2": {
 			"type": 1,
 			"x": 4.4,
 			"y": 2.0,
@@ -22,7 +32,7 @@
 			"textnum": 3,
 			"action": "swap_menu tutorial"
 		},
-		"item2": {
+		"item3": {
 			"type": 1,
 			"x": 4.4,
 			"y":1.4,
@@ -32,7 +42,7 @@
 			"textnum": 3,
 			"action": "swap_menu config"
 		},
-		"item3": {
+		"item4": {
 			"type": 1,
 			"x": 4.4,
 			"y": 0.8,
@@ -42,7 +52,7 @@
 			"textnum": 3,
 			"action": "swap_menu credits"
 		},
-		"item4": {
+		"item5": {
 			"type": 1,
 			"x": 4.4,
 			"y": 0.2,
@@ -52,7 +62,17 @@
 			"textnum": 3,
 			"action": "quit game"
 		},
-		"item5": {
+		"item6": {
+			"type": 1,
+			"x": 4.4,
+			"y": 3.8,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "assets/menus/history",
+			"textnum": 3,
+			"action": "swap_menu historia"
+		},
+		"item7": {
 			"type": 0,
 			"x": 0,
 			"y": 0,
@@ -133,6 +153,50 @@
 			"w": 12.8,
 			"h": 7.2,
 			"textname": "assets/menus/bg12",
+			"textnum": 1
+		}
+	},
+	"instru": {
+		"itemqty": 2,
+		"item0": {
+			"type": 1,
+			"x": 4.4,
+			"y": 0.2,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "assets/menus/back",
+			"textnum": 3,
+			"action": "swap_menu main_menu"
+		},
+		"item1": {
+			"type": 0,
+			"x": 0,
+			"y": 0,
+			"w": 12.8,
+			"h": 7.2,
+			"textname": "assets/menus/bgin",
+			"textnum": 1
+		}
+	},
+	"historia": {
+		"itemqty": 2,
+		"item0": {
+			"type": 1,
+			"x": 4.4,
+			"y": 0.2,
+			"w": 4.0,
+			"h": 0.5,
+			"textname": "assets/menus/back",
+			"textnum": 3,
+			"action": "swap_menu main_menu"
+		},
+		"item1": {
+			"type": 0,
+			"x": 0,
+			"y": 0,
+			"w": 12.8,
+			"h": 7.2,
+			"textname": "assets/menus/bghi2",
 			"textnum": 1
 		}
 	},
