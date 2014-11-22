@@ -48,6 +48,10 @@ int Editor::map_instruction(std::string name) {
 	{
 		return OPCODE_GO_FORWARD;
 	}
+	else if (name.compare("back") == 0)
+	{
+		return OPCODE_GO_BACKWARD;
+	}
 	else if (name.compare("wait") == 0)
 	{
 		return OPCODE_WAIT;

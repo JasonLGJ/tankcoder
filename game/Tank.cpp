@@ -112,6 +112,82 @@ void Tank::goForward() {
 	validatePosition();
 }
 
+void Tank::goBackward() {
+	switch (direction)
+	{
+	case TANK_DIRECTION_LEFT:
+		x++;
+		break;
+
+	case TANK_DIRECTION_LEFT_DOWN:
+		if (y % 2 == 0)
+		{
+			y--;
+		}
+		else
+		{
+			x++;
+			y--;
+		}
+		break;
+
+	case TANK_DIRECTION_RIGHT_DOWN:
+		if (y % 2 == 0)
+		{
+			x--;
+			y--;
+		}
+		else
+		{
+			y--;
+		}
+		break;
+
+	case TANK_DIRECTION_RIGHT:
+		x--;
+		break;
+
+	case TANK_DIRECTION_RIGHT_UP:
+		if (y % 2 == 0)
+		{
+			x--;
+			y++;
+		}
+		else
+		{
+			y++;
+		}
+		break;
+
+	case TANK_DIRECTION_LEFT_UP:
+		if (y % 2 == 0)
+		{
+			y++;
+		}
+		else
+		{
+			x++;
+			y++;
+		}
+		break;
+
+	default:
+		break;
+	}
+
+	if (x >= grid->getWidth())
+		x = grid->getWidth() - 1;
+	else if (x < 0)
+		x = 0;
+
+	if (y >= grid->getHeight())
+		y = grid->getHeight() - 1;
+	else if (y < 0)
+		y = 0;
+
+	validatePosition();
+}
+
 void  Tank::shoot() {
 	int ex, ey;
 	grid->findEnemy(ex, ey);
@@ -129,6 +205,7 @@ void  Tank::shoot() {
 	}
 	
 }
+
 
 int Tank::getX() {
 	return x;

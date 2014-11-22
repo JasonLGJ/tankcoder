@@ -19,6 +19,7 @@ class Tank {
 		void turnLeft();
 		void turnRight();
 		void goForward();
+		void goBackward();
 		void shoot();
 		bool onShootingRange();
 		bool onVisionRange();

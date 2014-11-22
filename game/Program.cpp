@@ -134,6 +134,10 @@ void Program::doTask(Statement stat) {
 			tank->goForward();
 			break;
 
+		case OPCODE_GO_BACKWARD:
+			tank->goBackward();
+			break;
+
 		case OPCODE_SHOOT:
 			tank->shoot();
 			break;
