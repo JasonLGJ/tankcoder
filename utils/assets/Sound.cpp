@@ -31,7 +31,7 @@ void Sound::play() {
 		{
 			Mix_PlayChannel(-1, sfx, 0);
 		}
-		else if (type == SOUND_TYPE_SFX)
+		else if (type == SOUND_TYPE_MUSIC)
 		{
 			if(Mix_PausedMusic() == 1)
 			{
