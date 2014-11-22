@@ -6,6 +6,8 @@ void Game::update() {
 	{
 		menu->update();
 
+		loader->getSound("assets/sounds/menu.mp3", SOUND_TYPE_MUSIC)->play();
+
 		if (menu->shouldStartGame())
 		{
 			state = GAME_STATE_PLAY;
@@ -22,7 +24,7 @@ void Game::update() {
 	{
 		world->update();
 		menu->update();
-		
+
 		switch (menu->getMenuOption())
 		{
 			case MENU_ACTION_EDITOR:

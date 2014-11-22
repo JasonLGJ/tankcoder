@@ -4,6 +4,17 @@
 #include <vector>
 #include "Texture.h"
 
+enum Model3DSChunks {
+	M3DS_UNUSED =					0x0000,
+	M3DS_MAIN_CHUNK =				0x4D4D,
+	M3DS_EDITOR_CHUNK =				0x3D3D,
+	M3DS_OBJECT_BLOCK =				0x4000,
+	M3DS_TRIANGULAR_MESH =			0x4100,
+	M3DS_VERTICES_LIST =			0x4110,
+	M3DS_FACES_DESCRIPTION =		0x4120,
+	M3DS_MAPPING_COORDINATES_LIST = 0x4140
+};
+
 struct polygon {
 	short a;
 	short b;

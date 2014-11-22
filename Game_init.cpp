@@ -6,12 +6,12 @@ bool Game::init() {
 }
 
 bool Game::initSDL() {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 	{
 		return false;
 	}
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2); 
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
 
 	window = SDL_CreateWindow(
@@ -43,6 +43,12 @@ bool Game::initSDL() {
 		return false;
 	}
 
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	{
+		printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+		return false;
+	}
+
 	return true;
 }
 
@@ -51,7 +57,7 @@ bool Game::initGL() {
 
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
-	
+
 	error = glGetError();
 	if( error != GL_NO_ERROR )
 	{

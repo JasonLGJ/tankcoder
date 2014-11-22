@@ -19,7 +19,7 @@ Mesh Loader::getMesh(std::string filename) {
 	}
 
 	Mesh new_mesh;
-	
+
 	if (loadMesh(new_mesh, filename))
 	{
 		mesh_list.push_back(new_mesh);
@@ -72,6 +72,30 @@ std::shared_ptr<Resource> Loader::getResource(std::string filename) {
 	else //panic!
 	{
 		return nullptr;
+	}
+}
+
+std::shared_ptr<Sound> Loader::getSound(std::string filename, sound_type type) {
+	for (int i = 0; i < snd_list.size(); i++)
+	{
+		if (snd_list[i]->getName().compare(filename) == 0 && snd_list[i]->getType() == type)
+		{
+			return snd_list[i];
+		}
+	}
+
+	std::shared_ptr<Sound> new_snd = std::make_shared<Sound>();
+
+	printf("Sound not found, attempting to load\n");
+
+	if (loadSound(new_snd, filename, type))
+	{
+		snd_list.push_back(new_snd);
+		return new_snd;
+	}
+	else //panic!
+	{
+		return new_snd;
 	}
 }
 
@@ -141,7 +165,7 @@ bool Loader::loadMesh(Mesh& mesh, std::string filename) {
 				for (i = 0; i < qty; i++)
 				{
 					vertex v;
-					
+
 					fread(&v.x, sizeof(float), 1, file);
 					fread(&v.y, sizeof(float), 1, file);
 					fread(&v.z, sizeof(float), 1, file);
@@ -156,11 +180,11 @@ bool Loader::loadMesh(Mesh& mesh, std::string filename) {
 			{
 				fread(&qty, sizeof (unsigned short), 1, file);
 				mesh.setPolygonsQty(qty);
-				
+
 				for (i = 0; i < qty; i++)
 				{
 					polygon p;
-					
+
 					fread(&p.a, sizeof (unsigned short), 1, file);
 					fread(&p.b, sizeof (unsigned short), 1, file);
 					fread(&p.c, sizeof (unsigned short), 1, file);
@@ -180,7 +204,7 @@ bool Loader::loadMesh(Mesh& mesh, std::string filename) {
 				for (i = 0; i < qty; i++)
 				{
 					coord c;
-					
+
 					fread(&c.u, sizeof (float), 1, file);
 					fread(&c.v, sizeof (float), 1, file);
 
@@ -216,7 +240,7 @@ bool Loader::loadTexture(Texture& text, std::string filename) {
 
 	int mode = GL_RGB;
 
-	if (surface->format->BytesPerPixel == 4) 
+	if (surface->format->BytesPerPixel == 4)
 	{
 		mode = GL_RGBA;
 	}
@@ -317,6 +341,46 @@ bool Loader::construct_resource(std::shared_ptr<Resource> res, JsonValue obj)  {
 
 		}
 	}
-	
+
 	return true;
+}
+
+bool Loader::loadSound(std::shared_ptr<Sound> snd, std::string filename, sound_type type) {
+	printf("Loading Sound [%s]...", filename.c_str());
+
+	if (type == SOUND_TYPE_MUSIC)
+	{
+		Mix_Music* music = Mix_LoadMUS(filename.c_str());
+		if (music != NULL)
+		{
+			snd->setName(filename);
+			snd->add_music(music);
+			return true;
+		}
+		else
+		{
+			printf("failed to load music: %s", Mix_GetError());
+			return false;
+		}
+	}
+	else if (type == SOUND_TYPE_SFX)
+	{
+		Mix_Chunk* sfx = Mix_LoadWAV(filename.c_str());
+		if (sfx != NULL)
+		{
+			snd->setName(filename);
+			snd->add_sfx(sfx);
+			return true;
+		}
+		else
+		{
+			printf("failed to load sfx: %s", Mix_GetError());
+			return false;
+		}
+	}
+	else
+	{
+		snd->setName(filename);
+		return true;
+	}
 }
