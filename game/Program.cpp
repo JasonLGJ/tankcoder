@@ -6,7 +6,7 @@ Program::Program() {
 	ipSearch = ipVision = ipShooting = 0;
 }
 
-bool Program::load(std::vector<Statement>& sts) {
+bool Program::load(std::vector<Statement> sts) {
 	searching = sts;
 
 	finish = false;
@@ -368,7 +368,7 @@ bool Program::onVisionRange() {
 bool Program::onShootingRange() {
 	int pospx, pospy, posex, posey;
 	return false;
-	
+
 	//return tank->onShootingRange(pospx, pospy, posex, posey);
 }
 

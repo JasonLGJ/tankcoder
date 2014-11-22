@@ -32,7 +32,7 @@ void Tank::turnRight() {
 
 	if (direction < TANK_DIRECTION_LEFT)
 		direction = TANK_DIRECTION_LEFT_UP;
-	
+
 	validateRotation();
 }
 
@@ -115,64 +115,64 @@ void Tank::goForward() {
 void Tank::goBackward() {
 	switch (direction)
 	{
-	case TANK_DIRECTION_LEFT:
-		x++;
-		break;
-
-	case TANK_DIRECTION_LEFT_DOWN:
-		if (y % 2 == 0)
-		{
-			y--;
-		}
-		else
-		{
+		case TANK_DIRECTION_LEFT:
 			x++;
-			y--;
-		}
-		break;
+			break;
 
-	case TANK_DIRECTION_RIGHT_DOWN:
-		if (y % 2 == 0)
-		{
+		case TANK_DIRECTION_LEFT_DOWN:
+			if (y % 2 == 0)
+			{
+				x++;
+				y--;
+			}
+			else
+			{
+				y--;
+			}
+			break;
+
+		case TANK_DIRECTION_RIGHT_DOWN:
+			if (y % 2 == 0)
+			{
+				y--;
+			}
+			else
+			{
+				x--;
+				y--;
+			}
+			break;
+
+		case TANK_DIRECTION_RIGHT:
 			x--;
-			y--;
-		}
-		else
-		{
-			y--;
-		}
-		break;
+			break;
 
-	case TANK_DIRECTION_RIGHT:
-		x--;
-		break;
+		case TANK_DIRECTION_RIGHT_UP:
+			if (y % 2 == 0)
+			{
+				y++;
+			}
+			else
+			{
+				x--;
+				y++;
+			}
+			break;
 
-	case TANK_DIRECTION_RIGHT_UP:
-		if (y % 2 == 0)
-		{
-			x--;
-			y++;
-		}
-		else
-		{
-			y++;
-		}
-		break;
+		case TANK_DIRECTION_LEFT_UP:
+			if (y % 2 == 0)
+			{
+				x++;
+				y++;
+			}
+			else
+			{
+				y++;
+			}
+			break;
 
-	case TANK_DIRECTION_LEFT_UP:
-		if (y % 2 == 0)
-		{
-			y++;
-		}
-		else
-		{
-			x++;
-			y++;
-		}
-		break;
-
-	default:
-		break;
+		default:
+			break;
 	}
 
 	if (x >= grid->getWidth())
@@ -203,7 +203,7 @@ void  Tank::shoot() {
 		//hestillalive
 
 	}
-	
+
 }
 
 
@@ -242,7 +242,7 @@ bool Tank::onShootingRange(int px, int py, int ex, int ey) {
 	int Ry1,Ry2,Ry3;
 	int Rx1,Rx2,Rx3;
 
-	
+
 	switch(direction)
 	{
 	case TANK_DIRECTION_LEFT:
@@ -305,8 +305,8 @@ bool Tank::onShootingRange(int px, int py, int ex, int ey) {
 			Rx3 = px - 3;
 			Ry3 = py - 3;
 		}
-		
-		
+
+
 		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
 		{
 			return true;
@@ -348,8 +348,8 @@ bool Tank::onShootingRange(int px, int py, int ex, int ey) {
 				Rx3 = px - 3;
 				Ry3 = py + 3;
 			}
-		
-	
+
+
 		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
 		{
 			return true;
@@ -421,9 +421,9 @@ bool Tank::onShootingRange(int px, int py, int ex, int ey) {
 
 			Rx3 = px;
 			Ry3 = py + 3;
-			
+
 		}
-		
+
 		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
 		{
 			return true;
@@ -435,7 +435,7 @@ bool Tank::onShootingRange(int px, int py, int ex, int ey) {
 
 		break;
 	case TANK_DIRECTION_RIGHT_UP:
-		
+
 		if (y % 2 == 0)
 		{
 			//vision cerca
@@ -469,9 +469,9 @@ bool Tank::onShootingRange(int px, int py, int ex, int ey) {
 
 			Rx3 = px;
 			Ry3 = py - 3;
-			
+
 		}
-		
+
 		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
 		{
 			return true;
@@ -486,7 +486,7 @@ bool Tank::onShootingRange(int px, int py, int ex, int ey) {
 	default:
 		break;
 	}
-	
+
 }
 
 void Tank::validateRotation() {
