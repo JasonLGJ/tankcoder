@@ -187,6 +187,7 @@ void Menu::process_event(MenuEvent event) {
 		case MENU_EVENT_SWAP_MENU:
 			//printf("Swaping menu...\n");
 			clean();
+			scene->drop();
 			load("assets/menus/menus.json", event.param);
 			break;
 

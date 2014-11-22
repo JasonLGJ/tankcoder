@@ -25,6 +25,8 @@ void Game::update() {
 		world->update();
 		menu->update();
 
+		loader->getSound("assets/sounds/game.mp3", SOUND_TYPE_MUSIC)->play();
+
 		switch (menu->getMenuOption())
 		{
 			case MENU_ACTION_EDITOR:
