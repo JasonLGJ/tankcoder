@@ -159,3 +159,17 @@ void MenuList::scroll(int direction) {
 
 	checkVisible();
 }
+
+void MenuList::save() {
+	for (int i = 0; i < rows.size(); i++)
+	{
+		editor->generate_statement(rows[i].getOperation());
+		scene->deleteNode(rows[i].node);
+	}
+
+	rows.clear();
+}
+
+void MenuList::setEdit(Editor* edit) {
+	editor = edit;
+}

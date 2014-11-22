@@ -4,6 +4,7 @@
 #include "MenuItem.h"
 #include "MenuRow.h"
 #include "../utils/scene/SceneManager.h"
+#include "../editor/Editor.h"
 
 const int MAX_DISPLAY_ITEMS = 9;
 
@@ -16,7 +17,10 @@ class MenuList : public MenuItem {
 		void checkVisible();
 		void reposition();
 		void scroll(int direction);
+		void save();
+		void setEdit(Editor* edit);
 	private:
+		Editor* editor;
 		int offsetx;
 		int offsety;
 		bool is_conditional(std::string operation);

@@ -19,6 +19,7 @@ class Tank {
 		void turnLeft();
 		void turnRight();
 		void goForward();
+		void goBackward();
 		void shoot();
 		bool onShootingRange();
 		bool onVisionRange();
@@ -31,7 +32,8 @@ class Tank {
 		int getDirection();
 		bool isAlive();
 		void setAlive(bool a);
-		//
+		void shoot(int px, int py,int ex,int ey,bool live);
+		bool onShootingRange(int px, int py, int ex, int ey);
 		void setNode(std::shared_ptr<StaticNode> n);
 		//
 		void validateRotation();

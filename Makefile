@@ -8,11 +8,11 @@ CC = g++
 COMP_FLAG = -w -std=c++11
 
 #Linker Flags
-LINK_FLAG = -lSDL2 -lSDL2_image -lGLU -lGL
+LINK_FLAG = -lSDL2 -lSDL2_image -lSDL2_mixer -lGLU -lGL
 
 #Name
 NAME = build/tankcoder
 
 #Targets
-all : $(OBJS)
+all: $(OBJS)
 	$(CC) $(OBJS) $(COMP_FLAG) $(LINK_FLAG) -o $(NAME)

@@ -16,6 +16,7 @@ class Program {
 		void execute();
 		bool isFinished();
 		bool load(std::string filename);
+		bool load(std::vector<Statement> sts);
 		void doTask(Statement stat);
 		void print();
 		//

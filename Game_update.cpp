@@ -6,10 +6,13 @@ void Game::update() {
 	{
 		menu->update();
 
+		loader->getSound("assets/sounds/menu.mp3", SOUND_TYPE_MUSIC)->play();
+
 		if (menu->shouldStartGame())
 		{
 			state = GAME_STATE_PLAY;
 			world->initGrid("assets/game/levels.json", menu->getParam());
+			menu->passEditor(world->getEditor());
 		}
 		else if (menu->shouldQuit())
 		{
@@ -21,7 +24,7 @@ void Game::update() {
 	{
 		world->update();
 		menu->update();
-		
+
 		switch (menu->getMenuOption())
 		{
 			case MENU_ACTION_EDITOR:
@@ -45,6 +48,7 @@ void Game::update() {
 
 			case MENU_ACTION_RESTART:
 				world->restart();
+				menu->passEditor(world->getEditor());
 				menu->setMenuOption(MENU_ACTION_EDITOR);
 				break;
 		}
