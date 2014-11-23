@@ -14,7 +14,6 @@ enum TankDirection {
 class Tank {
 	public:
 		Tank();
-		Tank(int dir, int x, int y);
 		//
 		void turnLeft();
 		void turnRight();
@@ -24,6 +23,7 @@ class Tank {
 		bool onShootingRange();
 		bool onVisionRange();
 		//
+		void init(int i, int dir);
 		void setPosition(int x, int y);
 		void setGrid(Grid* g);
 		//
@@ -43,6 +43,7 @@ class Tank {
 		int direction;
 		int x;
 		int y;
+		int id;
 		bool alive;
 		std::shared_ptr<StaticNode> node;
 };

@@ -3,7 +3,15 @@
 Tank::Tank() {
 	direction = TANK_DIRECTION_LEFT;
 	x = y = 0;
+	id = 0;
 	alive = false;
+}
+
+void Tank::init(int i, int dir) {
+	id = i;
+	direction = dir;
+
+	validateRotation();
 }
 
 void Tank::setNode(std::shared_ptr<StaticNode> n) {
@@ -12,10 +20,6 @@ void Tank::setNode(std::shared_ptr<StaticNode> n) {
 
 void Tank::setAlive(bool a) {
 	alive = a;
-}
-
-Tank::Tank(int dir, int x, int y) {
-	direction = dir;
 }
 
 void Tank::turnLeft() {
@@ -37,6 +41,9 @@ void Tank::turnRight() {
 }
 
 void Tank::goForward() {
+	int or_x = x;
+	int or_y = y;
+
 	switch(direction)
 	{
 		case TANK_DIRECTION_LEFT:
@@ -109,10 +116,46 @@ void Tank::goForward() {
 	else if (y < 0)
 		y = 0;
 
+	if (grid->is_obstacle(x, y))
+	{
+		x = or_x;
+		y = or_y;
+	}
+
+	if (id == 0)
+	{
+		int ex, ey;
+		grid->findEnemy(ex, ey);
+
+		if (x == ex && y == ey)
+		{
+			x = or_x;
+			y = or_y;
+		}
+
+		grid->update_player(x, y);
+	}
+	else
+	{
+		int px, py;
+		grid->findPlayer(px, py);
+
+		if (x == px && y == py)
+		{
+			x = or_x;
+			y = or_y;
+		}
+
+		grid->update_enemy(x, y);
+	}
+
 	validatePosition();
 }
 
 void Tank::goBackward() {
+	int or_x = x;
+	int or_y = y;
+
 	switch (direction)
 	{
 		case TANK_DIRECTION_LEFT:
@@ -185,6 +228,39 @@ void Tank::goBackward() {
 	else if (y < 0)
 		y = 0;
 
+	if (grid->is_obstacle(x, y))
+	{
+		x = or_x;
+		y = or_y;
+	}
+
+	if (id == 0)
+	{
+		int ex, ey;
+		grid->findEnemy(ex, ey);
+
+		if (x == ex && y == ey)
+		{
+			x = or_x;
+			y = or_y;
+		}
+
+		grid->update_player(x, y);
+	}
+	else
+	{
+		int px, py;
+		grid->findPlayer(px, py);
+
+		if (x == px && y == py)
+		{
+			x = or_x;
+			y = or_y;
+		}
+
+		grid->update_enemy(x, y);
+	}
+
 	validatePosition();
 }
 
@@ -199,9 +275,7 @@ void  Tank::shoot() {
 	}
 	else
 	{
-
 		//hestillalive
-
 	}
 
 }

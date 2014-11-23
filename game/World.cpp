@@ -90,6 +90,10 @@ bool World::initGrid(std::string gridpath, std::string lvlname) {
 
 	ptank.setNode(pnode);
 	etank.setNode(enode);
+	
+	//other stuff
+	ptank.init(0, TANK_DIRECTION_RIGHT);
+	etank.init(1, TANK_DIRECTION_LEFT);
 
 	//positions
 	int ptx = 0, pty = 0, etx = 0, ety = 0;
@@ -135,6 +139,9 @@ void World::restart() {
 
 	ptank.setPosition(st_px, st_py);
 	etank.setPosition(st_ex, st_ey);
+
+	ptank.init(0, TANK_DIRECTION_RIGHT);
+	etank.init(1, TANK_DIRECTION_LEFT);
 }
 
 void World::reset() {
@@ -151,4 +158,7 @@ void World::reset() {
 	etank.setAlive(false);
 
 	editor.clean();
+
+	ptank.init(0, TANK_DIRECTION_RIGHT);
+	etank.init(1, TANK_DIRECTION_LEFT);
 }

@@ -16,6 +16,9 @@ class Grid {
 		int getHeight();
 		void findPlayer(int& x, int& y);
 		void findEnemy(int& x, int& y);
+		bool is_obstacle(int x, int y);
+		void update_player(int x, int y);
+		void update_enemy(int x, int y);
 	private:
 		void create_tile(int type, int x, int y, std::shared_ptr<SceneManager> scene);
 		std::vector<Tile> tiles;

@@ -109,3 +109,17 @@ void Grid::findEnemy(int& x, int& y) {
 	x = enemy_x;
 	y = enemy_y;
 }
+
+bool Grid::is_obstacle(int x, int y) {
+	return !tiles[y * width + x].isPassable();
+}
+
+void Grid::update_player(int x, int y) {
+	player_x = x;
+	player_y = y;
+}
+
+void Grid::update_enemy(int x, int y) {
+	enemy_x = x;
+	enemy_y = y;
+}
