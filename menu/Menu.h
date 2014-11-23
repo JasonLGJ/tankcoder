@@ -35,6 +35,7 @@ class Menu {
 		void clean();
 		bool shouldStartGame();
 		bool shouldQuit();
+		bool musica = true;
 		std::string getParam();
 		int getMenuOption();
 		void setMenuOption(int opt);

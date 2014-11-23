@@ -1,5 +1,6 @@
 #include "Game.h"
 
+
 void Game::update() {
 
 	if (state == GAME_STATE_MENU)
@@ -24,7 +25,7 @@ void Game::update() {
 	{
 		world->update();
 		menu->update();
-
+		if (menu->musica)
 		loader->getSound("assets/sounds/game.mp3", SOUND_TYPE_MUSIC)->play();
 
 		switch (menu->getMenuOption())
