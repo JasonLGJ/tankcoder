@@ -8,7 +8,8 @@ enum event_type {
 	MENU_EVENT_QUIT_GAME,
 	MENU_EVENT_DROP,
 	MENU_EVENT_SCROLL_EDITOR,
-	MENU_EVENT_MODIFY_LEVEL
+	MENU_EVENT_MODIFY_LEVEL,
+	MENU_EVENT_SWITCH_MUSIC
 };
 
 struct MenuEvent {
@@ -97,6 +98,10 @@ static MenuEvent create_event(std::string text) {
 	else if (act.compare("level") == 0)
 	{
 		eve.action = MENU_EVENT_MODIFY_LEVEL;
+	}
+	else if (act.compare("switch_music") == 0)
+	{
+		eve.action = MENU_EVENT_SWITCH_MUSIC;
 	}
 	else
 	{

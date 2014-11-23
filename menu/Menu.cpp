@@ -191,6 +191,25 @@ void Menu::process_event(MenuEvent event) {
 			load("assets/menus/menus.json", event.param);
 			break;
 
+		case MENU_EVENT_SWITCH_MUSIC:
+			
+			if (event.param == "on"){
+				printf("Potatoe...its on\n");
+				musica = true;
+				loader->getSound("assets/sounds/menu.mp3", SOUND_TYPE_MUSIC)->play();
+			}
+			else if(event.param == "off"){
+				printf("Potatoe...its off\n");
+				musica = false;
+				loader->getSound("assets/sounds/menu.mp3", SOUND_TYPE_MUSIC)->play();
+				loader->getSound("assets/sounds/menu.mp3", SOUND_TYPE_MUSIC)->stop();
+
+			}
+		/*	clean();
+			scene->drop();
+			load("assets/menus/menus.json", event.param);*/
+			break;
+
 		case MENU_EVENT_START_GAME:
 			//printf("Starting game...\n");
 			start_game = true;
