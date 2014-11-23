@@ -7,6 +7,7 @@
 #include "Program.h"
 #include "Tank.h"
 #include "Grid.h"
+#include "Timer.h"
 
 class World {
 	public:
@@ -32,6 +33,7 @@ class World {
 		Program eprog;
 		Tank ptank;
 		Tank etank;
+		Timer time;
 		int st_px;
 		int st_py;
 		int st_ex;

@@ -35,6 +35,7 @@ class Tank {
 		void shoot(int px, int py,int ex,int ey,bool live);
 		bool onShootingRange(int px, int py, int ex, int ey);
 		void setNode(std::shared_ptr<StaticNode> n);
+		bool* obtainAlive();
 		//
 		void validateRotation();
 		void validatePosition();

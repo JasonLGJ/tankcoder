@@ -30,6 +30,7 @@ void World::update() {
 				pprog.execute();
 				eprog.execute();
 				timer = 0;
+				time.update();
 			}
 			else
 			{
@@ -59,13 +60,9 @@ bool World::initProgs(std::string playerfile) {
 	ptank.setAlive(true);
 	etank.setAlive(true);
 
-	/*
-	std::cout << ">>> Player <<<" << std::endl;
-	pprog.print();
+	grid.set_tank_lives(ptank.obtainAlive(),ptank.obtainAlive());
 
-	std::cout << ">>> Enemy <<<" << std::endl;
-	eprog.print();
-	*/
+	time.create(scene);
 
 	return true;
 }
@@ -142,6 +139,8 @@ void World::restart() {
 
 	ptank.init(0, TANK_DIRECTION_RIGHT);
 	etank.init(1, TANK_DIRECTION_LEFT);
+
+	time.restart();
 }
 
 void World::reset() {
@@ -161,4 +160,6 @@ void World::reset() {
 
 	ptank.init(0, TANK_DIRECTION_RIGHT);
 	etank.init(1, TANK_DIRECTION_LEFT);
+
+	time.remove();
 }

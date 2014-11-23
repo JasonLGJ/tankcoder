@@ -10,8 +10,7 @@ enum menuItemType {
 	MENU_TYPE_BUTTON,
 	MENU_TYPE_DRAG,
 	MENU_TYPE_LIST,
-	MENU_TYPE_ROW,
-	MENU_TYPE_TIMER
+	MENU_TYPE_ROW
 };
 
 class MenuItem {

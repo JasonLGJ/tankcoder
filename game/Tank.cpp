@@ -22,6 +22,10 @@ void Tank::setAlive(bool a) {
 	alive = a;
 }
 
+bool* Tank::obtainAlive() {
+	return &alive;
+}
+
 void Tank::turnLeft() {
 	direction++;
 
@@ -270,14 +274,13 @@ void  Tank::shoot() {
 
 	if (onShootingRange(x, y, ex, ey))
 	{
-		//nawisded
+		printf("ded\n");
 
+		if (id == 0)
+			grid->kill_enemy_tank();
+		else
+			grid->kill_player_tank();
 	}
-	else
-	{
-		//hestillalive
-	}
-
 }
 
 
@@ -313,254 +316,126 @@ bool Tank::onVisionRange() {
 }
 
 bool Tank::onShootingRange(int px, int py, int ex, int ey) {
-	int Ry1,Ry2,Ry3;
-	int Rx1,Rx2,Rx3;
+	int xs[3];
+	int ys[3];
 
-
-	switch(direction)
+	switch (direction)
 	{
-	case TANK_DIRECTION_LEFT:
-		//vision cerca
+		case TANK_DIRECTION_LEFT:
+			xs[0] = x - 1;
+			xs[1] = x - 2;
+			xs[2] = x - 3;
+			ys[0] = y;
+			ys[1] = y;
+			ys[2] = y;
+			break;
 
-		Rx1 = px-1;
-		Ry1=py;
-
-		//vision media
-
-		Rx2=px-2;
-		Ry2=py;
-
-		//vision larga
-
-		Rx3=px-3;
-		Ry3=py;
-		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		break;
-
-	case TANK_DIRECTION_LEFT_UP:
-		if (y % 2 == 0)
-		{
-			//vision cerca
-
-			Rx1 = px;
-			Ry1 = py - 1;
-
-			//vision media
-
-			Rx2 = px;
-			Ry2 = py - 2;
-
-			//vision lejos
-
-			Rx3 = px;
-			Ry3 = py - 3;
-		}
-		else
-		{
-			//vision cerca
-
-			Rx1 = px - 1;
-			Ry1 = py - 1;
-
-			//vision media
-
-			Rx2 = px - 2;
-			Ry2 = py - 2;
-
-			//vision lejos
-
-			Rx3 = px - 3;
-			Ry3 = py - 3;
-		}
-
-
-		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-
-		break;
-
-	case TANK_DIRECTION_LEFT_DOWN:
-		if(py % 2 == 0)
-		{
-			Rx1 = px;
-			Ry1 = py + 1;
-			//vista media
-			Rx2 = px ;
-			Ry2 = py + 2;
-			//vision lejos
-
-			Rx3 = px ;
-			Ry3 = py + 3;
-		}
+		case TANK_DIRECTION_LEFT_DOWN:
+			if (y % 2 == 0)
+			{
+				xs[0] = x;
+				xs[1] = x - 1;
+				xs[2] = x - 1;
+				ys[0] = y + 1;
+				ys[1] = y + 2;
+				ys[2] = y + 3;
+			}
 			else
 			{
-				//vision cerca
-
-				Rx1 = px - 1;
-				Ry1 = py + 1;
-
-				//vision media
-
-				Rx2 = px - 2;
-				Ry2 = py + 2;
-
-				//vision lejos
-
-				Rx3 = px - 3;
-				Ry3 = py + 3;
+				xs[0] = x - 1;
+				xs[1] = x - 1;
+				xs[2] = x - 2;
+				ys[0] = y + 1;
+				ys[1] = y + 2;
+				ys[2] = y + 3;
 			}
+			break;
 
+		case TANK_DIRECTION_RIGHT_DOWN:
+			if (y % 2 == 0)
+			{
+				xs[0] = x + 1;
+				xs[1] = x + 1;
+				xs[2] = x + 2;
+				ys[0] = y + 1;
+				ys[1] = y + 2;
+				ys[2] = y + 3;
+			}
+			else
+			{
+				xs[0] = x;
+				xs[1] = x + 1;
+				xs[2] = x + 1;
+				ys[0] = y + 1;
+				ys[1] = y + 2;
+				ys[2] = y + 3;
+			}
+			break;
 
-		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		case TANK_DIRECTION_RIGHT:
+			xs[0] = x + 1;
+			xs[1] = x + 2;
+			xs[2] = x + 3;
+			ys[0] = y;
+			ys[1] = y;
+			ys[2] = y;
+			break;
 
-		break;
+		case TANK_DIRECTION_RIGHT_UP:
+			if (y % 2 == 0)
+			{
+				xs[0] = x + 1;
+				xs[1] = x + 1;
+				xs[2] = x + 2;
+				ys[0] = y - 1;
+				ys[1] = y - 2;
+				ys[2] = y - 3;
+			}
+			else
+			{
+				xs[0] = x ;
+				xs[1] = x + 1;
+				xs[2] = x + 1;
+				ys[0] = y - 1;
+				ys[1] = y - 2;
+				ys[2] = y - 3;
+			}
+			break;
 
-	case TANK_DIRECTION_RIGHT:
-		//vision cerca
+		case TANK_DIRECTION_LEFT_UP:
+			if (y % 2 == 0)
+			{
+				xs[0] = x;
+				xs[1] = x - 1;
+				xs[2] = x - 1;
+				ys[0] = y - 1;
+				ys[1] = y - 2;
+				ys[2] = y - 3;
+			}
+			else
+			{
+				xs[0] = x - 1;
+				xs[1] = x - 1;
+				xs[2] = x - 2;
+				ys[0] = y - 1;
+				ys[1] = y - 2;
+				ys[2] = y - 3;
+			}
+			break;
 
-		Rx1=px + 1;
-		Ry1=py;
-
-		//vision lejos
-
-		Rx2=px + 2;
-		Ry2=py;
-
-		//vision lejos
-
-		Rx3=px + 3;
-		Ry3=py;
-		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-
-		break;
-
-	case TANK_DIRECTION_RIGHT_DOWN:
-		if (y % 2 == 0)
-		{
-			//vision cerca
-
-			Rx1 = px + 1;
-			Ry1 = py + 1;
-
-			//vision media
-
-			Rx2 = px + 2;
-			Ry2 = py + 2;
-
-			//vision lejos
-
-			Rx3 = px + 3;
-			Ry3 = py + 3;
-		}
-		else
-		{
-			//vision cerca
-
-			Rx1 = px;
-			Ry1 = py + 1;
-
-			//vision media
-
-			Rx2 = px;
-			Ry2 = py + 2;
-
-			//vision lejos
-
-			Rx3 = px;
-			Ry3 = py + 3;
-
-		}
-
-		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-
-		break;
-	case TANK_DIRECTION_RIGHT_UP:
-
-		if (y % 2 == 0)
-		{
-			//vision cerca
-
-			Rx1 = px + 1;
-			Ry1 = py - 1;
-
-			//vision media
-
-			Rx2 = px + 2;
-			Ry2 = py - 2;
-
-			//vision lejos
-
-			Rx3 = px + 3;
-			Ry3 = py - 3;
-		}
-		else
-		{
-			//vision cerca
-
-			Rx1 = px;
-			Ry1 = py - 1;
-
-			//vision media
-
-			Rx2 = px;
-			Ry2 = py - 2;
-
-			//vision lejos
-
-			Rx3 = px;
-			Ry3 = py - 3;
-
-		}
-
-		if (ex == Rx1 && ey == Ry1 || ex == Rx2 && ey == Ry2 || ex == Rx3 && ey == Ry3)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-
-		break;
-
-	default:
-		break;
+		default:
+			break;
 	}
 
+	for (int i = 0; i < 3; i++)
+	{
+		if (xs[i] == ex && ys[i] == ey)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void Tank::validateRotation() {

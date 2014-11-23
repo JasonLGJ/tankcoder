@@ -6,7 +6,6 @@
 #include "../utils/scene/SceneManager.h"
 #include "Tile.h"
 
-
 class Grid {
 	public:
 		Grid();
@@ -19,6 +18,9 @@ class Grid {
 		bool is_obstacle(int x, int y);
 		void update_player(int x, int y);
 		void update_enemy(int x, int y);
+		void set_tank_lives(bool* pt, bool* et);
+		void kill_player_tank();
+		void kill_enemy_tank();
 	private:
 		void create_tile(int type, int x, int y, std::shared_ptr<SceneManager> scene);
 		std::vector<Tile> tiles;
@@ -28,4 +30,6 @@ class Grid {
 		int player_y;
 		int enemy_x;
 		int enemy_y;
+		bool* ptank;
+		bool* etank;
 };

@@ -123,3 +123,16 @@ void Grid::update_enemy(int x, int y) {
 	enemy_x = x;
 	enemy_y = y;
 }
+
+void Grid::set_tank_lives(bool* pt, bool* et) {
+	ptank = pt;
+	etank = et;
+}
+
+void Grid::kill_player_tank() {
+	*ptank = false;
+}
+
+void Grid::kill_enemy_tank() {
+	*etank = false;
+}
