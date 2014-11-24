@@ -22,6 +22,9 @@ class World {
 		void restart();
 		void reset();
 		Editor* getEditor();
+		char who_won();
+		void begin_playing();
+		bool is_playing();
 	private:
 		Editor editor;
 		bool tankIn(char tid, int x, int y);
@@ -40,4 +43,6 @@ class World {
 		int st_ey;
 		int timer;
 		std::string enemyfile;
+		char winner;
+		bool started_playing;
 };

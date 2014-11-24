@@ -5,6 +5,8 @@ World::World() {
 	st_px = st_py =	st_ex =	st_ey = -10;
 	enemyfile = "assets/progs/test.tc";
 	timer = 0;
+	winner = 'n';
+	started_playing = false;
 }
 
 Editor* World::getEditor() {
@@ -20,12 +22,25 @@ bool World::run() {
 	return !pprog.isFinished() && !eprog.isFinished();
 }
 
+bool World::is_playing() {
+	return started_playing;
+}
+
+void World::begin_playing() {
+	started_playing = true;
+}
+
+
+char World::who_won() {
+	return winner;
+}
+
 void World::update() {
 	if (run())
 	{
 		if (!paused)
 		{
-			if (timer == 60)
+			if (timer == 15)
 			{
 				pprog.execute();
 				eprog.execute();
@@ -38,14 +53,20 @@ void World::update() {
 			}
 		}
 	}
-	else
+	else if (started_playing)
 	{
-		//meep?
-		//show end game
+		if (pprog.isFinished())
+		{
+			winner = 'e';
+		}
+		else
+		{
+			winner = 'p';
+		}
 	}
 }
 
-bool World::initProgs(std::string playerfile) {	
+bool World::initProgs(std::string playerfile) {
 	if (!pprog.load(editor.get_content()))
 		return false;
 
@@ -69,7 +90,7 @@ bool World::initProgs(std::string playerfile) {
 
 bool World::initGrid(std::string gridpath, std::string lvlname) {
 	std::shared_ptr<Resource> res = loader->getResource(gridpath);
-	
+
 	if (res == nullptr)
 		return false;
 
@@ -87,7 +108,7 @@ bool World::initGrid(std::string gridpath, std::string lvlname) {
 
 	ptank.setNode(pnode);
 	etank.setNode(enode);
-	
+
 	//other stuff
 	ptank.init(0, TANK_DIRECTION_RIGHT);
 	etank.init(1, TANK_DIRECTION_LEFT);
@@ -97,7 +118,7 @@ bool World::initGrid(std::string gridpath, std::string lvlname) {
 
 	grid.findPlayer(ptx, pty);
 	grid.findEnemy(etx, ety);
-	
+
 	ptank.setPosition(ptx, pty);
 	etank.setPosition(etx, ety);
 
@@ -141,12 +162,15 @@ void World::restart() {
 	etank.init(1, TANK_DIRECTION_LEFT);
 
 	time.restart();
+
+	winner = 'n';
+	started_playing = false;
 }
 
 void World::reset() {
 	timer = 0;
 	paused = true;
-	
+
 	pprog.clear();
 	eprog.clear();
 
@@ -161,5 +185,9 @@ void World::reset() {
 	ptank.init(0, TANK_DIRECTION_RIGHT);
 	etank.init(1, TANK_DIRECTION_LEFT);
 
+	time.restart();
 	time.remove();
+
+	winner = 'n';
+	started_playing = false;
 }

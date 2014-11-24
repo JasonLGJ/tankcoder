@@ -36,6 +36,7 @@ void Game::update() {
 				break;
 
 			case MENU_ACTION_BEGIN:
+				world->begin_playing();
 				world->initProgs("assets/progs/test.tc");
 				world->set_pause(false);
 				menu->setMenuOption(MENU_ACTION_PLAYING);
@@ -54,6 +55,16 @@ void Game::update() {
 				menu->passEditor(world->getEditor());
 				menu->setMenuOption(MENU_ACTION_EDITOR);
 				break;
+		}
+
+		if (world->is_playing() && world->who_won() != 'n')
+		{
+			scene->drop();
+
+			if (world->who_won() == 'p')
+				menu->load("assets/editor/editor.json", "fail");
+			else
+				menu->load("assets/editor/editor.json", "win");
 		}
 
 		if (!menu->shouldStartGame())
