@@ -3,7 +3,8 @@
 World::World() {
 	paused = true;
 	st_px = st_py =	st_ex =	st_ey = -10;
-	enemyfile = "assets/progs/test.tc";
+	enemyfile = "assets/progs/test3.tc";
+
 	timer = 0;
 	winner = 'n';
 	started_playing = false;
@@ -40,7 +41,7 @@ void World::update() {
 	{
 		if (!paused)
 		{
-			if (timer == 15)
+			if (timer == 60)
 			{
 				pprog.execute();
 				eprog.execute();
@@ -93,11 +94,18 @@ bool World::initGrid(std::string gridpath, std::string lvlname) {
 
 	if (res == nullptr)
 		return false;
-
 	if (lvlname.compare("freeplay") != 0)
+	{
 		grid.loadMap(res->get(lvlname), scene);
+		enemyfile = res->get(lvlname)->getString("prog");
+	}
 	else
+	{
 		grid.loadMap(res->get("level_test"), scene);
+		enemyfile = res->get("level_test")->getString("prog");
+	}
+
+	
 
 	//Mesh
 	std::shared_ptr<StaticNode> pnode = scene->createStaticNode("assets/game/tank", 0.0, 0.1, 0.0);
